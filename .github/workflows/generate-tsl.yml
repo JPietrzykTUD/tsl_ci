@@ -7,26 +7,23 @@ on:
     types:
       - completed
 
-env:
-  target_flags: toJSON(["sse", "sse,sse2", "sse,sse2,ssse3", "sse,sse2,ssse3,sse4_1", "sse,sse2,ssse3,sse4_1,sse4_2", "sse,sse2,ssse3,sse4_1,sse4_2,avx", "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2", "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f", "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf", "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl"])
-
 jobs:
   generate-for-intel:
     runs-on: ubuntu-latest
     name: Job to generate TSL for Intel x86
     strategy:
       matrix:
-        target_flags: fromJSON(${{ env.target_flags }})
-          # - "sse"
-          # - "sse,sse2"
-          # - "sse,sse2,ssse3"
-          # - "sse,sse2,ssse3,sse4_1"
-          # - "sse,sse2,ssse3,sse4_1,sse4_2"
-          # - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
-          # - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
-          # - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
-          # - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
-          # - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
+        target_flags:
+          - "sse"
+          - "sse,sse2"
+          - "sse,sse2,ssse3"
+          - "sse,sse2,ssse3,sse4_1"
+          - "sse,sse2,ssse3,sse4_1,sse4_2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,7 +39,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: TSL_${{ steps.generate.outputs.name }}
+          name: TSL_intel_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
   package-for-intel:
@@ -55,21 +52,15 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: TSL_${{ needs.generate-for-intel.outputs.name }}
-          path: ${{ github.workspace }}/tsl
-      - name: TSL Package
-        id: package
-        uses: ./.github/actions/tsl-package
-        with:
-          targets: "intel"
-          path: ${{ github.workspace }}/tsl
-      - name: TSL Package Output
-        if: always()
-        run: echo "TSL Packaging ${{ steps.package.outputs.msg }}"
+          pattern: TSL_intel_*
+          path: ${{ github.workspace }}/tsl_intel
       - name: Upload Packaged TSL
-        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: TSL_${{ steps.package.outputs.name }}
-          path: ${{ github.workspace }}/${{ steps.package.outputs.out }}
+          name: TSL_intel
+          path: ${{ github.workspace }}/tsl_intel
           overwrite: true
+      - name: Garbage Collect
+        uses: geekyeggo/delete-artifact@v4
+        with:
+          name: TSL_intel_*
