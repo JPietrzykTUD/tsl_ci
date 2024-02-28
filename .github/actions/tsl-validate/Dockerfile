@@ -22,22 +22,22 @@ RUN apt-get -y install \
 
 COPY requirements.txt /requirements.txt
 
-RUN source /py/venvs/py38/bin/activate && \
+RUN . /py/venvs/py38/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
 
-RUN source /py/venvs/py39/bin/activate && \
+RUN . /py/venvs/py39/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
 
-RUN source /py/venvs/py310/bin/activate && \
+RUN . /py/venvs/py310/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
 
-RUN source /py/venvs/py311/bin/activate && \
+RUN . /py/venvs/py311/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
