@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
 RUN apt update 
-RUN apt install software-properties-common
+RUN apt-get -y install software-properties-common
 
 RUN add-apt-repository ppa:deadsnakes/ppa && \
   apt update && \
-  apt install \
+  apt-get -y install \
     python3.8 python3.8-pip python3.8-venv \
     python3.9 python3.9-pip python3.9-venv \
     python3.10 python3.10-pip python3.10-venv \
