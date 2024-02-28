@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 RUN apt update 
-RUN apt -y install software-properties-common \
-  python3 python3-pip python3-venv
+# RUN apt -y install software-properties-common \
+  # python3 python3-pip python3-venv
 
 RUN ls 
 RUN pwd
