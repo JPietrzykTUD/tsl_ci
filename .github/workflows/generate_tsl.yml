@@ -7,15 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     name: Job to setup environment (build and push docker image)
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Setup Generation Environment
         id: setup
-        uses: ./.github/actions/tsl-environment
+        uses: ./.github/workflows/setup-environment.yml
         with:
           requirement-file: "requirements.txt"
           docker-tag: "jpietrzyktud/tsl_generator:latest"
           context: ".github/actions/tsl-generate"
+        secrets:
+          DOCKERHUB_USER: ${{ secrets.DOCKER_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
   generate:
     runs-on: ubuntu-latest
     name: Job to generate TSL
