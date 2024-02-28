@@ -24,7 +24,6 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    name: Job to setup environment (build and push docker image)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
