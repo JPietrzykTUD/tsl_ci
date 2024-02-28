@@ -12,7 +12,6 @@ jobs:
     secrets:
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
-      
   generate:
     runs-on: ubuntu-latest
     name: Job to generate TSL
@@ -33,13 +32,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Generation Environment
-        id: setup
-        uses: ./.github/actions/tsl-environment
-        with:
-          requirement-file: "requirements.txt"
-          docker-tag: "jpietrzyktud/tsl_generator:latest"
-          context: ".github/actions/tsl-generate"
       - name: TSL Generate
         id: generate
         uses: ./.github/actions/tsl-generate
