@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/tsl-generate
         with:
           targets: 'sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2'
-          image: ${{ steps.build-docker.outputs.imageid }}
+          xxx: ${{ steps.build-docker.outputs.imageid }}
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"

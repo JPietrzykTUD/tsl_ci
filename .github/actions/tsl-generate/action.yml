@@ -6,7 +6,7 @@ inputs:
     description: "Comma separated list of targets to generate, e.g., 'sse,sse2,sse4_1'."
     required: true
     type: string
-  image:
+  xxx:
     description: 'Docker image to use for the action.'
     required: false
     default: 'Dockerfile'
@@ -22,6 +22,6 @@ outputs:
     description: 'Whether the action was successful (1, 0 otherwise).'
 runs:
   using: 'docker'
-  image: "${{ inputs.image }}"
+  image: ${{ inputs.xxx }}
   args:
     - ${{ inputs.targets }}
