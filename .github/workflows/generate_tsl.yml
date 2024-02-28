@@ -40,17 +40,11 @@ jobs:
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
-      - name: Upload Generation Logs
+      - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generation-logs
-          path: ${{ github.workspace }}/${{ steps.generate.outputs.logs }}
-          overwrite: true
-      - name: Upload Generated TSL
-        uses: actions/upload-artifact@v4
-        with:
-          name: TSL_${{ matrix.target_flags }}
+          name: TSL_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
 

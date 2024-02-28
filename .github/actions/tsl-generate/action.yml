@@ -7,10 +7,10 @@ inputs:
     required: true
     type: string
 outputs:
+  name:
+    description: 'Name of the generated files.'
   out:
     description: 'Path to the generated files.'
-  logs:
-    description: 'Path to the logs.'
   msg:
     description: 'Verbose message from the action.'
   success:
