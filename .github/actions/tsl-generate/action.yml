@@ -22,6 +22,6 @@ outputs:
     description: 'Whether the action was successful (1, 0 otherwise).'
 runs:
   using: 'docker'
-  image: ${{ inputs.image }}
+  image: "${{ inputs.image }}"
   args:
     - ${{ inputs.targets }}
