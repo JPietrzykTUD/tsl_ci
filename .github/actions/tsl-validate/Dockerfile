@@ -7,7 +7,7 @@ ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
-  apt update && 
+  apt update && \
   python3 -m pip install --upgrade pip && \
   apt-get -y install \
     python3.8 python3.8-venv \
