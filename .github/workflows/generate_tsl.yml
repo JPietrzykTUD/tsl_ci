@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Copy python requirements to actions
+        run: cp requirements.txt .github/actions/tsl-generate/
       - name: TSL Generate
         id: generate
         uses: ./.github/actions/tsl-generate
