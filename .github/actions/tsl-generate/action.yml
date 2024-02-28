@@ -16,6 +16,8 @@ inputs:
     type: string
     default: "generation_log"
 outputs:
+  logs:
+    description: 'Path to the logs.'
   msg:
     description: 'Verbose message from the action.'
   success:
