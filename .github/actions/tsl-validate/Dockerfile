@@ -25,16 +25,19 @@ COPY requirements.txt /requirements.txt
 RUN source /py/venvs/py38/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
-  deactivate && \
-  source /py/venvs/py39/bin/activate && \
+  deactivate
+
+RUN source /py/venvs/py39/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
-  deactivate && \
-  source /py/venvs/py310/bin/activate && \
+  deactivate
+
+RUN source /py/venvs/py310/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
-  deactivate && \
-  source /py/venvs/py311/bin/activate && \
+  deactivate
+
+RUN source /py/venvs/py311/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
