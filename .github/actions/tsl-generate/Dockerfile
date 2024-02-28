@@ -13,7 +13,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 LABEL org.opencontainers.image.source=https://github.com/db-tu-dresden/TSLGen
-LABEL org.opencontainers.image.description="TSLGenerator Compilation Image for x86"
+LABEL org.opencontainers.image.description="TSLGenerator Generation Image"
 LABEL org.opencontainers.image.licenses=Apache-2.0
 
 COPY entrypoint.sh /entrypoint.sh
