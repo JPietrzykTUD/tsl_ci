@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   setup:
+    name: "Setup Environment"
     uses: ./.github/workflows/setup-environment.yml    
     with:
       requirement-file: "requirements.txt"
