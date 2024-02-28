@@ -9,23 +9,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Copy python requirements to actions
-        run: cp requirements.txt .github/actions/tsl-generate/
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Setup Generation Environment
+        id: setup
+        uses: ./.github/actions/tsl-environment
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./.github/actions/tsl-generate
-          push: true
-          tags: jpietrzyktud/tsl_generator:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          requirement-file: "requirements.txt"
+          docker-tag: "jpietrzyktud/tsl_generator:latest"
+          context: ".github/actions/tsl-generate"
   generate:
     runs-on: ubuntu-latest
     name: Job to generate TSL
@@ -44,6 +34,15 @@ jobs:
           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Generation Environment
+        id: setup
+        uses: ./.github/actions/tsl-environment
+        with:
+          requirement-file: "requirements.txt"
+          docker-tag: "jpietrzyktud/tsl_generator:latest"
+          context: ".github/actions/tsl-generate"
       - name: TSL Generate
         id: generate
         uses: ./.github/actions/tsl-generate
