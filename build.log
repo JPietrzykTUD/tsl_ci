@@ -1,0 +1,53 @@
+[ 22%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/binary_unit_test.cpp.o
+[ 22%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/ls_unit_test.cpp.o
+[ 33%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/convert_unit_test.cpp.o
+[ 55%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/compare_unit_test.cpp.o
+[ 55%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/misc_unit_test.cpp.o
+[ 66%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/mask_unit_test.cpp.o
+[ 77%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/calc_unit_test.cpp.o
+[ 88%] Building CXX object generator_output/build/src/test/CMakeFiles/tsl_test.dir/catch_manager.cpp.o
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/ls_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/compare_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/binary_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/mask_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/calc_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/convert_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+In Datei, eingebunden von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/tsl_static.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/tslintrin.hpp:32,
+                 von /home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/src/test/misc_unit_test.cpp:27:
+/home/jpietrzyk/Own/Work/SimdOps/tools/tslgen/commit_test/generator_output/include/static/utils/preprocessor.hpp:69:188: Anmerkung: »#pragma message: TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.«
+   69 |     #     pragma message("TSL_UNROLL is disabled. Apparently, GCC<14 does not support pragma unroll based on template parameters, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102855.")
+      |                                                                                                                                                                                            ^
+[100%] Linking CXX executable tsl_test
+/usr/bin/c++ CMakeFiles/tsl_test.dir/catch_manager.cpp.o CMakeFiles/tsl_test.dir/binary_unit_test.cpp.o CMakeFiles/tsl_test.dir/ls_unit_test.cpp.o CMakeFiles/tsl_test.dir/convert_unit_test.cpp.o CMakeFiles/tsl_test.dir/misc_unit_test.cpp.o CMakeFiles/tsl_test.dir/compare_unit_test.cpp.o CMakeFiles/tsl_test.dir/mask_unit_test.cpp.o CMakeFiles/tsl_test.dir/calc_unit_test.cpp.o -o tsl_test 
+[100%] Built target tsl_test
