@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: TSL Generate
         id: generate
-        uses: JPietrzykTUD/tsl-generate
+        uses: ./github/actions/tsl-generate
         with:
           targets: 'sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2'
           generate-to: 'TSL'
