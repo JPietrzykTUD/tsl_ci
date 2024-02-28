@@ -3,13 +3,17 @@ FROM ubuntu:latest
 RUN apt update 
 RUN apt-get -y install software-properties-common
 
-RUN add-apt-repository ppa:deadsnakes/ppa && \
-  apt update && \
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN add-apt-repository -y ppa:deadsnakes/ppa && \
+  apt update && 
+  python3 -m pip install --upgrade pip && \
   apt-get -y install \
-    python3.8 python3.8-pip python3.8-venv \
-    python3.9 python3.9-pip python3.9-venv \
-    python3.10 python3.10-pip python3.10-venv \
-    python3.11 python3.11-pip python3.11-venv && \
+    python3.8 python3.8-venv \
+    python3.9 python3.9-venv \
+    python3.10 python3.10-venv \
+    python3.11 python3.11-venv && \
   mkdir -p /py/venvs && \
   python3.8 -m venv /py/venvs/py38 && \
   python3.9 -m venv /py/venvs/py39 && \
