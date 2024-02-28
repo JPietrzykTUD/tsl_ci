@@ -15,8 +15,8 @@ echo "out=${GENERATION_BASE}" >> $GITHUB_OUTPUT
 mkdir -p ${GENERATION_PATH}
 mkdir -p ${LOG_PATH}
 
-echo "python3 ${REPO_ROOT}/main.py --targets ${PARAM_TARGETS} --out ${GENERATION_PATH}" >${GENERATION_PATH}/generation.log 2>&1
-python3 ${REPO_ROOT}/main.py --targets ${PARAM_TARGETS} --out ${GENERATION_PATH} >>${GENERATION_PATH}/generation.log 2>&1
+cd ${REPO_ROOT}
+python3 ${REPO_ROOT}/main.py --targets ${TARGETS} --out ${GENERATION_PATH} >>${GENERATION_PATH}/generation.log 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Could not generate TSL (with $TARGETS)" >> $GITHUB_OUTPUT
   echo "success=0" >> $GITHUB_OUTPUT
