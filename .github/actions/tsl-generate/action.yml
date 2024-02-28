@@ -6,16 +6,9 @@ inputs:
     description: "Comma separated list of targets to generate, e.g., 'sse,sse2,sse4_1'."
     required: true
     type: string
-  generate-to:
-    description: "Path to the directory where the generated files will be placed."
-    required: true
-    type: string
-  logs-to:
-    description: "Path to the directory where the logs will be placed."
-    required: true
-    type: string
-    default: "generation_log"
 outputs:
+  out:
+    description: 'Path to the generated files.'
   logs:
     description: 'Path to the logs.'
   msg:
@@ -27,5 +20,3 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.targets }}
-    - ${{ inputs.generate-to }}
-    - ${{ inputs.logs-to }}
