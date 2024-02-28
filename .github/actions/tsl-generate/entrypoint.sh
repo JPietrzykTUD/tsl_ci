@@ -31,5 +31,5 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "logs=${LOG_BASE}" >> $GITHUB_OUTPUT
-echo "msg=\"TSL can be generated (with $TARGETS). Logs can be found at ${LOG_PATH}/generation_${TARGETS_NAME}.log\"" >> $GITHUB_OUTPUT
+echo "msg=TSL can be generated (with $TARGETS). Logs can be found at ${LOG_PATH}/generation_${TARGETS_NAME}.log" >> $GITHUB_OUTPUT
 echo "success=1" >> $GITHUB_OUTPUT
