@@ -1,24 +1,23 @@
+name: Workflow to generate the Template SIMD Library
+
 on: [push]
 
 jobs:
-  hello_world_job:
+  setup:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Job to setup environment (build and push docker image)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Copy python requirements to actions
         run: cp requirements.txt .github/actions/tsl-generate/
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -27,25 +26,43 @@ jobs:
           tags: jpietrzyktud/tsl_generator:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      # - uses: docker/build-push-action@v5
-      #   id: build-docker
-      #   with:
-      #     context: ./.github/actions/tsl-generate
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
+  generate:
+    runs-on: ubuntu-latest
+    name: Job to generate TSL
+    needs: [setup]
+    strategy:
+      matrix:
+        target_flags:
+          - "sse"
+          - "sse,sse2"
+          - "sse,sse2,ssse3"
+          - "sse,sse2,ssse3,sse4_1"
+          - "sse,sse2,ssse3,sse4_1,sse4_2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
+    steps:
       - name: TSL Generate
         id: generate
         uses: ./.github/actions/tsl-generate
         with:
-          targets: 'sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2'
+          targets: ${{ matrix.target_flags }}
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
-      - name: Upload Build Artifacts
+      - name: Upload Generation Logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: generation-logs
           path: ${{ github.workspace }}/${{ steps.generate.outputs.logs }}
+          overwrite: true
+      - name: Upload Generated TSL
+        uses: actions/upload-artifact@v4
+        with:
+          name: TSL_${{ matrix.target_flags }}
+          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
 

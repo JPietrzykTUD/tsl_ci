@@ -6,11 +6,6 @@ inputs:
     description: "Comma separated list of targets to generate, e.g., 'sse,sse2,sse4_1'."
     required: true
     type: string
-  xxx:
-    description: 'Docker image to use for the action.'
-    required: false
-    default: 'Dockerfile'
-    type: string
 outputs:
   out:
     description: 'Path to the generated files.'
