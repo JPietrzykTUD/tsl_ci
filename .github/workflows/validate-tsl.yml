@@ -1,0 +1,56 @@
+# name: validate-tsl-matrix
+# run-name: Validate the TSL Generator
+
+# on:
+#   workflow_run:
+#     workflows: [create-validation-image]
+#     types:
+#       - completed
+
+# jobs:
+#   setup:
+#     name: "Setup Environment"
+#     uses: ./.github/workflows/setup-environment.yml    
+#     with:
+#       requirement-file: "requirements.txt"
+#       docker-tag: "jpietrzyktud/tsl_validation:latest"
+#       context: ".github/actions/tsl-validate"
+#     secrets:
+#       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+#       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+#   generate-for-intel:
+#     runs-on: ubuntu-latest
+#     name: Job to generate TSL for Intel x86
+#     needs: [setup]
+#     strategy:
+#       matrix:
+#         target_flags:
+#           - "sse"
+#           - "sse,sse2"
+#           - "sse,sse2,ssse3"
+#           - "sse,sse2,ssse3,sse4_1"
+#           - "sse,sse2,ssse3,sse4_1,sse4_2"
+#           - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
+#           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
+#           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
+#           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
+#           - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: TSL Generate
+#         id: generate
+#         uses: ./.github/actions/tsl-generate
+#         with:
+#           targets: ${{ matrix.target_flags }}
+#       - name: TSL Generate Output
+#         if: always()
+#         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
+#       - name: Upload Generated TSL
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: TSL_${{ steps.generate.outputs.name }}
+#           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+#           overwrite: true
+

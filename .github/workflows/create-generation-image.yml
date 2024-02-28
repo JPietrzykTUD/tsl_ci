@@ -1,0 +1,14 @@
+name: create-generation-image
+run-name: Create a docker image for TSL generation
+on: [push]
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "jpietrzyktud/tsl_generator:latest"
+      context: ".github/actions/tsl-generate"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}

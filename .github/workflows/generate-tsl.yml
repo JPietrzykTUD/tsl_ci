@@ -1,22 +1,27 @@
-name: Workflow to generate the Template SIMD Library
+name: generate-tsl-matrix
+run-name: Generate the Template SIMD Library
 
-on: [push]
+on:
+  workflow_run:
+    workflows: [create-generation-image]
+    types:
+      - completed
 
 jobs:
-  setup:
-    name: "Setup Environment"
-    uses: ./.github/workflows/setup-environment.yml    
-    with:
-      requirement-file: "requirements.txt"
-      docker-tag: "jpietrzyktud/tsl_generator:latest"
-      context: ".github/actions/tsl-generate"
-    secrets:
-      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
-  generate:
+  # setup:
+  #   name: "Setup Environment"
+  #   uses: ./.github/workflows/setup-environment.yml    
+  #   with:
+  #     requirement-file: "requirements.txt"
+  #     docker-tag: "jpietrzyktud/tsl_generator:latest"
+  #     context: ".github/actions/tsl-generate"
+  #   secrets:
+  #     DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  generate-for-intel:
     runs-on: ubuntu-latest
-    name: Job to generate TSL
-    needs: [setup]
+    name: Job to generate TSL for Intel x86
+    # needs: [setup]
     strategy:
       matrix:
         target_flags:

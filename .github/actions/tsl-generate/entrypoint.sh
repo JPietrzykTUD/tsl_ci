@@ -16,6 +16,7 @@ mkdir -p ${GENERATION_PATH}
 mkdir -p ${LOG_PATH}
 
 cd ${REPO_ROOT}
+ls -halt >> ${GENERATION_PATH}/generation.log 2>&1
 python3 ${REPO_ROOT}/main.py --targets ${TARGETS} --out ${GENERATION_PATH} >>${GENERATION_PATH}/generation.log 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Could not generate TSL (with $TARGETS)" >> $GITHUB_OUTPUT
