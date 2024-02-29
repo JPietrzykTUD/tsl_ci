@@ -6,9 +6,10 @@ REPO_ROOT=/github/workspace
 
 echo "name=${COMPILER}" >> $GITHUB_OUTPUT
 
-LOG_PATH=${REPO_ROOT}/validation/py${PY_VERSION}
+LOG_BASE=build/${COMPILER}
+LOG_PATH=${REPO_ROOT}/${LOG_BASE}
 mkdir -p ${LOG_PATH}
-echo "out=${LOG_PATH}" >> $GITHUB_OUTPUT
+echo "out=${LOG_BASE}" >> $GITHUB_OUTPUT
 
 
 ls ${REPO_ROOT}/tsl/intel/ -halt >> ${LOG_PATH}/tsl.log 2>&1

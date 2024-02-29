@@ -11,9 +11,10 @@ REPO_ROOT=/github/workspace
 GENERATION_PATH=/tmp/tsl
 mkdir -p ${GENERATION_PATH}
 
-LOG_PATH=${REPO_ROOT}/validation/py${PY_VERSION}
+LOG_BASE=validation/py${PY_VERSION}
+LOG_PATH=${REPO_ROOT}/${LOG_BASE}
 mkdir -p ${LOG_PATH}
-echo "out=${LOG_PATH}" >> $GITHUB_OUTPUT
+echo "out=${LOG_BASE}" >> $GITHUB_OUTPUT
 
 
 . /py/venvs/py${PY_VERSION}/bin/activate
