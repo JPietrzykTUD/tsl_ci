@@ -1,4 +1,4 @@
-name: Generation using py3.8-3.12
+name: Generating with py3.8-3.12
 run-name: Validate the TSL Generator
 
 on:
