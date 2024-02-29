@@ -1,4 +1,4 @@
-name: validate-tsl-matrix
+name: Generation using py3.8 - py3.12
 run-name: Validate the TSL Generator
 
 on:

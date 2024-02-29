@@ -3,7 +3,7 @@ run-name: Build and test TSL for Intel x86
 
 on:
   workflow_run:
-    workflows: [generate-tsl-matrix]
+    workflows: [Generation for Intel / ARM]
     types:
       - completed
 
@@ -31,7 +31,7 @@ jobs:
         with:
           image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
-          tsl: ${{ github.workspace }}/tsl/intel
+          tsl: tsl/intel
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"

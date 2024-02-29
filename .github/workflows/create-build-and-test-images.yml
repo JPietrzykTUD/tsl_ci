@@ -1,8 +1,17 @@
-name: create-build-and-test-image
+name: create-build-and-test-images
 run-name: Create a docker image for TSL building and testing
 on: [push]
 
 jobs:
+  setup-generation:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.GENERATION_TAG }}"
+      context: ".github/actions/tsl-generate"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
   setup-x86:
     uses: ./.github/workflows/setup-environment.yml    
     with:

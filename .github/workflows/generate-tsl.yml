@@ -1,9 +1,9 @@
-name: generate-tsl-matrix
+name: Generation for Intel / ARM
 run-name: Generate the Template SIMD Library
 
 on:
   workflow_run:
-    workflows: [create-generation-image]
+    workflows: [create-build-and-test-images]
     types:
       - completed
 
