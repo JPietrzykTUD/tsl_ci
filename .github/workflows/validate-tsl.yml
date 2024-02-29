@@ -24,7 +24,7 @@ jobs:
           python-version: ${{ matrix.python_version }}
       - name: TSL Generate Output
         if: always()
-        run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}"
+        run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
       - name: Upload Logs
         if: always()
         uses: actions/upload-artifact@v4
