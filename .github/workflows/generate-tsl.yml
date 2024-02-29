@@ -37,11 +37,11 @@ jobs:
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
       - name: OUT TRUE
-        if: ${{ steps.generate.outputs.success }} != "1"
-        run: "echo SUCCESS != 1 (${{ steps.generate.outputs.success }})"
+        if: ${{ steps.generate.outputs.success }} != "true"
+        run: "echo SUCCESS == false"
       - name: OUT FALSE
-        if: ${{ steps.generate.outputs.success }} == "1"
-        run: "echo SUCCESS == 1 (${{ steps.generate.outputs.success }})"
+        if: ${{ steps.generate.outputs.success }} == "true"
+        run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
@@ -50,7 +50,7 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.generate.outputs.success }} != 1
+      - if: ${{ steps.generate.outputs.success }} != "true"
         uses: actions/github-script@v7
         with:
           script: |
@@ -95,11 +95,11 @@ jobs:
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
       - name: OUT TRUE
-        if: ${{ steps.generate.outputs.success }} != "1"
-        run: "echo SUCCESS != 1 (${{ steps.generate.outputs.success }})"
+        if: ${{ steps.generate.outputs.success }} != "true"
+        run: "echo SUCCESS != false"
       - name: OUT FALSE
-        if: ${{ steps.generate.outputs.success }} == "1"
-        run: "echo SUCCESS == 1 (${{ steps.generate.outputs.success }})"
+        if: ${{ steps.generate.outputs.success }} == "true"
+        run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
@@ -108,7 +108,7 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.generate.outputs.success }} != 1
+      - if: ${{ steps.generate.outputs.success }} != "true"
         uses: actions/github-script@v7
         with:
           script: |

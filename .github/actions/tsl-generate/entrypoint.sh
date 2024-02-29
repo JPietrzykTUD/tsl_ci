@@ -20,9 +20,9 @@ ls -halt >> ${GENERATION_PATH}/generation.log 2>&1
 python3 ${REPO_ROOT}/main.py --targets ${TARGETS} --out ${GENERATION_PATH} >>${GENERATION_PATH}/generation.log 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Could not generate TSL (with $TARGETS)" >> $GITHUB_OUTPUT
-  echo "success=0" >> $GITHUB_OUTPUT
+  echo "success=false" >> $GITHUB_OUTPUT
   exit
 fi
 
 echo "msg=TSL can be generated (with $TARGETS)." >> $GITHUB_OUTPUT
-echo "success=1" >> $GITHUB_OUTPUT
+echo "success=true" >> $GITHUB_OUTPUT

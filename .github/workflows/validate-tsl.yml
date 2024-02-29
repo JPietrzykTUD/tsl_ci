@@ -27,11 +27,11 @@ jobs:
         if: always()
         run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
       - name: OUT TRUE
-        if: ${{ steps.validate.outputs.success }} != "1"
-        run: "echo SUCCESS != 1 (${{ steps.validate.outputs.success }})"
+        if: ${{ steps.validate.outputs.success }} != "true"
+        run: "echo SUCCESS == false"
       - name: OUT FALSE
-        if: ${{ steps.validate.outputs.success }} == "1"
-        run: "echo SUCCESS == 1 (${{ steps.validate.outputs.success }})"
+        if: ${{ steps.validate.outputs.success }} == "true"
+        run: "echo SUCCESS == true"
       - name: Upload Logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -39,7 +39,7 @@ jobs:
           name: validate_${{ steps.validate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.validate.outputs.out }}
           overwrite: true
-      - if: ${{ steps.validate.outputs.success }} != 1
+      - if: ${{ steps.validate.outputs.success }} != "true"
         uses: actions/github-script@v7
         with:
           script: |
