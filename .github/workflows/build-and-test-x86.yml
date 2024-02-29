@@ -3,13 +3,14 @@ run-name: Build and test TSL for Intel x86
 
 on:
   workflow_run:
-    workflows: [create-build-and-test-image]
+    workflows: [generate-tsl-matrix]
     types:
       - completed
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Job to build and test TSL for Intel x86
     strategy:
       matrix:

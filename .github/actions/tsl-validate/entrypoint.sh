@@ -16,7 +16,7 @@ mkdir -p ${LOG_PATH}
 echo "out=${LOG_PATH}" >> $GITHUB_OUTPUT
 
 
-source /py/venvs/py${PY_VERSION}/bin/activate
+. /py/venvs/py${PY_VERSION}/bin/activate
 ruff check --ignore E501,F541,F401,F841,E731 --target-version="py${PY_VERSION}" -v . > ${LOG_PATH}/ruff.log 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=ruff failed" >> $GITHUB_OUTPUT

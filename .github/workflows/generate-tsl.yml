@@ -10,6 +10,7 @@ on:
 jobs:
   generate-for-intel:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Job to generate TSL for Intel x86
     strategy:
       matrix:
@@ -75,6 +76,7 @@ jobs:
 
   generate-for-arm:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Job to generate TSL for ARM
     strategy:
       matrix:
