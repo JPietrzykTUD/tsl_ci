@@ -19,9 +19,10 @@ ls ${TSL_ROOT} -halt >> ${LOG_PATH}/tsl.log 2>&1
 # iterate over all directories in tsl/intel
 for d in ${TSL_ROOT}/*; do
   if [ -d "$d" ]; then
-    CURRENT_PATH=${TSL_ROOT}/${d}
+    CURRENT_PATH=${d}
+    STRIPPED_PATH=${CURRENT_PATH#${TSL_ROOT}/}
     echo "Building ${CURRENT_PATH}" >> ${LOG_PATH}/tsl.log 2>&1
-    CURRENT_LOG_PATH=${LOG_PATH}/${d}
+    CURRENT_LOG_PATH=${LOG_PATH}/${STRIPPED_PATH}
     mkdir -p ${CURRENT_LOG_PATH}
     cmake -S ${CURRENT_PATH} -B ${CURRENT_PATH}/build -DCMAKE_CXX_COMPILER=${COMPILER} -DCMAKE_BUILD_TYPE=Release > ${CURRENT_LOG_PATH}/cmake.log 2>&1
     if [ $? -ne 0 ]; then
