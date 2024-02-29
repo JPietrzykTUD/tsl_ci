@@ -1256,7 +1256,7 @@ definitions:
       return _mm_lzcnt_epi{{ intrin_tp[ctype][1] }}(data);
   - target_extension: ["sse"]
     ctype: ["uint8_t", "int8_t", "uint16_t", "int16_t", "uint32_t", "int32_t", "uint64_t", "int64_t"]
-    lscpu_flags: ["sse"]
+    lscpu_flags: ["sse2"]
     is_native: False
     implementation: |
       alignas(Vec::vector_alignment()) typename Vec::base_type data_arr[Vec::vector_element_count()];
