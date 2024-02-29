@@ -2,9 +2,9 @@
 # set -x
 
 PARAM_PY_VERSION=$1
-PY_VERSION=$(echo $PARAM_PY_VERSION | sed 's/.//g')
+PY_VERSION=$(echo $PARAM_PY_VERSION | sed 's/\.//g')
 
-echo "name=py${PY_VERSION}(${PARAM_PY_VERSION})" >> $GITHUB_OUTPUT
+echo "name=py${PY_VERSION}" >> $GITHUB_OUTPUT
 
 REPO_ROOT=/github/workspace
 

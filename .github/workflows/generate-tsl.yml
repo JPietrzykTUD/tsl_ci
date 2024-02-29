@@ -47,7 +47,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            core.setFailed(${{ steps.generate.outputs.msg }})
+            core.setFailed("${{ steps.generate.outputs.msg }}")
   package-for-intel:
     runs-on: ubuntu-latest
     name: Job to package TSL for Intel x86
@@ -97,7 +97,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            core.setFailed(${{ steps.generate.outputs.msg }})
+            core.setFailed("${{ steps.generate.outputs.msg }}")
   package-for-arm:
     runs-on: ubuntu-latest
     name: Job to package TSL for ARM

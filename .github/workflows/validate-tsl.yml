@@ -32,4 +32,9 @@ jobs:
           name: validate_${{ steps.validate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.validate.outputs.out }}
           overwrite: true
+      - if: ${{ steps.validate.outputs.success }} != 1
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed("${{ steps.validate.outputs.msg }}")
 
