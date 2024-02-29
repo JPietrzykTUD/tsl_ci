@@ -40,6 +40,12 @@ jobs:
       - name: OUT FALSE
         if: ${{ steps.bat.outputs.success == 'true' }}
         run: "echo SUCCESS == true"
+      - run: |
+          echo "TSL Generation ${{ steps.bat.outputs.msg }}"
+          echo "TSL Generation ${{ steps.bat.outputs.success }}"
+          echo "TSL Generation ${{ steps.bat.outputs.name }}"
+          echo "TSL Generation ${{ steps.bat.outputs.out }}"
+          ls -l ${{ github.workspace }}/${{ steps.bat.outputs.out }}
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
