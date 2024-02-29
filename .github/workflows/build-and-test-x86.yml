@@ -29,7 +29,7 @@ jobs:
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
-          image: ${{ vars.GENERATION_TAG }}
+          image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
       - name: TSL Generate Output
         if: always()
