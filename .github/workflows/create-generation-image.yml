@@ -1,9 +1,14 @@
 name: create-generation-image
 run-name: Create a docker image for TSL generation
-on: [push]
+on:
+  workflow_run:
+    workflows: [create-build-and-test-image]
+    types:
+      - completed
 
 jobs:
   setup:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/setup-environment.yml    
     with:
       requirement-file: "requirements.txt"
