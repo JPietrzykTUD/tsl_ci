@@ -18,7 +18,8 @@ RUN apt-get -y install \
   python3.8 -m venv /py/venvs/py38 && \
   python3.9 -m venv /py/venvs/py39 && \
   python3.10 -m venv /py/venvs/py310 && \
-  python3.11 -m venv /py/venvs/py311
+  python3.11 -m venv /py/venvs/py311 && \
+  python3.12 -m venv /py/venvs/py312
 
 COPY requirements.txt /requirements.txt
 
@@ -38,6 +39,11 @@ RUN . /py/venvs/py310/bin/activate && \
   deactivate
 
 RUN . /py/venvs/py311/bin/activate && \
+  pip install -r /requirements.txt && \
+  pip install ruff && pip install yamllint && \
+  deactivate
+
+RUN . /py/venvs/py312/bin/activate && \
   pip install -r /requirements.txt && \
   pip install ruff && pip install yamllint && \
   deactivate
