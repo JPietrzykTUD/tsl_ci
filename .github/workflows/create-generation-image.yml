@@ -7,7 +7,7 @@ jobs:
     uses: ./.github/workflows/setup-environment.yml    
     with:
       requirement-file: "requirements.txt"
-      docker-tag: "jpietrzyktud/tsl_generator:latest"
+      docker-tag: "${{ vars.GENERATION_TAG }}"
       context: ".github/actions/tsl-generate"
     secrets:
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}

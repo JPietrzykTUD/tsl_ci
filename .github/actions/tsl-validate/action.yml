@@ -15,8 +15,9 @@ outputs:
     description: 'Verbose message from the action.'
   success:
     description: 'Whether the action was successful (1, 0 otherwise).'
+environment: TSL_DOCKER
 runs:
   using: 'docker'
-  image: 'docker://jpietrzyktud/tsl_validation:latest'
+  image: 'docker://${{ vars.VALIDATION_TAG }}'
   args:
     - ${{ inputs.python-version }}

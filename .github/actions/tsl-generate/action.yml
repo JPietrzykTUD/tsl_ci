@@ -17,6 +17,6 @@ outputs:
     description: 'Whether the action was successful (1, 0 otherwise).'
 runs:
   using: 'docker'
-  image: 'docker://jpietrzyktud/tsl_generator:latest'
+  image: 'docker://${{ vars.GENERATION_TAG }}'
   args:
     - ${{ inputs.targets }}

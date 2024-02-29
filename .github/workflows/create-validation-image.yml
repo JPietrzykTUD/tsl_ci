@@ -8,7 +8,7 @@ jobs:
     uses: ./.github/workflows/setup-environment.yml    
     with:
       requirement-file: "requirements.txt"
-      docker-tag: "jpietrzyktud/tsl_validation:latest"
+      docker-tag: "${{ vars.VALIDATION_TAG}}"
       context: ".github/actions/tsl-validate"
     secrets:
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
