@@ -21,7 +21,6 @@ outputs:
     description: 'Whether the action was successful (1, 0 otherwise).'
 runs:
   using: 'docker'
-  pre-entrypoint: 'setup.sh'
   image: 'docker://jpietrzyktud/tsl_build_and_test_arm:latest'
   args:
     - ${{ inputs.compiler }}

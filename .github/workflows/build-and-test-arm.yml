@@ -31,6 +31,8 @@ jobs:
           platforms: arm64
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+      - name: Register QEMU
+        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-arm
