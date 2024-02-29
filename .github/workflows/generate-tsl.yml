@@ -36,6 +36,12 @@ jobs:
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
+      - name: OUT TRUE
+        if: ${{ steps.generate.outputs.success }} != "1"
+        run: "echo SUCCESS != 1 (${{ steps.generate.outputs.success }})"
+      - name: OUT FALSE
+        if: ${{ steps.generate.outputs.success }} == "1"
+        run: "echo SUCCESS == 1 (${{ steps.generate.outputs.success }})"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
@@ -88,6 +94,12 @@ jobs:
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
+      - name: OUT TRUE
+        if: ${{ steps.generate.outputs.success }} != "1"
+        run: "echo SUCCESS != 1 (${{ steps.generate.outputs.success }})"
+      - name: OUT FALSE
+        if: ${{ steps.generate.outputs.success }} == "1"
+        run: "echo SUCCESS == 1 (${{ steps.generate.outputs.success }})"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4

@@ -27,11 +27,11 @@ jobs:
         if: always()
         run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
       - name: OUT TRUE
-        if: ${{ steps.validate.outputs.success }} != 1
-        run: "echo SUCCESS != 1"
+        if: ${{ steps.validate.outputs.success }} != "1"
+        run: "echo SUCCESS != 1 (${{ steps.validate.outputs.success }})"
       - name: OUT FALSE
-        if: ${{ steps.validate.outputs.success }} == 1
-        run: "echo SUCCESS == 1"
+        if: ${{ steps.validate.outputs.success }} == "1"
+        run: "echo SUCCESS == 1 (${{ steps.validate.outputs.success }})"
       - name: Upload Logs
         if: always()
         uses: actions/upload-artifact@v4
