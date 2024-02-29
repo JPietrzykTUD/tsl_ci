@@ -18,7 +18,7 @@ testing: #optional
     includes: ["<cstddef>", "<array>"]
     implementation: |
       using T = std::conditional_t<std::is_same_v<typename Vec::base_type, typename Vec::mask_type>, typename Vec::base_type, typename Vec::offset_base_type>;
-      using CustomVecT = typename Vec::transform_extension<T>;
+      using CustomVecT = typename Vec::template transform_extension<T>;
       bool allOk = true;
       // For Vec::mask_type == Vec::register_type testing
       std::array< T, CustomVecT::vector_element_count() > pseudo_mask;
@@ -69,7 +69,7 @@ testing: #optional
         return true;
       } else {
         using T = std::conditional_t<std::is_same_v<typename Vec::base_type, typename Vec::mask_type>, typename Vec::base_type, typename Vec::offset_base_type>;
-        using CustomVecT = typename Vec::transform_extension<T>;
+        using CustomVecT = typename Vec::template transform_extension<T>;
         bool allOk = true;
         //e.g., SSE, AVX2, ...
         auto data_create_lambda = [](T* data, std::size_t element_count) {

@@ -1,0 +1,56 @@
+name: Runs on ARM
+run-name: Build and test TSL for ARM
+
+on:
+  workflow_run:
+    workflows: [Generation for Intel / ARM]
+    types:
+      - completed
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Job to build and test TSL for ARM
+    strategy:
+      matrix:
+        compilers: ["clang", "g++"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: generate-tsl.yml
+          name: TSL_ARM
+          path: ${{ github.workspace }}/tsl/arm
+      - name: TSL Build and Test
+        id: bat
+        uses: ./.github/actions/tsl-test-arm
+        with:
+          image: ${{ vars.BUILD_TEST_ARM_TAG }}
+          compiler: ${{ matrix.compilers }}
+          tsl: tsl/arm
+      - name: TSL Generate Output
+        if: always()
+        run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
+      - name: OUT TRUE
+        if: ${{ steps.bat.outputs.success == 'false' }}
+        run: "echo SUCCESS == false"
+      - name: OUT FALSE
+        if: ${{ steps.bat.outputs.success == 'true' }}
+        run: "echo SUCCESS == true"
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_tsl_arm_${{ steps.bat.outputs.name }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success == 'false' }}
+        run: |
+          echo "Build and testing for ARM failed"
+          echo "${{ steps.bat.outputs.msg }}"
+          exit 1
