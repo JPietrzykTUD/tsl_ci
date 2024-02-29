@@ -13,7 +13,8 @@ RUN apt-get -y install \
     python3.8 python3.8-venv \
     python3.9 python3.9-venv \
     python3.10 python3.10-venv \
-    python3.11 python3.11-venv && \
+    python3.11 python3.11-venv \
+    python3.12 python3.12-venv && \
   mkdir -p /py/venvs && \
   python3.8 -m venv /py/venvs/py38 && \
   python3.9 -m venv /py/venvs/py39 && \
