@@ -54,8 +54,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            echo "TSL Generation ${{ steps.generate.outputs.success }}"
-            core.setFailed("${{ steps.generate.outputs.msg }}")
+            echo "${{ steps.generate.outputs.msg }}"
+            core.setFailed("Generation for Intel x86 failed")
   package-for-intel:
     runs-on: ubuntu-latest
     name: Job to package TSL for Intel x86
@@ -112,8 +112,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            echo "TSL Generation ${{ steps.generate.outputs.success }}"
-            core.setFailed("${{ steps.generate.outputs.msg }}")
+            echo "${{ steps.generate.outputs.msg }}"
+            core.setFailed("Generation for ARM failed")
   package-for-arm:
     runs-on: ubuntu-latest
     name: Job to package TSL for ARM
