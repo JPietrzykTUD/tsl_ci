@@ -2,9 +2,14 @@ FROM amd64/ubuntu:latest
 
 RUN apt update
 RUN apt-get -y install \
-  gcc g++ \
-  clang \
+  build-essential lsb-release wget software-properties-common gnupg \
+  g++ \
   make cmake zip
+
+RUN wget https://apt.llvm.org/llvm.sh && \
+  chmod +x llvm.sh && \
+  ./llvm.sh 17 && \
+  update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-17 100
 
 LABEL org.opencontainers.image.source=https://github.com/db-tu-dresden/TSLGen
 LABEL org.opencontainers.image.description="TSLGenerator Compilation Image for x86"
