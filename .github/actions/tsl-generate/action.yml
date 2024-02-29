@@ -2,6 +2,10 @@
 name: 'TSL Generate'
 description: 'Generate the Template SIMD Library for a specific architecture.'
 inputs:
+  image:
+    description: "Name of the image to use for the generation."
+    required: true
+    type: string
   targets:
     description: "Comma separated list of targets to generate, e.g., 'sse,sse2,sse4_1'."
     required: true
@@ -17,6 +21,6 @@ outputs:
     description: 'Whether the action was successful (1, 0 otherwise).'
 runs:
   using: 'docker'
-  image: 'docker://${{ vars.GENERATION_TAG }}'
+  image: 'docker://${{ inputs.image }}'
   args:
     - ${{ inputs.targets }}

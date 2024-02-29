@@ -31,6 +31,7 @@ jobs:
         id: generate
         uses: ./.github/actions/tsl-generate
         with:
+          image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
       - name: TSL Generate Output
         if: always()
@@ -81,6 +82,7 @@ jobs:
         id: generate
         uses: ./.github/actions/tsl-generate
         with:
+          image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
       - name: TSL Generate Output
         if: always()

@@ -2,6 +2,10 @@
 name: 'TSL Validate'
 description: 'Validate the Template SIMD Library Generator'
 inputs:
+  image:
+    description: "Name of the image to use for the validation."
+    required: true
+    type: string
   python-version:
     description: "Python version to use for the validation, e.g., '3.8'."
     required: true
@@ -18,6 +22,6 @@ outputs:
 environment: TSL_DOCKER
 runs:
   using: 'docker'
-  image: 'docker://${{ vars.VALIDATION_TAG }}'
+  image: 'docker://${{ inputs.image }}'
   args:
     - ${{ inputs.python-version }}
