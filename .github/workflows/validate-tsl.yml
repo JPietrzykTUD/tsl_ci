@@ -37,5 +37,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            echo "TSL Generation ${{ steps.validate.outputs.success }}"
             core.setFailed("${{ steps.validate.outputs.msg }}")
 
