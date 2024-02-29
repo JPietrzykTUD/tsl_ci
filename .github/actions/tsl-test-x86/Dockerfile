@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM amd64/ubuntu:latest
 
 RUN apt update
 RUN apt-get -y install \

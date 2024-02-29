@@ -24,13 +24,14 @@ jobs:
         with:
           workflow: generate-tsl.yml
           name: TSL_INTEL
-          path: ./tsl/intel
+          path: ${{ github.workspace }}/tsl/intel
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
           image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
+          tsl: ${{ github.workspace }}/tsl/intel
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
@@ -40,12 +41,6 @@ jobs:
       - name: OUT FALSE
         if: ${{ steps.bat.outputs.success == 'true' }}
         run: "echo SUCCESS == true"
-      - run: |
-          echo "TSL Generation ${{ steps.bat.outputs.msg }}"
-          echo "TSL Generation ${{ steps.bat.outputs.success }}"
-          echo "TSL Generation ${{ steps.bat.outputs.name }}"
-          echo "TSL Generation ${{ steps.bat.outputs.out }}"
-          ls -l ${{ github.workspace }}/${{ steps.bat.outputs.out }}
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4

@@ -6,6 +6,10 @@ inputs:
     description: "Name of compiler."
     required: true
     type: string
+  tsl:
+    description: "Path to the TSL source code."
+    required: true
+    type: string
 outputs:
   name:
     description: 'Name of the generated files.'
@@ -20,3 +24,4 @@ runs:
   image: 'docker://jpietrzyktud/tsl_build_and_test:latest'
   args:
     - ${{ inputs.compiler }}
+    - ${{ inputs.tsl }}
