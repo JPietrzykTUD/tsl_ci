@@ -13,8 +13,8 @@ LOG_PATH=${REPO_ROOT}/${LOG_BASE}
 mkdir -p ${LOG_PATH}
 echo "out=${LOG_BASE}" >> $GITHUB_OUTPUT
 
-
-ls ${REPO_ROOT}/tsl/intel/ -halt > ${LOG_PATH}/tsl.log 2>&1
+echo "TSL_ROOT: ${TSL_ROOT}" > ${LOG_PATH}/tsl.log 2>&1
+ls ${TSL_ROOT} -halt > ${LOG_PATH}/tsl.log 2>&1
 
 # iterate over all directories in tsl/intel
 for d in ${TSL_ROOT}/*; do
