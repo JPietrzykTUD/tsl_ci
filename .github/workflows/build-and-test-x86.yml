@@ -1,0 +1,55 @@
+name: build-and-test-tsl-x86-matrix
+run-name: Build and test TSL for Intel x86
+
+on:
+  workflow_run:
+    workflows: [create-build-and-test-image]
+    types:
+      - completed
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: Job to build and test TSL for Intel x86
+    strategy:
+      matrix:
+        compilers: ["clang", "g++"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v3.1.2
+        with:
+          workflow: generate-tsl-matrix
+          name: TSL_INTEL
+          path: ./tsl/intel
+      - name: TSL Build and Test
+        id: bat
+        uses: ./.github/actions/tsl-test-x86
+        with:
+          image: ${{ vars.GENERATION_TAG }}
+          compiler: ${{ matrix.compilers }}
+      - name: TSL Generate Output
+        if: always()
+        run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
+      - name: OUT TRUE
+        if: ${{ steps.bat.outputs.success }} != "true"
+        run: "echo SUCCESS == false"
+      - name: OUT FALSE
+        if: ${{ steps.bat.outputs.success }} == "true"
+        run: "echo SUCCESS == true"
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmp_tsl_intel_${{ steps.bat.outputs.name }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success }} != "true"
+        uses: actions/github-script@v7
+        with:
+          script: |
+            echo "${{ steps.bat.outputs.msg }}"
+            core.setFailed("Generation for Intel x86 failed")

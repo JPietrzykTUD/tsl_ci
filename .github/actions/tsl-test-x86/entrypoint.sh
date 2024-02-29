@@ -4,7 +4,7 @@ COMPILER=$1
 
 REPO_ROOT=/github/workspace
 
-ls ${REPO_ROOT}
+ls ${REPO_ROOT}/tsl/intel/ -halt
 
-echo "return_msg=\"TSL can be generated build (with $COMPILER) and successfully executed.\"" >> $GITHUB_OUTPUT
-echo "success=1" >> $GITHUB_OUTPUT
+echo "msg=\"TSL can be generated build (with $COMPILER) and successfully executed.\"" >> $GITHUB_OUTPUT
+echo "success=success" >> $GITHUB_OUTPUT

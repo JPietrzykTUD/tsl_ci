@@ -26,11 +26,9 @@ jobs:
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
-      - name: OUT TRUE
-        if: ${{ steps.validate.outputs.success }} != "true"
+      - if: ${{ steps.validate.outputs.success == 'false' }}
         run: "echo SUCCESS == false"
-      - name: OUT FALSE
-        if: ${{ steps.validate.outputs.success }} == "true"
+      - if: ${{ steps.validate.outputs.success == 'true' }}
         run: "echo SUCCESS == true"
       - name: Upload Logs
         if: always()

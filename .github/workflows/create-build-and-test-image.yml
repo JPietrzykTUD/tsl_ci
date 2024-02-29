@@ -3,7 +3,7 @@ run-name: Create a docker image for TSL building and testing
 on: [push]
 
 jobs:
-  setup:
+  setup-x86:
     uses: ./.github/workflows/setup-environment.yml    
     with:
       requirement-file: "requirements.txt"
