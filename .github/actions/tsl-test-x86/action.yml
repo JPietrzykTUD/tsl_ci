@@ -2,8 +2,8 @@
 name: 'TSL Build and Test'
 description: 'Build and tests .'
 inputs:
-  targets:
-    description: "Comma separated list of targets to generate, e.g., 'sse,sse2,sse4_1'."
+  compiler:
+    description: "Name of compiler."
     required: true
     type: string
 outputs:
@@ -19,4 +19,4 @@ runs:
   using: 'docker'
   image: 'docker://jpietrzyktud/tsl_generator:latest'
   args:
-    - ${{ inputs.targets }}
+    - ${{ inputs.compiler }}
