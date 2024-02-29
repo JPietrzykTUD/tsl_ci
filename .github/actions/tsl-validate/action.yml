@@ -22,6 +22,6 @@ outputs:
 environment: TSL_DOCKER
 runs:
   using: 'docker'
-  image: 'docker://${{ inputs.image }}'
+  image: 'docker://jpietrzyktud/tsl_validation:latest'
   args:
     - ${{ inputs.python-version }}

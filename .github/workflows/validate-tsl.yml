@@ -22,6 +22,7 @@ jobs:
         uses: ./.github/actions/tsl-validate
         with:
           python-version: ${{ matrix.python_version }}
+          image: ${{ vars.VALIDATION_TAG }}
       - name: TSL Generate Output
         if: always()
         run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
