@@ -35,20 +35,20 @@ jobs:
         if: always()
         run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
       - name: OUT TRUE
-        if: ${{ steps.bat.outputs.success }} != "true"
+        if: ${{ steps.bat.outputs.success == 'false' }}
         run: "echo SUCCESS == false"
       - name: OUT FALSE
-        if: ${{ steps.bat.outputs.success }} == "true"
+        if: ${{ steps.bat.outputs.success == 'true' }}
         run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tmp_tsl_intel_${{ steps.bat.outputs.name }}
+          name: build_tsl_intel_${{ steps.bat.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.bat.outputs.success }} != "true"
+      - if: ${{ steps.bat.outputs.success == 'false' }}
         uses: actions/github-script@v7
         with:
           script: |

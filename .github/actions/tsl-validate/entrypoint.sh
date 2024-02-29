@@ -22,23 +22,23 @@ if [ $? -ne 0 ]; then
   echo "msg=ruff failed" >> $GITHUB_OUTPUT
   echo "success=false" >> $GITHUB_OUTPUT
   exit
-fi
-
-yamllint --no-warnings -d relaxed ./primitive_data > ${LOG_PATH}/yamllint.log 2>&1
-if [ $? -ne 0 ]; then
-  echo "msg=yamllint failed" >> $GITHUB_OUTPUT
-  echo "success=false" >> $GITHUB_OUTPUT
-  exit
-fi
-
-python main.py -o $GENERATION_PATH > ${LOG_PATH}/tslgen.log 2>&1
-if [ $? -ne 0 ]; then
-  echo "msg=TSL generation failed" >> $GITHUB_OUTPUT
-  echo "success=false" >> $GITHUB_OUTPUT
-  exit
+else
+  yamllint --no-warnings -d relaxed ./primitive_data > ${LOG_PATH}/yamllint.log 2>&1
+  if [ $? -ne 0 ]; then
+    echo "msg=yamllint failed" >> $GITHUB_OUTPUT
+    echo "success=false" >> $GITHUB_OUTPUT
+  else
+    python main.py -o $GENERATION_PATH > ${LOG_PATH}/tslgen.log 2>&1
+    if [ $? -ne 0 ]; then
+      echo "msg=TSL generation failed" >> $GITHUB_OUTPUT
+      echo "success=false" >> $GITHUB_OUTPUT
+      exit
+    else
+      echo "msg=\"TSL can be generated successfully.\"" >> $GITHUB_OUTPUT
+      echo "success=true" >> $GITHUB_OUTPUT
+    fi
+  fi
 fi
 
 deactivate
 
-echo "msg=\"TSL can be generated successfully.\"" >> $GITHUB_OUTPUT
-echo "success=true" >> $GITHUB_OUTPUT

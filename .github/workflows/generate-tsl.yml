@@ -45,7 +45,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tmp_tsl_intel_${{ steps.generate.outputs.name }}
+          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
@@ -65,7 +65,7 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          pattern: tmp_tsl_intel_*
+          pattern: generate_tsl_intel_*
           path: ${{ github.workspace }}/tsl_intel
       - name: Upload Packaged TSL
         uses: actions/upload-artifact@v4
@@ -73,7 +73,7 @@ jobs:
           name: TSL_INTEL
           path: ${{ github.workspace }}/tsl_intel
           overwrite: true
-
+          retention-days: 1
   generate-for-arm:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -102,7 +102,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tmp_tsl_arm_${{ steps.generate.outputs.name }}
+          name: generate_tsl_arm_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
@@ -122,7 +122,7 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          pattern: tmp_tsl_arm_*
+          pattern: generate_tsl_arm_*
           path: ${{ github.workspace }}/tsl_arm
       - name: Upload Packaged TSL
         uses: actions/upload-artifact@v4
@@ -130,3 +130,4 @@ jobs:
           name: TSL_ARM
           path: ${{ github.workspace }}/tsl_arm
           overwrite: true
+          retention-days: 1
