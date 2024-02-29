@@ -50,8 +50,7 @@ jobs:
           overwrite: true
           retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            echo "${{ steps.bat.outputs.msg }}"
-            core.setFailed("Generation for Intel x86 failed")
+        run: |
+          echo "Build and testing for Intel x86 failed"
+          echo "${{ steps.bat.outputs.msg }}"
+          exit 1

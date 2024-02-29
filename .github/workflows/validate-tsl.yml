@@ -40,9 +40,8 @@ jobs:
           overwrite: true
           retention-days: 1
       - if: ${{ steps.validate.outputs.success == 'false' }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            echo "${{ steps.validate.outputs.msg }}"
-            core.setFailed("Validation failed.")
+        run: |
+          echo "Validation failed"
+          echo "${{ steps.validate.outputs.msg }}"
+          exit 1
 

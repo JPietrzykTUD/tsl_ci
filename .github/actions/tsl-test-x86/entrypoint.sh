@@ -24,19 +24,19 @@ for d in ${TSL_ROOT}/*; do
     echo "Building ${CURRENT_PATH}" >> ${LOG_PATH}/tsl.log 2>&1
     CURRENT_LOG_PATH=${LOG_PATH}/${STRIPPED_PATH}
     mkdir -p ${CURRENT_LOG_PATH}
-    cmake -S ${CURRENT_PATH} -B ${CURRENT_PATH}/build -DCMAKE_CXX_COMPILER=${COMPILER} -DCMAKE_BUILD_TYPE=Release > ${CURRENT_LOG_PATH}/cmake.log 2>&1
+    cmake -S ${CURRENT_PATH} -B ${CURRENT_PATH}/build -DCMAKE_CXX_COMPILER=${COMPILER} -DCMAKE_BUILD_TYPE=Release >> ${CURRENT_LOG_PATH}/cmake.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=cmake failed for $d" >> $GITHUB_OUTPUT
       echo "success=false" >> $GITHUB_OUTPUT
       exit
     fi
-    cmake --build ${CURRENT_PATH}/build --config Release -j > ${CURRENT_LOG_PATH}/make.log 2>&1
+    cmake --build ${CURRENT_PATH}/build --config Release >> ${CURRENT_LOG_PATH}/make.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=Build failed for $d" >> $GITHUB_OUTPUT
       echo "success=false" >> $GITHUB_OUTPUT
       exit
     fi
-    ${CURRENT_PATH}/build/src/test/tsl_test > ${CURRENT_LOG_PATH}/test.log 2>&1
+    ${CURRENT_PATH}/build/src/test/tsl_test >> ${CURRENT_LOG_PATH}/test.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=Tests failed for $d" >> $GITHUB_OUTPUT
       echo "success=false" >> $GITHUB_OUTPUT
