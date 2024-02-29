@@ -4,7 +4,7 @@ RUN apt update
 RUN apt-get -y install \
   gcc g++ \
   clang \
-  make cmake ninja autoconf automake zip
+  make cmake zip
 
 LABEL org.opencontainers.image.source=https://github.com/db-tu-dresden/TSLGen
 LABEL org.opencontainers.image.description="TSLGenerator Compilation Image for x86"
