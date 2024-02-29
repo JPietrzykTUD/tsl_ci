@@ -1,20 +1,15 @@
-FROM arm64v8/alpine:latest
+FROM arm64v8/ubuntu:latest
 
-RUN apk update
+RUN apt update
+RUN apt-get -y install \
+  gcc g++ \
+  clang \
+  make cmake zip
 
-RUN apk add --no-cache gcc
-RUN apk add --no-cache g++
-RUN apk add --no-cache clang
-RUN apk add --no-cache cmake
-RUN apk add --no-cache make
-RUN apk add --no-cache ninja
-RUN apk add --no-cache autoconf
-RUN apk add --no-cache automake
-RUN apk add --no-cache dos2unix
-RUN apk add --no-cache wget
-RUN apk add --no-cache xz
-RUN apk add --no-cache tar
-RUN apk add --no-cache rsync
+LABEL org.opencontainers.image.source=https://github.com/db-tu-dresden/TSLGen
+LABEL org.opencontainers.image.description="TSLGenerator Compilation Image for x86"
+LABEL org.opencontainers.image.licenses=Apache-2.0
 
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/usr/bin/sh"]
+ENTRYPOINT ["/entrypoint.sh"]
