@@ -18,7 +18,9 @@ echo "TSL_ROOT: ${TSL_ROOT}" >> ${LOG_PATH}/tsl.log 2>&1
 ls ${TSL_ROOT} -halt >> ${LOG_PATH}/tsl.log 2>&1
 
 COMPILER_BIN=$(which ${COMPILER})
+COMPILER_VERSION=$(${COMPILER_BIN} --version)
 echo "Compiler: ${COMPILER} (${COMPILER_BIN})" >> ${LOG_PATH}/tsl.log 2>&1
+echo "Compiler version: ${COMPILER_VERSION}" >> ${LOG_PATH}/tsl.log 2>&1
 
 # iterate over all directories in tsl/arm
 for d in ${TSL_ROOT}/*; do
@@ -40,6 +42,8 @@ for d in ${TSL_ROOT}/*; do
       echo "success=false" >> $GITHUB_OUTPUT
       exit
     fi
+    echo "Executing ${CURRENT_PATH}/build/src/test/tsl_test" >> ${CURRENT_LOG_PATH}/test.log 2>&1
+    echo "file $(file ${X})" >> ${CURRENT_LOG_PATH}/test.log 2>&1
     ${CURRENT_PATH}/build/src/test/tsl_test >> ${CURRENT_LOG_PATH}/test.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=Tests failed for $d" >> $GITHUB_OUTPUT
