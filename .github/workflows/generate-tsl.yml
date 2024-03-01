@@ -15,6 +15,7 @@ jobs:
     strategy:
       matrix:
         target_flags:
+          - "sse"
           - "sse,sse2"
           - "sse,sse2,ssse3"
           - "sse,sse2,ssse3,sse4_1"
