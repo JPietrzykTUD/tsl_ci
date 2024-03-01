@@ -28,4 +28,5 @@ runs:
       uses: docker/setup-buildx-action@v3
     - uses: 'docker://jpietrzyktud/tsl_build_and_test_arm:latest'
       with:
+        platform: linux/arm64
         args: "${{ inputs.compiler }} ${{ inputs.tsl }}"
