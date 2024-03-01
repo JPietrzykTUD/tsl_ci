@@ -13,8 +13,12 @@ LOG_PATH=${REPO_ROOT}/${LOG_BASE}
 mkdir -p ${LOG_PATH}
 echo "out=${LOG_BASE}" >> $GITHUB_OUTPUT
 
+echo "Platform: $(uname -m)" >> ${LOG_PATH}/tsl.log 2>&1
 echo "TSL_ROOT: ${TSL_ROOT}" >> ${LOG_PATH}/tsl.log 2>&1
 ls ${TSL_ROOT} -halt >> ${LOG_PATH}/tsl.log 2>&1
+
+COMPILER_BIN=$(which ${COMPILER})
+echo "Compiler: ${COMPILER} (${COMPILER_BIN})" >> ${LOG_PATH}/tsl.log 2>&1
 
 # iterate over all directories in tsl/arm
 for d in ${TSL_ROOT}/*; do
@@ -24,7 +28,7 @@ for d in ${TSL_ROOT}/*; do
     echo "Building ${CURRENT_PATH}" >> ${LOG_PATH}/tsl.log 2>&1
     CURRENT_LOG_PATH=${LOG_PATH}/${STRIPPED_PATH}
     mkdir -p ${CURRENT_LOG_PATH}
-    cmake -S ${CURRENT_PATH} -B ${CURRENT_PATH}/build -DCMAKE_CXX_COMPILER=${COMPILER} -DCMAKE_BUILD_TYPE=Release >> ${CURRENT_LOG_PATH}/cmake.log 2>&1
+    cmake -S ${CURRENT_PATH} -B ${CURRENT_PATH}/build -DCMAKE_CXX_COMPILER=${COMPILER_BIN} -DCMAKE_BUILD_TYPE=Release >> ${CURRENT_LOG_PATH}/cmake.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=cmake failed for $d" >> $GITHUB_OUTPUT
       echo "success=false" >> $GITHUB_OUTPUT
