@@ -29,10 +29,6 @@ jobs:
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      # - name: Register QEMU user static
-      #   run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-      # - name: Run ARM docker image
-      #   run: |    
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-arm
@@ -42,18 +38,17 @@ jobs:
           tsl: tsl/arm
       - name: TSL Generate Output
         if: always()
-        run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
-      - name: OUT TRUE
-        if: ${{ steps.bat.outputs.success == 'false' }}
+        run: |
+          echo "TSL Generation ${{ steps.bat.outputs.msg }}"
+      - if: ${{ steps.bat.outputs.success == 'false' }}
         run: "echo SUCCESS == false"
-      - name: OUT FALSE
-        if: ${{ steps.bat.outputs.success == 'true' }}
+      - if: ${{ steps.bat.outputs.success == 'true' }}
         run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build_tsl_arm_${{ steps.bat.outputs.name }}
+          name: build_tsl_arm_${{ matrix.compilers }}
           path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
           overwrite: true
           retention-days: 1

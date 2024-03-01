@@ -12,15 +12,15 @@ jobs:
     secrets:
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
-  # setup-x86:
-  #   uses: ./.github/workflows/setup-environment.yml    
-  #   with:
-  #     requirement-file: "requirements.txt"
-  #     docker-tag: "${{ vars.BUILD_TEST_x86_TAG }}"
-  #     context: ".github/actions/tsl-test-x86"
-  #   secrets:
-  #     DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  setup-x86:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.BUILD_TEST_x86_TAG }}"
+      context: ".github/actions/tsl-test-x86"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
   setup-arm:
     uses: ./.github/workflows/setup-environment.yml    
     with:

@@ -43,8 +43,9 @@ for d in ${TSL_ROOT}/*; do
       exit
     fi
     echo "Executing ${CURRENT_PATH}/build/src/test/tsl_test" >> ${CURRENT_LOG_PATH}/test.log 2>&1
-    echo "file $(file ${X})" >> ${CURRENT_LOG_PATH}/test.log 2>&1
-    ${CURRENT_PATH}/build/src/test/tsl_test >> ${CURRENT_LOG_PATH}/test.log 2>&1
+    EXECUTABLE=${CURRENT_PATH}/build/src/test/tsl_test
+    echo "file $(file ${EXECUTABLE})" >> ${CURRENT_LOG_PATH}/test.log 2>&1
+    ${EXECUTABLE} >> ${CURRENT_LOG_PATH}/test.log 2>&1
     if [ $? -ne 0 ]; then
       echo "msg=Tests failed for $d" >> $GITHUB_OUTPUT
       echo "success=false" >> $GITHUB_OUTPUT
@@ -54,4 +55,4 @@ for d in ${TSL_ROOT}/*; do
 done
 
 echo "msg=TSL can be generated build (with $COMPILER) and all tests were green." >> $GITHUB_OUTPUT
-echo "success=success" >> $GITHUB_OUTPUT
+echo "success=true" >> $GITHUB_OUTPUT

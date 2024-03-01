@@ -44,7 +44,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build_tsl_intel_${{ steps.bat.outputs.name }}
+          name: build_tsl_intel_${{ matrix.compilers }}
           path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
           overwrite: true
           retention-days: 1
