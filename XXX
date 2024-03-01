@@ -1,0 +1,1404 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tsl_test is a Catch v2.13.9 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Testing primitive 'conflict' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:217
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:218: 
+warning:
+  Primitive conflict<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:219: 
+warning:
+  Primitive conflict<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'conflict' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:240
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:241: warning:
+  Primitive conflict<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:242: warning:
+  Primitive conflict<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'imask_conflict_free' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:263
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:264: warning:
+  Primitive imask_conflict_free<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:265: warning:
+  Primitive imask_conflict_free<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'imask_conflict_free' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:286
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:287: warning:
+  Primitive imask_conflict_free<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:288: warning:
+  Primitive imask_conflict_free<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'imaskz_mov' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:309
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:310: warning:
+  Can't run. Required primitive(s) ['maskz_mov<uint8_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:311: warning:
+  Can't run. Required primitive(s) ['maskz_mov<uint16_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:312: warning:
+  Can't run. Required primitive(s) ['maskz_mov<uint32_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:313: warning:
+  Can't run. Required primitive(s) ['maskz_mov<uint64_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:314: warning:
+  Can't run. Required primitive(s) ['maskz_mov<int8_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:315: warning:
+  Can't run. Required primitive(s) ['maskz_mov<int16_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:316: warning:
+  Can't run. Required primitive(s) ['maskz_mov<int32_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:317: warning:
+  Can't run. Required primitive(s) ['maskz_mov<int64_t,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:318: warning:
+  Can't run. Required primitive(s) ['maskz_mov<float,scalar>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:319: warning:
+  Can't run. Required primitive(s) ['maskz_mov<double,scalar>'] not provided.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mask_mov' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:374
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:375: warning:
+  Primitive mask_mov not implemented for sse
+
+-------------------------------------------------------------------------------
+Testing primitive 'maskz_mov' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:380
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:381: warning:
+  Primitive maskz_mov not implemented for scalar
+
+-------------------------------------------------------------------------------
+Testing primitive 'blend' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:436
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:437: warning:
+  Primitive blend<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/misc_unit_test.cpp:438: warning:
+  Primitive blend<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'count_matches' for sse
+  with_only_zero_searching_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:625
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:626: warning:
+  Primitive count_matches<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:627: warning:
+  Primitive count_matches<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:628: warning:
+  Primitive count_matches<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:629: warning:
+  Primitive count_matches<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:630: warning:
+  Primitive count_matches<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:633: warning:
+  Primitive count_matches<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:634: warning:
+  Primitive count_matches<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:635: warning:
+  Primitive count_matches<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'count_matches' for sse
+  with_only_zero_searching_zero
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:639
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:640: warning:
+  Primitive count_matches<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:641: warning:
+  Primitive count_matches<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:642: warning:
+  Primitive count_matches<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:643: warning:
+  Primitive count_matches<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:644: warning:
+  Primitive count_matches<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:647: warning:
+  Primitive count_matches<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:648: warning:
+  Primitive count_matches<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:649: warning:
+  Primitive count_matches<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'count_matches' for sse
+  with_one_match
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:653
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:654: warning:
+  Primitive count_matches<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:655: warning:
+  Primitive count_matches<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:656: warning:
+  Primitive count_matches<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:657: warning:
+  Primitive count_matches<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:658: warning:
+  Primitive count_matches<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:661: warning:
+  Primitive count_matches<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:662: warning:
+  Primitive count_matches<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:663: warning:
+  Primitive count_matches<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'unequal_zero' for sse
+  with_only_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:739
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:744: warning:
+  Primitive unequal_zero<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:745: warning:
+  Primitive unequal_zero<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:746: warning:
+  Primitive unequal_zero<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:747: warning:
+  Primitive unequal_zero<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:748: warning:
+  Primitive unequal_zero<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:749: warning:
+  Primitive unequal_zero<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:750: warning:
+  Primitive unequal_zero<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:751: warning:
+  Primitive unequal_zero<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'unequal_zero' for sse
+  with_only_zero
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:753
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:758: warning:
+  Primitive unequal_zero<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:759: warning:
+  Primitive unequal_zero<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:760: warning:
+  Primitive unequal_zero<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:761: warning:
+  Primitive unequal_zero<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:762: warning:
+  Primitive unequal_zero<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:763: warning:
+  Primitive unequal_zero<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:764: warning:
+  Primitive unequal_zero<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:765: warning:
+  Primitive unequal_zero<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'unequal_zero' for sse
+  with_sequence
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:767
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:772: warning:
+  Primitive unequal_zero<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:773: warning:
+  Primitive unequal_zero<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:774: warning:
+  Primitive unequal_zero<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:775: warning:
+  Primitive unequal_zero<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:776: warning:
+  Primitive unequal_zero<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:777: warning:
+  Primitive unequal_zero<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:778: warning:
+  Primitive unequal_zero<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:779: warning:
+  Primitive unequal_zero<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'between_inclusive' for sse
+  check_boundaries
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:853
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:858: warning:
+  Primitive between_inclusive<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:859: warning:
+  Primitive between_inclusive<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:860: warning:
+  Primitive between_inclusive<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:861: warning:
+  Primitive between_inclusive<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:862: warning:
+  Primitive between_inclusive<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:863: warning:
+  Primitive between_inclusive<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:864: warning:
+  Primitive between_inclusive<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:865: warning:
+  Primitive between_inclusive<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'between_inclusive' for sse
+  complete_range
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:867
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:872: warning:
+  Primitive between_inclusive<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:873: warning:
+  Primitive between_inclusive<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:874: warning:
+  Primitive between_inclusive<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:875: warning:
+  Primitive between_inclusive<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:876: warning:
+  Primitive between_inclusive<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:877: warning:
+  Primitive between_inclusive<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:878: warning:
+  Primitive between_inclusive<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:879: warning:
+  Primitive between_inclusive<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'between_inclusive' for sse
+  not_in_range
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:881
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:886: warning:
+  Primitive between_inclusive<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:887: warning:
+  Primitive between_inclusive<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:888: warning:
+  Primitive between_inclusive<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:889: warning:
+  Primitive between_inclusive<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:890: warning:
+  Primitive between_inclusive<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:891: warning:
+  Primitive between_inclusive<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:892: warning:
+  Primitive between_inclusive<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:893: warning:
+  Primitive between_inclusive<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'equal' for sse
+  all_equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:945
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:954: warning:
+  Primitive equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:961: warning:
+  Primitive equal<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'equal' for sse
+  none_equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:965
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:974: warning:
+  Primitive equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:981: warning:
+  Primitive equal<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'greater_than' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1035
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1044: warning:
+  Primitive greater_than<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1047: warning:
+  Primitive greater_than<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1048: warning:
+  Primitive greater_than<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1049: warning:
+  Primitive greater_than<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1050: warning:
+  Primitive greater_than<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'greater_than' for sse
+  equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1052
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1061: warning:
+  Primitive greater_than<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1064: warning:
+  Primitive greater_than<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1065: warning:
+  Primitive greater_than<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1066: warning:
+  Primitive greater_than<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1067: warning:
+  Primitive greater_than<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'greater_than_or_equal' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1119
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1128: warning:
+  Primitive greater_than_or_equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1131: warning:
+  Primitive greater_than_or_equal<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1132: warning:
+  Primitive greater_than_or_equal<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1133: warning:
+  Primitive greater_than_or_equal<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1134: warning:
+  Primitive greater_than_or_equal<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'greater_than_or_equal' for sse
+  equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1136
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1145: warning:
+  Primitive greater_than_or_equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1148: warning:
+  Primitive greater_than_or_equal<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1149: warning:
+  Primitive greater_than_or_equal<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1150: warning:
+  Primitive greater_than_or_equal<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1151: warning:
+  Primitive greater_than_or_equal<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'less_than' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1203
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1212: warning:
+  Primitive less_than<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1215: warning:
+  Primitive less_than<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1216: warning:
+  Primitive less_than<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1217: warning:
+  Primitive less_than<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1218: warning:
+  Primitive less_than<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'less_than' for sse
+  equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1220
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1229: warning:
+  Primitive less_than<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1232: warning:
+  Primitive less_than<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1233: warning:
+  Primitive less_than<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1234: warning:
+  Primitive less_than<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1235: warning:
+  Primitive less_than<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'less_than_or_equal' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1287
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1296: warning:
+  Primitive less_than_or_equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1299: warning:
+  Primitive less_than_or_equal<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1300: warning:
+  Primitive less_than_or_equal<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1301: warning:
+  Primitive less_than_or_equal<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1302: warning:
+  Primitive less_than_or_equal<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'less_than_or_equal' for sse
+  equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1304
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1313: warning:
+  Primitive less_than_or_equal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1316: warning:
+  Primitive less_than_or_equal<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1317: warning:
+  Primitive less_than_or_equal<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1318: warning:
+  Primitive less_than_or_equal<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1319: warning:
+  Primitive less_than_or_equal<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mask_equal' for sse
+  all_equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1371
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1380: warning:
+  Can't run. Required primitive(s) ['equal<int64_t,sse>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1387: warning:
+  Can't run. Required primitive(s) ['equal<uint64_t,sse>'] not provided.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mask_equal' for sse
+  all_unequal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1391
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1400: warning:
+  Can't run. Required primitive(s) ['equal<int64_t,sse>'] not provided.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1407: warning:
+  Can't run. Required primitive(s) ['equal<uint64_t,sse>'] not provided.
+
+-------------------------------------------------------------------------------
+Testing primitive 'nequal' for sse
+  all_equal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1461
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1462: warning:
+  Primitive nequal<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1463: warning:
+  Primitive nequal<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1468: warning:
+  Primitive nequal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1475: warning:
+  Primitive nequal<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'nequal' for sse
+  all_unequal
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1479
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1480: warning:
+  Primitive nequal<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1481: warning:
+  Primitive nequal<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1486: warning:
+  Primitive nequal<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/compare_unit_test.cpp:1493: warning:
+  Primitive nequal<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'hadd' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:656
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:663: warning:
+  Primitive hadd<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:664: warning:
+  Primitive hadd<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:669: warning:
+  Primitive hadd<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:670: warning:
+  Primitive hadd<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for scalar
+  with_check_barrett_reduction_constraint
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:677
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:678: warning:
+  Primitive mod_constant<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:679: warning:
+  Primitive mod_constant<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for scalar
+  with_modulo_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:697
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:698: warning:
+  Primitive mod_constant<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:699: warning:
+  Primitive mod_constant<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for scalar
+  with_modulo_rand
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:717
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:718: warning:
+  Primitive mod_constant<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:719: warning:
+  Primitive mod_constant<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for sse
+  with_check_barrett_reduction_constraint
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:740
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:741: warning:
+  Primitive mod_constant<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:742: warning:
+  Primitive mod_constant<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:745: warning:
+  Primitive mod_constant<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:746: warning:
+  Primitive mod_constant<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:751: warning:
+  Primitive mod_constant<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:752: warning:
+  Primitive mod_constant<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for sse
+  with_modulo_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:756
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:757: warning:
+  Primitive mod_constant<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:758: warning:
+  Primitive mod_constant<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:761: warning:
+  Primitive mod_constant<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:762: warning:
+  Primitive mod_constant<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:767: warning:
+  Primitive mod_constant<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:768: warning:
+  Primitive mod_constant<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_constant' for sse
+  with_modulo_rand
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:772
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:773: warning:
+  Primitive mod_constant<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:774: warning:
+  Primitive mod_constant<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:777: warning:
+  Primitive mod_constant<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:778: warning:
+  Primitive mod_constant<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:783: warning:
+  Primitive mod_constant<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:784: warning:
+  Primitive mod_constant<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for scalar
+  with_modulo_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:791
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:792: warning:
+  Primitive mod_safe<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:793: warning:
+  Primitive mod_safe<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for scalar
+  with_modulo_rand
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:811
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:812: warning:
+  Primitive mod_safe<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:813: warning:
+  Primitive mod_safe<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for scalar
+  check_float_limits
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:831
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:832: warning:
+  Primitive mod_safe<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:833: warning:
+  Primitive mod_safe<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for sse
+  with_modulo_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:854
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:855: warning:
+  Primitive mod_safe<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:856: warning:
+  Primitive mod_safe<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:859: warning:
+  Primitive mod_safe<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:860: warning:
+  Primitive mod_safe<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:865: warning:
+  Primitive mod_safe<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:866: warning:
+  Primitive mod_safe<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for sse
+  with_modulo_rand
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:870
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:871: warning:
+  Primitive mod_safe<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:872: warning:
+  Primitive mod_safe<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:875: warning:
+  Primitive mod_safe<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:876: warning:
+  Primitive mod_safe<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:881: warning:
+  Primitive mod_safe<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:882: warning:
+  Primitive mod_safe<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'mod_safe' for sse
+  check_float_limits
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:886
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:887: warning:
+  Primitive mod_safe<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:888: warning:
+  Primitive mod_safe<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:891: warning:
+  Primitive mod_safe<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:892: warning:
+  Primitive mod_safe<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:897: warning:
+  Primitive mod_safe<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:898: warning:
+  Primitive mod_safe<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'min' for sse
+  min_general_case
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1566
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1573: warning:
+  Primitive min<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1574: warning:
+  Primitive min<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1575: warning:
+  Primitive min<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1576: warning:
+  Primitive min<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1577: warning:
+  Primitive min<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1578: warning:
+  Primitive min<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'min' for sse
+  min_zero_case
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1582
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1589: warning:
+  Primitive min<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1590: warning:
+  Primitive min<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1591: warning:
+  Primitive min<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1592: warning:
+  Primitive min<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1593: warning:
+  Primitive min<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/calc_unit_test.cpp:1594: warning:
+  Primitive min<simd<uint64_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'cast' for scalar
+  default_int_float_conversion
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:72
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:77: warning:
+  Primitive cast<simd<int16_t, scalar>> not implemented.
+
+	Please implement Testcase for primitive cast with Vec:tsl::simd<int, tsl::scalar, 32ul> and ToType:tsl::simd<int, tsl::sse, 128ul>
+
+	Please implement Testcase for primitive cast with Vec:tsl::simd<long, tsl::scalar, 64ul> and ToType:tsl::simd<long, tsl::sse, 128ul>
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:84: warning:
+  Primitive cast<simd<int8_t, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:85: warning:
+  Primitive cast<simd<uint16_t, scalar>> not implemented.
+
+	Please implement Testcase for primitive cast with Vec:tsl::simd<unsigned int, tsl::scalar, 32ul> and ToType:tsl::simd<unsigned int, tsl::sse, 128ul>
+
+	Please implement Testcase for primitive cast with Vec:tsl::simd<unsigned long, tsl::scalar, 64ul> and ToType:tsl::simd<unsigned long, tsl::sse, 128ul>
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:92: warning:
+  Primitive cast<simd<uint8_t, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'cast' for sse
+  default_int_float_conversion
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:97
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:98: warning:
+  Primitive cast<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:99: warning:
+  Primitive cast<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:100: warning:
+  Primitive cast<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:103: warning:
+  Primitive cast<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:104: warning:
+  Primitive cast<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:105: warning:
+  Primitive cast<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:108: warning:
+  Primitive cast<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/convert_unit_test.cpp:109: warning:
+  Primitive cast<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for scalar
+  test_msb
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:494
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:495: warning:
+  Primitive lzc<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:496: warning:
+  Primitive lzc<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for scalar
+  test_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:514
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:515: warning:
+  Primitive lzc<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:516: warning:
+  Primitive lzc<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for scalar
+  test_zero
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:534
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:535: warning:
+  Primitive lzc<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:536: warning:
+  Primitive lzc<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for sse
+  test_msb
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:557
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:558: warning:
+  Primitive lzc<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:559: warning:
+  Primitive lzc<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for sse
+  test_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:577
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:578: warning:
+  Primitive lzc<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:579: warning:
+  Primitive lzc<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'lzc' for sse
+  test_zero
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:597
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:598: warning:
+  Primitive lzc<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:599: warning:
+  Primitive lzc<simd<float, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'hor' for sse
+  with_only_one
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:839
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:844: warning:
+  Primitive hor<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:845: warning:
+  Primitive hor<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:846: warning:
+  Primitive hor<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:847: warning:
+  Primitive hor<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:848: warning:
+  Primitive hor<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:849: warning:
+  Primitive hor<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:850: warning:
+  Primitive hor<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:851: warning:
+  Primitive hor<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'hor' for sse
+  with_only_zero
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:853
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:858: warning:
+  Primitive hor<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:859: warning:
+  Primitive hor<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:860: warning:
+  Primitive hor<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:861: warning:
+  Primitive hor<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:862: warning:
+  Primitive hor<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:863: warning:
+  Primitive hor<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:864: warning:
+  Primitive hor<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:865: warning:
+  Primitive hor<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'hor' for sse
+  with_rand_values
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:867
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:872: warning:
+  Primitive hor<simd<int16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:873: warning:
+  Primitive hor<simd<int32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:874: warning:
+  Primitive hor<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:875: warning:
+  Primitive hor<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:876: warning:
+  Primitive hor<simd<uint16_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:877: warning:
+  Primitive hor<simd<uint32_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:878: warning:
+  Primitive hor<simd<uint64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:879: warning:
+  Primitive hor<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_left' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1022
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1023: warning:
+  Primitive shift_left<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1024: warning:
+  Primitive shift_left<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_left' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1045
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1046: warning:
+  Primitive shift_left<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1047: warning:
+  Primitive shift_left<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1054: warning:
+  Primitive shift_left<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1061: warning:
+  Primitive shift_left<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_left_vector' for scalar
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1066
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1067: warning:
+  Primitive shift_left_vector<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1068: warning:
+  Primitive shift_left_vector<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_left_vector' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1089
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1090: warning:
+  Primitive shift_left_vector not implemented for sse
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right' for scalar
+  shift_right_arithmetic
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1095
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1096: warning:
+  Primitive shift_right<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1097: warning:
+  Primitive shift_right<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right' for scalar
+  shift_right_ignore_sign
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1115
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1116: warning:
+  Primitive shift_right<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1117: warning:
+  Primitive shift_right<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right' for sse
+  shift_right_arithmetic
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1138
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1139: warning:
+  Primitive shift_right<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1140: warning:
+  Primitive shift_right<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1145: warning:
+  Primitive shift_right<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1146: warning:
+  Primitive shift_right<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1153: warning:
+  Primitive shift_right<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right' for sse
+  shift_right_ignore_sign
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1155
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1156: warning:
+  Primitive shift_right<simd<double, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1157: warning:
+  Primitive shift_right<simd<float, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1162: warning:
+  Primitive shift_right<simd<int64_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1163: warning:
+  Primitive shift_right<simd<int8_t, sse>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1170: warning:
+  Primitive shift_right<simd<uint8_t, sse>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right_vector' for scalar
+  shift_right_arithmetic
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1175
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1176: warning:
+  Primitive shift_right_vector<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1177: warning:
+  Primitive shift_right_vector<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right_vector' for scalar
+  shift_right_ignore_sign
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1195
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1196: warning:
+  Primitive shift_right_vector<simd<double, scalar>> not implemented.
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1197: warning:
+  Primitive shift_right_vector<simd<float, scalar>> not implemented.
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right_vector' for sse
+  shift_right_arithmetic
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1218
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1219: warning:
+  Primitive shift_right_vector not implemented for sse
+
+-------------------------------------------------------------------------------
+Testing primitive 'shift_right_vector' for sse
+  shift_right_ignore_sign
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1221
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/binary_unit_test.cpp:1222: warning:
+  Primitive shift_right_vector not implemented for sse
+
+-------------------------------------------------------------------------------
+Testing primitive 'masked_set1' for sse
+  default
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/ls_unit_test.cpp:1057
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/ls_unit_test.cpp:1058: warning:
+  Primitive masked_set1 not implemented for sse
+
+-------------------------------------------------------------------------------
+Testing primitive 'to_vector' for scalar
+  no_mask
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/mask_unit_test.cpp:302
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/mask_unit_test.cpp:303: warning:
+  Primitive to_vector not implemented for scalar
+
+-------------------------------------------------------------------------------
+Testing primitive 'to_vector' for scalar
+  full_mask
+-------------------------------------------------------------------------------
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/mask_unit_test.cpp:305
+...............................................................................
+
+/home/jpietrzyk/tmp/TSL_ACTIONS/build/sse/src/test/mask_unit_test.cpp:306: warning:
+  Primitive to_vector not implemented for scalar
+
+===============================================================================
+All tests passed (1558 assertions in 112 test cases)
+
