@@ -18,6 +18,11 @@ on:
         required: false
         type: string
         default: linux/amd64
+      ref: 
+        description: 'The ref to checkout.'
+        required: false
+        type: string
+        default: ${{ github.event.pull_request.head.sha }}
     secrets:
       DOCKERHUB_USER:
         description: 'Dockerhub username.'
@@ -32,7 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ inputs.ref }}
       - name: Copy python requirements to actions
         run: cp ${{ inputs.requirement-file }} ${{ inputs.context }}
       - name: Set up QEMU

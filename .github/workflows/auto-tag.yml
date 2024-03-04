@@ -26,15 +26,16 @@ jobs:
           TEMP=${LATEST_TAG#*.}
           MINOR=${TEMP%%.*}
           PATCH=${TEMP#*.}
-          if [ $PATCH -eq 9 ]; then
-            MINOR=$((MINOR+1))
-            PATCH=0
-          else
-            PATCH=$((PATCH+1))
-          fi
-          if [ $MINOR -eq 10 ]; then
-            MAJOR=$((MAJOR+1))
-            MINOR=0
-          fi
+          PATCH=$((PATCH+1))
+          # if [ $PATCH -eq 9 ]; then
+          #   MINOR=$((MINOR+1))
+          #   PATCH=0
+          # else
+          #   PATCH=$((PATCH+1))
+          # fi
+          # if [ $MINOR -eq 10 ]; then
+          #   MAJOR=$((MAJOR+1))
+          #   MINOR=0
+          # fi
           VERSION="v$MAJOR.$MINOR.$PATCH"
           echo "tag=${VERSION}" >> $GITHUB_OUTPUT

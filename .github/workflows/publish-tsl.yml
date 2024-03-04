@@ -12,6 +12,7 @@ jobs:
       requirement-file: "requirements.txt"
       docker-tag: "${{ vars.GENERATION_TAG }}"
       context: ".github/actions/tsl-generate"
+      ref: ${{ github.ref}}
     secrets:
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -70,6 +71,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - run: |
+          ls ~/
+          ls ./.github/workflows
       - name: Get Tag
         id: get-tag
         uses: ./.github/workflows/auto-tag.yml
