@@ -89,8 +89,11 @@ jobs:
       - name: Auto-Tag
         run: |
           LATEST_TAG=$(git tag --sort=version:refname | head -n 1)
-          if [ -z "$LATEST_TAG" ]; then
-            echo "v0.0.0"
+          if [ -z "${LATEST_TAG}" ]; then
+            echo "No tag: $LATEST_TAG"
+            LATEST_TAG=v0.0.0
+          else
+            echo "Latest tag: $LATEST_TAG"
           fi
           LATEST_TAG=${LATEST_TAG:1}
           echo "latest=${LATEST_TAG}"
