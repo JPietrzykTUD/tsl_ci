@@ -81,10 +81,6 @@ jobs:
         run: |
           tar -czf tsl.tar.gz tsl
           echo "TSL Package created"
-      - name: Merge main into release
-        run: |
-          git fetch
-          git rebase origin/releases
       - name: Checkout branch release
         uses: actions/checkout@v4
         with:
