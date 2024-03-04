@@ -88,6 +88,10 @@ jobs:
           ref: 'releases'
       - name: Auto-Tag
         run: |
+          git ls-remote --exit-code origin refs/tags/latest
+          if [ $? -eq 0 ]; then
+            git push origin --delete :refs/tags/latest
+          fi
           LATEST_TAG=$(git tag --sort=version:refname | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
             echo "No tag: $LATEST_TAG"
@@ -109,8 +113,7 @@ jobs:
           VERSION="v$MAJOR.$MINOR.$PATCH"
           echo "tag=${VERSION}"
           echo "tag=${VERSION}" >> $GITHUB_OUTPUT
-          git push origin --delete latest
-          git tag -a $VERSION -m "Auto-tagged by GitHub Actions"
+          git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
           git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
       - name: Release
