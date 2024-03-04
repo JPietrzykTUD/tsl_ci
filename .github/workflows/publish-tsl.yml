@@ -77,9 +77,9 @@ jobs:
         run: |
           git config --global user.email "johannes.pietrzyk@tu-dresden.de"
           git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
-          git checkout releases
           git fetch
-          git rebase origin/main
+          git checkout releases
+          git rebase main
           echo "rebased"
           git push origin releases --force
       - name: Auto-Tag
