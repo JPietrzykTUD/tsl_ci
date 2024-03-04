@@ -93,12 +93,18 @@ jobs:
             echo "v0.0.0"
           fi
           LATEST_TAG=${LATEST_TAG:1}
+          echo "latest=${LATEST_TAG}"
           MAJOR=${LATEST_TAG%%.*}
+          echo "major=${MAJOR}"
           TEMP=${LATEST_TAG#*.}
+          echo "temp=${TEMP}"
           MINOR=${TEMP%%.*}
+          echo "minor=${MINOR}"
           PATCH=${TEMP#*.}
+          echo "patch=${PATCH}"
           PATCH=$((PATCH+1))
           VERSION="v$MAJOR.$MINOR.$PATCH"
+          echo "tag=${VERSION}"
           echo "tag=${VERSION}" >> $GITHUB_OUTPUT
           git push origin --delete latest
           git tag -a $VERSION -m "Auto-tagged by GitHub Actions"
