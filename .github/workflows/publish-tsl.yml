@@ -6,68 +6,68 @@ on:
       - main
 
 jobs:
-  setup-generation:
-    uses: ./.github/workflows/setup-environment.yml    
-    with:
-      requirement-file: "requirements.txt"
-      docker-tag: "${{ vars.GENERATION_TAG }}"
-      context: ".github/actions/tsl-generate"
-      ref: ${{ github.ref}}
-    secrets:
-      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  # setup-generation:
+  #   uses: ./.github/workflows/setup-environment.yml    
+  #   with:
+  #     requirement-file: "requirements.txt"
+  #     docker-tag: "${{ vars.GENERATION_TAG }}"
+  #     context: ".github/actions/tsl-generate"
+  #     ref: ${{ github.ref}}
+  #   secrets:
+  #     DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
   
-  generate:
-    runs-on: ubuntu-latest
-    name: Job to generate hollistic TSL
-    needs: setup-generation
-    strategy:
-      matrix:
-        target_flags:
-          - "sse"
-          - "sse,sse2"
-          - "sse,sse2,ssse3"
-          - "sse,sse2,ssse3,sse4_1"
-          - "sse,sse2,ssse3,sse4_1,sse4_2"
-          - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
-          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
-          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
-          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
-          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
-          - "neon"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: TSL Generate
-        id: generate
-        uses: ./.github/actions/tsl-generate
-        with:
-          image: ${{ vars.GENERATION_TAG }}
-          targets: ${{ matrix.target_flags }}
-      - name: TSL Generate Output
-        if: always()
-        run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
-      - if: ${{ steps.generate.outputs.success == 'false' }}
-        run: "echo SUCCESS == false"
-      - if: ${{ steps.generate.outputs.success == 'true' }}
-        run: "echo SUCCESS == true"
-      - name: Upload Generated TSL
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: generate_tsl_${{ steps.generate.outputs.name }}
-          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
-          overwrite: true
-          retention-days: 1
-      - if: ${{ steps.generate.outputs.success == 'false' }}
-        run: |
-          echo "Generation failed"
-          echo "${{ steps.generate.outputs.msg }}"
-          exit 1
+  # generate:
+  #   runs-on: ubuntu-latest
+  #   name: Job to generate hollistic TSL
+  #   needs: setup-generation
+  #   strategy:
+  #     matrix:
+  #       target_flags:
+  #         - "sse"
+  #         - "sse,sse2"
+  #         - "sse,sse2,ssse3"
+  #         - "sse,sse2,ssse3,sse4_1"
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2"
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
+  #         - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
+  #         - "neon"
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: TSL Generate
+  #       id: generate
+  #       uses: ./.github/actions/tsl-generate
+  #       with:
+  #         image: ${{ vars.GENERATION_TAG }}
+  #         targets: ${{ matrix.target_flags }}
+  #     - name: TSL Generate Output
+  #       if: always()
+  #       run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
+  #     - if: ${{ steps.generate.outputs.success == 'false' }}
+  #       run: "echo SUCCESS == false"
+  #     - if: ${{ steps.generate.outputs.success == 'true' }}
+  #       run: "echo SUCCESS == true"
+  #     - name: Upload Generated TSL
+  #       if: always()
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: generate_tsl_${{ steps.generate.outputs.name }}
+  #         path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+  #         overwrite: true
+  #         retention-days: 1
+  #     - if: ${{ steps.generate.outputs.success == 'false' }}
+  #       run: |
+  #         echo "Generation failed"
+  #         echo "${{ steps.generate.outputs.msg }}"
+  #         exit 1
   package:
     runs-on: ubuntu-latest
     name: Job to package TSL
-    needs: generate
+    # needs: generate
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -76,7 +76,7 @@ jobs:
           ls ./.github/workflows
       - name: Get Tag
         id: get-tag
-        uses: ./.github/workflows/auto-tag.yml
+        uses: ${{ github.workspace }}/.github/workflows/auto-tag.yml
       - name: New Tag
         run: |
           echo "New tag is ${{ steps.get-tag.outputs.tag }}"
