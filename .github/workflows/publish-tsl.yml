@@ -87,7 +87,7 @@ jobs:
           ref: 'releases'
       - name: Merge main into release
         run: |
-          git merge main
+          git merge origin/main
           git push
       - name: Auto-Tag
         run: |
