@@ -73,19 +73,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Download Generated TSL
-        uses: actions/download-artifact@v4
-        with:
-          pattern: generate_tsl_*
-          path: ${{ github.workspace }}/tsl
-      - name: Package TSL
+      - name: Rebase
         run: |
-          tar -czf tsl.tar.gz tsl
-          echo "TSL Package created"
-      - name: Checkout branch release
-        uses: actions/checkout@v4
-        with:
-          ref: 'releases'
+          git config --global user.email "johannes.pietrzyk@tu-dresden.de"
+          git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
+          git checkout releases
+          git fetch
+          git rebase main
+          git push origin releases --force
       - name: Auto-Tag
         run: |
           git ls-remote --exit-code origin refs/tags/latest
@@ -116,6 +111,15 @@ jobs:
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
           git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          pattern: generate_tsl_*
+          path: ${{ github.workspace }}/tsl
+      - name: Package TSL
+        run: |
+          tar -czf tsl.tar.gz tsl
+          echo "TSL Package created"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
