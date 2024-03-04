@@ -76,7 +76,7 @@ jobs:
           ls ./.github/workflows
       - name: Get Tag
         id: get-tag
-        uses: ${{ github.workspace }}/.github/workflows/auto-tag.yml
+        uses: ./.github/workflows/auto-tag.yml
       - name: New Tag
         run: |
           echo "New tag is ${{ steps.get-tag.outputs.tag }}"
