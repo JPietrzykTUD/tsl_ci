@@ -74,10 +74,22 @@ jobs:
       - run: |
           ls ~/
           ls ./.github/workflows
-      - name: Get Tag
+      - name: Create new Tag
         id: get-tag
-        uses: ./.github/workflows/auto-tag.yml
-      - name: New Tag
+        run: |
+          LATEST_TAG=$(git tag --sort=version:refname | head -n 1)
+          if [ -z "$LATEST_TAG" ]; then
+            echo "v0.0.0"
+          fi
+          LATEST_TAG=${LATEST_TAG:1}
+          MAJOR=${LATEST_TAG%%.*}
+          TEMP=${LATEST_TAG#*.}
+          MINOR=${TEMP%%.*}
+          PATCH=${TEMP#*.}
+          PATCH=$((PATCH+1))
+          VERSION="v$MAJOR.$MINOR.$PATCH"
+          echo "tag=${VERSION}" >> $GITHUB_OUTPUT
+      - name: Print new tag
         run: |
           echo "New tag is ${{ steps.get-tag.outputs.tag }}"
           git push origin --delete latest
