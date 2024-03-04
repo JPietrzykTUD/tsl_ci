@@ -2,12 +2,11 @@
 name: Auto-Tag
 
 on:
-  workflow-call:
+  workflow_call:
     outputs:
       tag: 
         description: 'The tag to be used for the release'
         value: ${{ jobs.auto-tag.outputs.tag }}
-
 
 jobs:
   auto-tag:
@@ -38,9 +37,4 @@ jobs:
             MINOR=0
           fi
           VERSION="v$MAJOR.$MINOR.$PATCH"
-          echo "New tag: $VERSION"
-          git push origin --delete latest
-          git tag -a $VERSION -m "Auto-tagged by GitHub Actions"
-          git tag -a latest -f -m "Auto-tagged by GitHub Actions"
-          git push origin --tags
           echo "tag=${VERSION}" >> $GITHUB_OUTPUT
