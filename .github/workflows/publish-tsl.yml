@@ -89,7 +89,7 @@ jobs:
           echo "Auto-Tagging"
           git ls-remote --exit-code origin refs/tags/latest
           if [ $? -eq 0 ]; then
-            git push origin --delete :refs/tags/latest
+            git push origin --delete refs/tags/latest
           fi
           LATEST_TAG=$(git tag --sort=version:refname | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
