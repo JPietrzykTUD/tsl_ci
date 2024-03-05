@@ -85,6 +85,7 @@ jobs:
       - name: Auto-Tag
         run: |
           set -x
+          echo "blubb"
           echo "Auto-Tagging"
           git ls-remote --exit-code origin refs/tags/latest
           if [ $? -eq 0 ]; then
