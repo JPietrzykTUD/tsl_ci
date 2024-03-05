@@ -54,12 +54,12 @@ jobs:
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
           git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
-  setup-generation:
+  release:
     needs: auto-tag
     permissions: write-all
     uses: ./.github/workflows/release-tsl.yml    
     with:
-      tag-name: ${{ needs.auto-tag.outputs.tag }}
+      tag-name: latest
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
