@@ -56,6 +56,7 @@ jobs:
           git push origin --tags
   setup-generation:
     needs: auto-tag
+    permissions: write-all
     uses: ./.github/workflows/release-tsl.yml    
     with:
       tag-name: ${{ needs.auto-tag.outputs.tag }}
