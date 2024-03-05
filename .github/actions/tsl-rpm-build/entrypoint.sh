@@ -11,8 +11,11 @@ SPEC_FILE=${RPM_BASE}/SPECS/tsl.spec
 
 # sed ${{ VERSION_TAG }} in tsl.spec with $VERSION
 sed -i "s/\${{ VERSION_TAG }}/${VERSION}/g" ${SPEC_FILE}
+echo "#sed -i s/\${{ VERSION_TAG }}/${VERSION}/g ${SPEC_FILE}" >> ${SPEC_FILE}
 sed -i "s/\${{ TSL_TARBALL }}/${TSL_TAR_GZ_NAME}/g" ${SPEC_FILE}
+echo "#sed -i s/\${{ TSL_TARBALL }}/${TSL_TAR_GZ_NAME}/g ${SPEC_FILE}" >> ${SPEC_FILE}
 sed -i "s/\${{ TSL_TARBALL_PREFIX }}/${TSL_TAR_PREFIX}/g" ${SPEC_FILE}
+echo "#sed -i s/\${{ TSL_TARBALL_PREFIX }}/${TSL_TAR_PREFIX}/g ${SPEC_FILE}" >> ${SPEC_FILE}
 
 REPO_ROOT=/github/workspace
 TSL_ROOT=${REPO_ROOT}/${TSL_TAR_GZ_NAME}
