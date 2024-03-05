@@ -94,7 +94,7 @@ jobs:
             echo "No tag to delete"
           fi
           git fetch
-          LATEST_TAG=$(git tag --sort=version:refname | head -n 1)
+          LATEST_TAG=$(git tag --sort=-version:refname | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
             echo "No tag: $LATEST_TAG"
             LATEST_TAG=v0.0.0
@@ -115,6 +115,8 @@ jobs:
           VERSION="v$MAJOR.$MINOR.$PATCH"
           echo "tag=${VERSION}"
           echo "tag=${VERSION}" >> $GITHUB_OUTPUT
+          git config --global user.email "johannes.pietrzyk@tu-dresden.de"
+          git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
           git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
