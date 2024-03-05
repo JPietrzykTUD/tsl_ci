@@ -1,4 +1,4 @@
-name: Auto-Tag TSL@main
+name: Publish latest version of TSL
 
 on:
   push:
@@ -8,12 +8,15 @@ on:
 jobs:
   auto-tag:
     runs-on: ubuntu-latest
-    name: Job to package TSL
+    name: Auto-Tag current Head
     permissions: write-all
+    outputs:
+      tag: ${{ steps.push-tag.outputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Auto-Tag
+        id: push-tag
         run: |
           set -x
           echo "blubb"
@@ -51,3 +54,8 @@ jobs:
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
           git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
+  setup-generation:
+    needs: auto-tag
+    uses: ./.github/workflows/release-tsl.yml    
+    with:
+      tag-name: ${{ needs.auto-tag.outputs.tag }}
