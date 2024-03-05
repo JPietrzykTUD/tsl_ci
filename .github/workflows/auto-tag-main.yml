@@ -24,7 +24,7 @@ jobs:
           else
             echo "No tag to delete!"
           fi
-          git fetch
+          git fetch --tags
           LATEST_TAG=$(git tag -l --sort=-v:refname "v*" | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
             echo "No tag: $LATEST_TAG"
