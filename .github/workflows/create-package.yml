@@ -1,0 +1,19 @@
+name: create-package-images
+run-name: Create docker images for TSL packaging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-rpm-build-environment:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.RPM_TAG }}"
+      context: ".github/actions/tsl-rpm-build"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  
