@@ -70,7 +70,7 @@ jobs:
           retention-days: 1
       - if: ${{ steps.generate.outputs.success == 'false' }}
         run: |
-          echo "Generation failed"
+          echo "Generation failed with error."
           echo "${{ steps.generate.outputs.msg }}"
           exit 1
   release:
