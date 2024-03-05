@@ -6,7 +6,7 @@ BuildArch:      noarch
 
 License:        Apache 2.0
 URL:            www.google.de
-Source0:        ${{ TSL_TARBBALL }}
+Source0:        ${{ TSL_TARBALL }}
 
 Requires:       util-linux tar gzip grep sed
 
@@ -52,9 +52,9 @@ fi
 
 TMP=$(mktemp -ud %{_tmppath}/%{name}-XXXXXX)
 mkdir -p ${TMP}
-tar -xf %{tsl_hollistic_dir}/${{ TSL_TARBBALL }} -C ${TMP} ${{ TSL_TARBBALL_PREFIX }}${CHOSEN_TSL_PATH}
-cp -a ${TMP}/${{ TSL_TARBBALL_PREFIX }}${CHOSEN_TSL_PATH}/include/* %{tsl_dir}
-cp -r ${TMP}/${{ TSL_TARBBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary %{tsl_dir}
+tar -xf %{tsl_hollistic_dir}/${{ TSL_TARBALL }} -C ${TMP} ${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}
+cp -a ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/include/* %{tsl_dir}
+cp -r ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary %{tsl_dir}
 
 %postun
 rm -rf %{tsl_dir}
@@ -62,7 +62,7 @@ rm -rf %{tsl_dir}
 %install
 rm -rf %{buildroot}/*
 mkdir -p %{buildroot}%{tsl_hollistic_dir}
-cp -a %{_sourcedir}/${{ TSL_TARBBALL }} %{buildroot}%{tsl_hollistic_dir}
+cp -a %{_sourcedir}/${{ TSL_TARBALL }} %{buildroot}%{tsl_hollistic_dir}
 
 %clean
 
