@@ -77,6 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Release TSL
     needs: generate
+    permissions: write-all
     steps:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
@@ -98,5 +99,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            tsl.tar.gz
+            ${{ github.workspace }}/tsl.tar.gz
           tag_name: ${{ inputs.tag-name }}
