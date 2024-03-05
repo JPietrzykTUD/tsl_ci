@@ -59,7 +59,7 @@ jobs:
     permissions: write-all
     uses: ./.github/workflows/release-tsl.yml    
     with:
-      tag-name: latest
+      tag-name: ${{ needs.auto-tag.outputs.tag }}
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
