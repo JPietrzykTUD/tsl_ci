@@ -59,3 +59,6 @@ jobs:
     uses: ./.github/workflows/release-tsl.yml    
     with:
       tag-name: ${{ needs.auto-tag.outputs.tag }}
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}

@@ -7,6 +7,13 @@ on:
         description: 'Tag name'
         required: true
         type: string
+    secrets:
+      DOCKERHUB_USER:
+        description: 'Dockerhub username.'
+        required: true
+      DOCKERHUB_TOKEN:
+        description: 'Dockerhub token.'
+        required: true
 jobs:
   setup-generation:
     uses: ./.github/workflows/setup-environment.yml    
