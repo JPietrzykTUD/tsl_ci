@@ -87,8 +87,8 @@ jobs:
           set -x
           echo "blubb"
           echo "Auto-Tagging"
-          git ls-remote --exit-code origin refs/tags/latest
-          if [ $? -eq 0 ]; then
+          HAS_LATEST=$((git ls-remote --exit-code origin refs/tags/latest >>/dev/null 2>&1) && echo 0 || echo 1)
+          if [ ${HAS_LATEST} -eq 0 ]; then
             git push origin --delete refs/tags/latest
           else
             echo "No tag to delete"
