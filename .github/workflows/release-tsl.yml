@@ -87,6 +87,13 @@ jobs:
         run: |
           tar -czf tsl.tar.gz tsl
           echo "TSL Package created"
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsl
+          path: ${{ github.workspace }}/tsl.tar.gz
+          overwrite: true
+          retention-days: 1
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
