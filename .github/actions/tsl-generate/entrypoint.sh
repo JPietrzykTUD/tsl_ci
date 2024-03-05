@@ -4,6 +4,7 @@ PARAM_TARGETS=$1
 
 TARGETS=$(echo $PARAM_TARGETS | sed 's/\[//g' | sed 's/\]//g' | sed 's/ //g' | sed 's/,/ /g')
 TARGETS_NAME=$(echo $TARGETS | sed 's/ /_/g' | sed 's/;/_/g' | sed 's/,/_/g')
+TARGETS_ARRAY_NOTATION=$(echo $PARAM_TARGETS | sed 's/\[//g' | sed 's/\]//g' | sed 's/ //g' | sed 's/,/:/g')
 echo "name=${TARGETS_NAME}" >> $GITHUB_OUTPUT
 
 REPO_ROOT=/github/workspace
@@ -14,6 +15,8 @@ echo "out=${GENERATION_BASE}" >> $GITHUB_OUTPUT
 
 mkdir -p ${GENERATION_PATH}
 mkdir -p ${LOG_PATH}
+echo "flags: ${TARGETS_ARRAY_NOTATION}" >> ${GENERATION_PATH}/tsl.conf
+echo "path: ${TARGETS_NAME}" >> ${GENERATION_PATH}/tsl.conf
 
 cd ${REPO_ROOT}
 ls -halt >> ${GENERATION_PATH}/generation.log 2>&1

@@ -86,7 +86,11 @@ jobs:
           path: ${{ github.workspace }}/tsl
       - name: Package TSL
         run: |
-          tar -czf tsl.tar.gz tsl
+          #iterate over all files in tsl/generate_tsl_*/tsl.conf
+          for f in ${{ github.workspace }}/tsl/generate_tsl_*/tsl.conf; do
+            cat $f >> ${{ github.workspace }}/tsl/tsl.conf
+          done
+          tar -czf ${{ github.workspace }}/tsl.tar.gz ${{ github.workspace }}/tsl
           echo "TSL Package created"
       - name: Upload Packaged TSL
         uses: actions/upload-artifact@v4
