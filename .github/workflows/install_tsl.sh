@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 TAR_PREFIX_TSL_DIR=tsl
 TAR_PREFIX_GENERATION=generate_tsl_
 TMP_DIR=/tmp/tsl
