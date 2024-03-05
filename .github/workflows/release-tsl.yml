@@ -8,10 +8,10 @@ on:
         required: true
         type: string
     secrets:
-      DOCKERHUB_USER:
+      DOCKERHUB_USERNAME:
         description: 'Dockerhub username.'
         required: true
-      DOCKERHUB_TOKEN:
+      DOCKERHUB_PASSWORD:
         description: 'Dockerhub token.'
         required: true
 jobs:
