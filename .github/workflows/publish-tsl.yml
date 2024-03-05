@@ -91,7 +91,7 @@ jobs:
           if [ ${HAS_LATEST} -eq 0 ]; then
             git push origin --delete refs/tags/latest
           else
-            echo "No tag to delete"
+            echo "No tag to delete!"
           fi
           git fetch
           LATEST_TAG=$(git tag -l --sort=-v:refname "v*" | head -n 1)
