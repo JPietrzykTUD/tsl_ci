@@ -1,10 +1,9 @@
-name: Publish TSL
+name: Release TSL
 
 on:
   push:
-    branches:
-      - main
-      
+    tags:
+      - "v*.*.*"
 
 jobs:
   setup-generation:
@@ -65,61 +64,11 @@ jobs:
           echo "Generation failed"
           echo "${{ steps.generate.outputs.msg }}"
           exit 1
-  package:
+  release:
     runs-on: ubuntu-latest
-    name: Job to package TSL
+    name: Release TSL
     needs: generate
-    permissions: write-all
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # - name: Rebase
-      #   run: |
-      #     git config --global user.email "johannes.pietrzyk@tu-dresden.de"
-      #     git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
-      #     git fetch
-      #     git checkout releases
-      #     git rebase main
-      #     echo "rebased"
-      #     git push origin releases --force
-      - name: Auto-Tag
-        run: |
-          set -x
-          echo "blubb"
-          echo "Auto-Tagging"
-          HAS_LATEST=$((git ls-remote --exit-code origin refs/tags/latest >>/dev/null 2>&1) && echo 0 || echo 1)
-          if [ ${HAS_LATEST} -eq 0 ]; then
-            git push origin --delete refs/tags/latest
-          else
-            echo "No tag to delete!"
-          fi
-          git fetch
-          LATEST_TAG=$(git tag -l --sort=-v:refname "v*" | head -n 1)
-          if [ -z "${LATEST_TAG}" ]; then
-            echo "No tag: $LATEST_TAG"
-            LATEST_TAG=v0.0.0
-          else
-            echo "Latest tag: $LATEST_TAG"
-          fi
-          LATEST_TAG=${LATEST_TAG:1}
-          echo "latest=${LATEST_TAG}"
-          MAJOR=${LATEST_TAG%%.*}
-          echo "major=${MAJOR}"
-          TEMP=${LATEST_TAG#*.}
-          echo "temp=${TEMP}"
-          MINOR=${TEMP%%.*}
-          echo "minor=${MINOR}"
-          PATCH=${TEMP#*.}
-          echo "patch=${PATCH}"
-          PATCH=$((PATCH+1))
-          VERSION="v$MAJOR.$MINOR.$PATCH"
-          echo "tag=${VERSION}"
-          echo "tag=${VERSION}" >> $GITHUB_OUTPUT
-          git config --global user.email "johannes.pietrzyk@tu-dresden.de"
-          git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
-          git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
-          git tag -a latest -m "Auto-tagged by GitHub Actions"
-          git push origin --tags
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
