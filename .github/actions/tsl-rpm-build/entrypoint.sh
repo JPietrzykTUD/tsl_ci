@@ -21,6 +21,8 @@ OUT=${REPO_ROOT}/${OUT_BASE}
 mkdir -p ${OUT}
 echo "out=${OUT_BASE}" >> $GITHUB_OUTPUT
 
+cp ${SPEC_FILE} ${OUT}
+
 cp ${TSL_ROOT} ${RPM_BASE}/SOURCES/${TSL_TAR_GZ_NAME}
 
 rpmbuild -bb ${RPM_BASE}/SPECS/tsl.spec

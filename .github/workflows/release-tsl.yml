@@ -94,13 +94,6 @@ jobs:
           done
           tar -czf tsl.tar.gz tsl
           echo "TSL Package created"
-      # - name: Upload Packaged TSL
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: tsl
-      #     path: ${{ github.workspace }}/tsl.tar.gz
-      #     overwrite: true
-      #     retention-days: 1
       - name: Create RPM Package
         id: rpm
         uses: ./.github/actions/tsl-rpm-build
@@ -108,6 +101,14 @@ jobs:
           tag: ${{ inputs.tag-name }}
           tsl: tsl.tar.gz
           prefix: tsl/generate_tsl_
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rpm
+          path: ${{ github.workspace }}/${{ steps.rpm.outputs.out }}
+          overwrite: true
+          retention-days: 1
       - name: RPM Output
         if: always()
         run: echo "${{ steps.rpm.outputs.msg }}"
