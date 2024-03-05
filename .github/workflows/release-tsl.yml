@@ -55,7 +55,7 @@ jobs:
           targets: ${{ matrix.target_flags }}
       - name: TSL Generate Output
         if: always()
-        run: echo "TSL Generation ${{ steps.generate.outputs.msg }}"
+        run: echo "TSL Generation ${{ steps.generate.outputs.msg }}."
       - if: ${{ steps.generate.outputs.success == 'false' }}
         run: "echo SUCCESS == false"
       - if: ${{ steps.generate.outputs.success == 'true' }}
