@@ -19,14 +19,12 @@ jobs:
         id: push-tag
         run: |
           set -x
-          echo "blubb"
-          echo "Auto-Tagging"
-          HAS_LATEST=$((git ls-remote --exit-code origin refs/tags/latest >>/dev/null 2>&1) && echo 0 || echo 1)
-          if [ ${HAS_LATEST} -eq 0 ]; then
-            git push origin --delete refs/tags/latest
-          else
-            echo "No tag to delete!"
-          fi
+          # HAS_LATEST=$((git ls-remote --exit-code origin refs/tags/latest >>/dev/null 2>&1) && echo 0 || echo 1)
+          # if [ ${HAS_LATEST} -eq 0 ]; then
+          #   git push origin --delete refs/tags/latest
+          # else
+          #   echo "No tag to delete!"
+          # fi
           git fetch --tags
           LATEST_TAG=$(git tag -l --sort=-v:refname "v*" | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
@@ -52,7 +50,7 @@ jobs:
           git config --global user.email "johannes.pietrzyk@tu-dresden.de"
           git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
-          git tag -a latest -m "Auto-tagged by GitHub Actions"
+          # git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
   release:
     needs: auto-tag

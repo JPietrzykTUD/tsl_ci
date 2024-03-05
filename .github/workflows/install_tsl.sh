@@ -11,9 +11,12 @@ WORK_DIR=$(pwd)
 
 
 curl -L "https://github.com/JPietrzykTUD/tsl_ci/releases/latest/download/tsl.tar.gz" -o ${TMP_DIR}/tsl.tar.gz
+#we don't need to use the GitHub Rest API
 #curl -L "https://github.com/jpietrzyktud/tsl_ci/releases/download/$(curl -s "https://api.github.com/repos/jpietrzyktud/tsl_ci/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/tsl.tar.gz" -o ${TMP_DIR}/tsl.tar.gz
 LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | sed -E 's/\s/:/g')
+#create array from flags string
 AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
+#unpack tsl.conf
 tar -xf ${TMP_DIR}/tsl.tar.gz -C ${TMP_DIR} ${TAR_PREFIX_TSL_DIR}/tsl.conf
 
 MAX_AVAIL_FLAGS=0
@@ -21,7 +24,9 @@ CHOSEN_TSL_PATH=""
 while read -r line1 && read -r line2; do
   #remove prefix "flags: " from line1
   TSL_FLAGS_STR=${line1#flags: }
+  #create array from flags string
   TSL_FLAGS_ARR=(${TSL_FLAGS_STR//:/ })
+  #remove prefix "path: " from line1
   TSL_PATH=${line2#path: }
   COUNTER=0
   for i in "${!TSL_FLAGS_ARR[@]}"
