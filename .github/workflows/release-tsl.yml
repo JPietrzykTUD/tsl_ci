@@ -104,4 +104,5 @@ jobs:
         with:
           files: |
             ${{ github.workspace }}/tsl.tar.gz
+            ${{ github.workspace }}/.github/workflows/install_tsl.sh
           tag_name: ${{ inputs.tag-name }}
