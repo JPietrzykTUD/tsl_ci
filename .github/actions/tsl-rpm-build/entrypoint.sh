@@ -6,7 +6,7 @@ VERSION=${VERSION_ORIG#v}
 TSL_TAR_GZ_NAME=$2 #tsl.tar.gz
 TSL_TAR_PREFIX=$3 #tsl/generate_tsl_
 
-RPM_BASE=/root/rpmbuild
+RPM_BASE=/github/home/rpmbuild
 SPEC_FILE=${RPM_BASE}/SPECS/tsl.spec
 
 # sed ${{ VERSION_TAG }} in tsl.spec with $VERSION
