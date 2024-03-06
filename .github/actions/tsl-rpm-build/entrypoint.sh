@@ -9,6 +9,9 @@ TSL_TAR_PREFIX=$3 #tsl/generate_tsl_
 RPM_BASE=/github/home/rpmbuild
 SPEC_FILE=${RPM_BASE}/SPECS/tsl.spec
 
+mkdir -p ${RPM_BASE}/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+cp /root/rpmbuild/SPECS/tsl.spec ${SPEC_FILE}
+
 # sed ${{ VERSION_TAG }} in tsl.spec with $VERSION
 sed -i "s/\${{ VERSION_TAG }}/${VERSION}/g" ${SPEC_FILE}
 echo "#sed -i s/\${{ VERSION_TAG }}/${VERSION}/g ${SPEC_FILE}" >> ${SPEC_FILE}
