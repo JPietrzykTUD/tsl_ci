@@ -15,6 +15,7 @@ Requires:       util-linux tar gzip grep sed
 %global tsl_dir %{include_dir}/%{tsl_dir_name}
 %global tsl_hollistic_name __hollistic
 %global tsl_hollistic_dir %{tsl_dir}/%{tsl_hollistic_name}
+%global custom_build_root /root/rpmbuild/BUILDROOT
 
 %description
 
@@ -60,9 +61,10 @@ cp -r ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary %{tsl_dir
 rm -rf %{tsl_dir}
 
 %install
-rm -rf %{buildroot}/*
-mkdir -p %{buildroot}%{tsl_hollistic_dir}
-cp -a %{_sourcedir}/${{ TSL_TARBALL }} %{buildroot}%{tsl_hollistic_dir}
+#we should use %{buildroot}, but for some reasons, %{buildroot} is /github/home/rpmbuild/BUILDROOT instead of /root/rpmbuild/BUILDROOT
+rm -rf %{custom_build_root}/*
+mkdir -p %{custom_build_root}%{tsl_hollistic_dir}
+cp -a %{_sourcedir}/${{ TSL_TARBALL }} %{custom_build_root}%{tsl_hollistic_dir}
 
 %clean
 
