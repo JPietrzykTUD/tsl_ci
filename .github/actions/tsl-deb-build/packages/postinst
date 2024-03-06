@@ -1,5 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
+exec > /tmp/tsl-postinst.log 2>&1
+set -x
 LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | sed -E 's/\s/:/g')
 AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
 MAX_AVAIL_FLAGS=0
@@ -25,7 +27,7 @@ while read -r line1 && read -r line2; do
     MAX_AVAIL_FLAGS=$COUNTER
     CHOSEN_TSL_PATH=${TSL_PATH}
   fi
-done < ${{ INSTALL_BASE }}//tsl/tsl.conf
+done < %{_builddir}/tsl/tsl.conf
 if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
   echo "No TSL found for this CPU"
   exit 1
@@ -33,6 +35,6 @@ fi
 
 TMP=$(mktemp -ud /tmp/tsl-XXXXXX)
 mkdir -p ${TMP}
-tar -xf ${{ INSTALL_BASE }}/${{ TSL_TARBALL }} -C ${TMP} ${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}
-cp -a ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/include/* ${{ POSTINSTALL_BASE }}
-cp -r ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary ${{ POSTINSTALL_BASE }}
+tar -xf /usr/include/tsl/__hollistic/tsl.tar.gz -C ${TMP} tsl/generate_tsl_${CHOSEN_TSL_PATH}
+cp -a ${TMP}/tsl/generate_tsl_${CHOSEN_TSL_PATH}/include/* /usr/include/tsl
+cp -r ${TMP}/tsl/generate_tsl_${CHOSEN_TSL_PATH}/supplementary /usr/include/tsl

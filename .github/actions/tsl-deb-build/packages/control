@@ -1,5 +1,5 @@
 Package:      TSL
-Version:      ${{ VERSION_TAG }}
+Version:      0.0.1
 Architecture: all
 Multi-Arch:   foreign
 Depends:      coreutils, gzip, grep, sed

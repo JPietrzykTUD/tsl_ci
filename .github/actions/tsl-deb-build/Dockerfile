@@ -11,6 +11,7 @@ LABEL org.opencontainers.image.description="DEB Builder for TSLGen"
 LABEL org.opencontainers.image.licenses=Apache-2.0
 
 COPY control /root/debbuild/tsl/DEBIAN/control
+COPY postinst /root/debbuild/tsl/DEBIAN/postinst
 
 #COPY entrypoint.sh /entrypoint.sh
 #COPY tsl.spec /root/rpmbuild/SPECS/tsl.spec

@@ -44,7 +44,7 @@ while read -r line1 && read -r line2; do
     MAX_AVAIL_FLAGS=$COUNTER
     CHOSEN_TSL_PATH=${TSL_PATH}
   fi
-done < %{_builddir}/tsl/tsl.conf
+done < %{tsl_hollistic_dir}/tsl/tsl.conf
 if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
   echo "No TSL found for this CPU"
   exit 1
@@ -64,6 +64,7 @@ rm -rf %{buildroot}/*
 umask 0022
 mkdir -p %{buildroot}%{tsl_hollistic_dir}
 cp -a /root/rpmbuild/SOURCES/${{ TSL_TARBALL }} %{buildroot}%{tsl_hollistic_dir}/
+tar -xf %{buildroot}%{tsl_hollistic_dir}/${{ TSL_TARBALL }} -C %{buildroot}%{tsl_hollistic_dir} tsl/tsl.conf
 
 %clean
 

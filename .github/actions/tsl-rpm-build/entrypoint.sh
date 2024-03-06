@@ -35,7 +35,9 @@ if [ $? -ne 0 ]; then
 fi
 
 # find TSL*.rpmm in ${RPM_BASE}/RPMS/ recursive and copy to /github/workspace
-find ${RPM_BASE}/RPMS/ -name "TSL*.rpm" -exec cp {} ${OUT} \;
+find ${RPM_BASE}/RPMS/ -name "TSL*.rpm" -exec cp {} ${OUT}/tsl.rpm \;
+
+ls -l ${OUT} >> ${OUT}/ls.txt
 
 echo "msg=rpmbuild success" >> $GITHUB_OUTPUT
 echo "success=true" >> $GITHUB_OUTPUT
