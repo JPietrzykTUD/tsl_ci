@@ -26,7 +26,7 @@ cp ${SPEC_FILE} ${OUT}
 
 cp ${TSL_ROOT} ${RPM_BASE}/SOURCES/${TSL_TAR_GZ_NAME}
 
-rpmbuild -bb ${SPEC_FILE} --buildroot ${RPM_BASE}/BUILDROOT
+rpmbuild -bb ${SPEC_FILE} --buildroot ${RPM_BASE}/BUILDROOT --define "_rpmdir ${OUT}"
 
 if [ $? -ne 0 ]; then
   echo "msg=rpmbuild failed" >> $GITHUB_OUTPUT
@@ -35,7 +35,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # find TSL*.rpmm in ${RPM_BASE}/RPMS/ recursive and copy to /github/workspace
-find ${RPM_BASE}/RPMS/ -name "TSL*.rpm" -exec cp {} ${OUT}/tsl.rpm \;
+# find ${RPM_BASE}/RPMS/ -name "TSL*.rpm" -exec cp {} ${OUT}/tsl.rpm \;
 
 ls -l ${OUT} >> ${OUT}/ls.txt
 

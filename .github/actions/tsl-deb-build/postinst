@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | sed -E 's/\s/:/g')
 AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
@@ -25,7 +25,7 @@ while read -r line1 && read -r line2; do
     MAX_AVAIL_FLAGS=$COUNTER
     CHOSEN_TSL_PATH=${TSL_PATH}
   fi
-done < ${{ INSTALL_BASE }}//tsl/tsl.conf
+done < ${{ INSTALL_BASE }}/tsl/tsl.conf
 if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
   echo "No TSL found for this CPU"
   exit 1

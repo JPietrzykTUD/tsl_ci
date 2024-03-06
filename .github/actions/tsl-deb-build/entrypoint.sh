@@ -15,6 +15,7 @@ SOURCE_BASE=${BUILD_ROOT}${INSTALL_BASE}
 
 CONTROL_FILE=${DEB_BASE}/control
 POSTINST_FILE=${DEB_BASE}/postinst
+POSTRM_FILE=${DEB_BASE}/postrm
 
 # sed ${{ VERSION_TAG }} in tsl.spec with $VERSION
 sed -i "s/\${{ VERSION_TAG }}/${VERSION}/g" ${CONTROL_FILE}
@@ -23,6 +24,7 @@ sed -i "s|\${{ INSTALL_BASE }}|${INSTALL_BASE}|g" ${POSTINST_FILE}
 sed -i "s/\${{ TSL_TARBALL }}/${TSL_TAR_GZ_NAME}/g" ${POSTINST_FILE}
 sed -i "s|\${{ TSL_TARBALL_PREFIX }}|${TSL_TAR_PREFIX}|g" ${POSTINST_FILE}
 sed -i "s|\${{ POSTINSTALL_BASE }}|${POSTINSTALL_BASE}|g" ${POSTINST_FILE}
+sed -i "s|\${{ POSTINSTALL_BASE }}|${POSTINSTALL_BASE}|g" ${POSTRM_FILE}
 
 chmod +x ${POSTINST_FILE}
 
@@ -35,9 +37,10 @@ echo "out=${OUT_BASE}" >> $GITHUB_OUTPUT
 
 cp ${CONTROL_FILE} ${OUT}
 cp ${POSTINST_FILE} ${OUT}
+cp ${POSTRM_FILE} ${OUT}
 
 cp ${TSL_ROOT} ${SOURCE_BASE}/
-tar -xf ${SOURCE_BASE}/${{ TSL_TARBALL }} -C ${SOURCE_BASE}/ tsl/tsl.conf
+tar -xf ${SOURCE_BASE}/${TSL_TAR_GZ_NAME} -C ${SOURCE_BASE}/ tsl/tsl.conf
 
 dpkg-deb --root-owner-group --build ${BUILD_ROOT} ${OUT}
 

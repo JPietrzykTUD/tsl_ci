@@ -12,6 +12,7 @@ LABEL org.opencontainers.image.licenses=Apache-2.0
 
 COPY control /root/debbuild/tsl/DEBIAN/control
 COPY postinst /root/debbuild/tsl/DEBIAN/postinst
+COPY postrm /root/debbuild/tsl/DEBIAN/postrm
 
 #COPY entrypoint.sh /entrypoint.sh
 #COPY tsl.spec /root/rpmbuild/SPECS/tsl.spec
