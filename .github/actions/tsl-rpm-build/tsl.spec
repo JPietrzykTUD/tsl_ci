@@ -63,7 +63,7 @@ rm -rf %{tsl_dir}
 rm -rf %{buildroot}/*
 umask 0022
 mkdir -p %{buildroot}%{tsl_hollistic_dir}
-cp -a %{_sourcedir}/${{ TSL_TARBALL }} %{buildroot}%{tsl_hollistic_dir}/
+cp -a /root/rpmbuild/SOURCES/${{ TSL_TARBALL }} %{buildroot}%{tsl_hollistic_dir}/
 
 %clean
 
