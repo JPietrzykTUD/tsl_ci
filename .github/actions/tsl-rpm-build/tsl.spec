@@ -16,6 +16,7 @@ Requires:       util-linux tar gzip grep sed
 %global tsl_hollistic_name __hollistic
 %global tsl_hollistic_dir %{tsl_dir}/%{tsl_hollistic_name}
 %global custom_build_root /root/rpmbuild/BUILDROOT
+%global custom_source_dir /root/rpmbuild/SOURCES
 
 %description
 
@@ -64,7 +65,7 @@ rm -rf %{tsl_dir}
 #we should use %{buildroot}, but for some reasons, %{buildroot} is /github/home/rpmbuild/BUILDROOT instead of /root/rpmbuild/BUILDROOT
 rm -rf %{custom_build_root}/*
 mkdir -p %{custom_build_root}%{tsl_hollistic_dir}
-cp -a %{_sourcedir}/${{ TSL_TARBALL }} %{custom_build_root}%{tsl_hollistic_dir}
+cp -a %{custom_source_dir}/${{ TSL_TARBALL }} %{custom_build_root}%{tsl_hollistic_dir}
 
 %clean
 
