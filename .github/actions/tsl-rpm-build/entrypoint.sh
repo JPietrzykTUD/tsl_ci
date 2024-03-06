@@ -6,11 +6,9 @@ VERSION=${VERSION_ORIG#v}
 TSL_TAR_GZ_NAME=$2 #tsl.tar.gz
 TSL_TAR_PREFIX=$3 #tsl/generate_tsl_
 
-RPM_BASE=/github/home/rpmbuild
+RPM_BASE=/root/rpmbuild
 SPEC_FILE=${RPM_BASE}/SPECS/tsl.spec
 
-mkdir -p ${RPM_BASE}/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-cp /root/rpmbuild/SPECS/tsl.spec ${SPEC_FILE}
 
 # sed ${{ VERSION_TAG }} in tsl.spec with $VERSION
 sed -i "s/\${{ VERSION_TAG }}/${VERSION}/g" ${SPEC_FILE}
@@ -34,7 +32,7 @@ cp ${SPEC_FILE} ${OUT}
 
 cp ${TSL_ROOT} ${RPM_BASE}/SOURCES/${TSL_TAR_GZ_NAME}
 
-rpmbuild -bb ${RPM_BASE}/SPECS/tsl.spec
+rpmbuild -bb ${SPEC_FILE} --buildroot ${RPM_BASE}/BUILDROOT
 
 if [ $? -ne 0 ]; then
   echo "msg=rpmbuild failed" >> $GITHUB_OUTPUT
