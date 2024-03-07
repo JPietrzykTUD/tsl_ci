@@ -39,6 +39,13 @@ mv ${OUT}/noarch/libtsl-dev-${VERSION}-1.noarch.rpm ${OUT}/libtsl-dev.rpm
 dnf install ${OUT}/libtsl-dev.rpm -y
 dnf remove libtsl-dev -y
 
+if [ $? -ne 0 ]; then
+  echo "msg=rpmbuild failed" >> $GITHUB_OUTPUT
+  echo "success=false" >> $GITHUB_OUTPUT
+  exit
+fi
+
+echo "name=libtsl-dev.rpm" >> $GITHUB_OUTPUT
 
 ls -l ${OUT} >> ${OUT}/ls.txt
 

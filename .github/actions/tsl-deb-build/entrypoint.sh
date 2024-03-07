@@ -50,5 +50,21 @@ if [ $? -ne 0 ]; then
   exit
 fi
 
+
+mv ${OUT}/libtsl-dev_${VERSION}_all.deb ${OUT}/libtsl-dev.deb
+# try to install and remove
+apt install ${OUT}/libtsl-dev.deb -y
+apt remove libtsl-dev -y
+
+if [ $? -ne 0 ]; then
+  echo "msg=deb install failed" >> $GITHUB_OUTPUT
+  echo "success=false" >> $GITHUB_OUTPUT
+  exit
+fi
+
+echo "name=libtsl-dev.deb" >> $GITHUB_OUTPUT
+
+
+
 echo "msg=dpkb-deb success" >> $GITHUB_OUTPUT
 echo "success=true" >> $GITHUB_OUTPUT

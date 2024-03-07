@@ -101,27 +101,12 @@ jobs:
           tag: ${{ inputs.tag-name }}
           tsl: tsl.tar.gz
           prefix: tsl/generate_tsl_
-      - name: Create DEB Package
-        id: deb
-        uses: ./.github/actions/tsl-deb-build
-        with:
-          tag: ${{ inputs.tag-name }}
-          tsl: tsl.tar.gz
-          prefix: tsl/generate_tsl_
-      - name: Upload Packaged TSL
+      - name: Upload RPM
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: rpm
-          path: ${{ github.workspace }}/${{ steps.rpm.outputs.out }}
-          overwrite: true
-          retention-days: 1
-      - name: Upload Packaged TSL
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: deb
-          path: ${{ github.workspace }}/${{ steps.deb.outputs.out }}
+          path: ${{ github.workspace }}/${{ steps.rpm.outputs.out }}/${{ steps.rpm.outputs.name}}
           overwrite: true
           retention-days: 1
       - name: RPM Output
@@ -133,6 +118,38 @@ jobs:
           echo "${{ steps.rpm.outputs.msg }}"  
           "echo SUCCESS == false"
           exit 1
+      - name: Create DEB Package
+        id: deb
+        uses: ./.github/actions/tsl-deb-build
+        with:
+          tag: ${{ inputs.tag-name }}
+          tsl: tsl.tar.gz
+          prefix: tsl/generate_tsl_
+      - name: Upload DEB
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deb
+          path: ${{ github.workspace }}/${{ steps.deb.outputs.out }}/${{ steps.deb.outputs.name}}
+          overwrite: true
+          retention-days: 1
+      - name: DEB Output
+        if: always()
+        run: echo "${{ steps.deb.outputs.msg }}"
+      - name: DEB failed
+        if: ${{ steps.deb.outputs.success == 'false' }}
+        run: |
+          echo "${{ steps.deb.outputs.msg }}"  
+          "echo SUCCESS == false"
+          exit 1
+      - name: ls
+        run: |
+          echo "Github.workspace: ${{ github.workspace }}"  
+          ls -la ${{ github.workspace }}
+          echo "RPM out: ${{ steps.rpm.outputs.out }}"
+          ls -la ${{ github.workspace }}/${{ steps.rpm.outputs.out }}
+          echo "DEB out: ${{ steps.deb.outputs.out }}"
+          ls -la ${{ github.workspace }}/${{ steps.deb.outputs.out }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
