@@ -72,7 +72,7 @@ jobs:
         id: generate
         uses: ./.github/actions/tsl-generate
         with:
-          image: ${{ vars.GENERATION_TAG }}
+          # image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
 
       - name: Cache TSL
@@ -158,7 +158,7 @@ jobs:
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
-          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/intel/${{ matrix.tsl_folders }}
       - name: Cache TSL
@@ -236,7 +236,7 @@ jobs:
         id: generate
         uses: ./.github/actions/tsl-generate
         with:
-          image: ${{ vars.GENERATION_TAG }}
+          # image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
       - name: Upload Generated TSL
         if: always()
@@ -297,7 +297,7 @@ jobs:
         id: bat
         uses: ./.github/actions/tsl-test-arm
         with:
-          image: ${{ vars.BUILD_TEST_ARM_TAG }}
+          # image: ${{ vars.BUILD_TEST_ARM_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/arm
       - name: Upload Generated TSL

@@ -954,7 +954,7 @@ definitions:
     }
     lscpu_flags: ["avx2"]
     implementation: |
-      return 
+      return
         _mm256_i{{ intrin_tp[additional_simd_template_base_type][1] }}gather_{{ intrin_tp_full[ctype].replace('epu', 'epi') }}(
           reinterpret_cast<typename Vec::base_type const *>(memory), index, N);
   - target_extension: ["avx2"]
