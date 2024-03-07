@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 TAR_PREFIX_TSL_DIR=tsl
 TAR_PREFIX_GENERATION=generate_tsl_
 TMP_DIR=$(mktemp -ud /tmp/libtsl-dev-XXXXXX)
@@ -56,11 +56,9 @@ if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
 fi
 
 
-tar -xf ${{ INSTALL_BASE }}/${{ TSL_TARBALL }} -C ${TMP} ${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}
-cp -a ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/include/* ${{ POSTINSTALL_BASE }}
-cp -r ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary ${{ POSTINSTALL_BASE }}
-
-
 tar -xf ${TMP_DIR}/tsl.tar.gz -C ${UNPACK_DIR} ${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}
 cp -a ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/include/* ${WORK_DIR}
-cp -r ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/supplementary ${WORK_DIR}
+
+if [ -d "${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/supplementary" ]; then
+  cp -r ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/supplementary ${WORK_DIR}
+fi
