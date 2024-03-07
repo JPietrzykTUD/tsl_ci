@@ -46,6 +46,7 @@ for d in ${TSL_ROOT}/*; do
     echo "Done"
     echo "Testing (${CURRENT_PATH}/build/src/test/tsl_test)"
     ls -halt ${CURRENT_PATH}/build/src/test/tsl_test
+    file ${CURRENT_PATH}/build/src/test/tsl_test
     echo "Executing ${CURRENT_PATH}/build/src/test/tsl_test" >> ${CURRENT_LOG_PATH}/test.log 2>&1
     EXECUTABLE=${CURRENT_PATH}/build/src/test/tsl_test
     echo "file $(file ${EXECUTABLE})" >> ${CURRENT_LOG_PATH}/test.log 2>&1

@@ -177,6 +177,14 @@ jobs:
       #     overwrite: true
       #     retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
+        name: Upload on Error
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
           echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
           echo "${{ steps.bat.outputs.msg }}"
