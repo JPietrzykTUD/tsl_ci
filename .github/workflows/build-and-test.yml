@@ -106,6 +106,10 @@ jobs:
           - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512er_avx512pf" #avx3.1
           - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512bw_avx512dq_avx512vl" #avx3.2
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
