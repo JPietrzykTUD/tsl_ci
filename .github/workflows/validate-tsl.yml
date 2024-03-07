@@ -1,16 +1,30 @@
 name: Generating with py3.8-3.12
 run-name: Validate the TSL Generator
 
-on:
-  workflow_run:
-    workflows: [create-validation-image]
-    types:
-      - completed
+# on:
+#   workflow_run:
+#     workflows: [create-validation-image]
+#     types:
+#       - completed
+on: 
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
+  setup:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.VALIDATION_TAG}}"
+      context: ".github/actions/tsl-validate"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
   validate:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: setup
     name: Job to validate the TSL Generator
     strategy:
       matrix:

@@ -1,0 +1,239 @@
+name: Generation for Intel / ARM
+run-name: Generate the Template SIMD Library
+
+# on:
+#   workflow_run:
+#     workflows: [create-build-and-test-images]
+#     types:
+#       - completed
+on: 
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  setup-generation:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.GENERATION_TAG }}"
+      context: ".github/actions/tsl-generate"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  setup-x86:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.BUILD_TEST_x86_TAG }}"
+      context: ".github/actions/tsl-test-x86"
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+  setup-arm:
+    uses: ./.github/workflows/setup-environment.yml    
+    with:
+      requirement-file: "requirements.txt"
+      docker-tag: "${{ vars.BUILD_TEST_ARM_TAG }}"
+      context: ".github/actions/tsl-test-arm"
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+
+  generate-for-x86:
+    runs-on: ubuntu-latest
+    needs: setup-generation
+    name: Job to generate TSL for Intel x86
+    strategy:
+      matrix:
+        target_flags:
+          - "sse"
+          - "sse,sse2"
+          - "sse,sse2,ssse3"
+          - "sse,sse2,ssse3,sse4_1"
+          - "sse,sse2,ssse3,sse4_1,sse4_2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f"
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512er,avx512pf" #avx3.1
+          - "sse,sse2,ssse3,sse4_1,sse4_2,avx,avx2,avx512f,avx512cd,avx512bw,avx512dq,avx512vl" #avx3.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: TSL Generate
+        id: generate
+        uses: ./.github/actions/tsl-generate
+        with:
+          image: ${{ vars.GENERATION_TAG }}
+          targets: ${{ matrix.target_flags }}
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
+          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.generate.outputs.success == 'false' }}
+        run: |
+          echo "Generation for Intel x86 failed"
+          echo "${{ steps.generate.outputs.msg }}"
+          exit 1
+  package-for-x86:
+    runs-on: ubuntu-latest
+    name: Job to package TSL for Intel x86
+    needs: generate-for-x86
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          pattern: generate_tsl_intel_*
+          path: ${{ github.workspace }}/tsl_intel
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        with:
+          name: TSL_INTEL
+          path: ${{ github.workspace }}/tsl_intel
+          overwrite: true
+          retention-days: 1
+  build-and-test-for-x86:
+    runs-on: ubuntu-latest
+    needs: package-for-x86
+    name: Job to build and test TSL for Intel x86
+    strategy:
+      matrix:
+        compilers: ["clang++-17", "g++"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          name: TSL_INTEL.zip
+          path: ${{ github.workspace }}/tsl/intel
+      - name: TSL Build and Test
+        id: bat
+        uses: ./.github/actions/tsl-test-x86
+        with:
+          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          compiler: ${{ matrix.compilers }}
+          tsl: tsl/intel
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_tsl_intel_${{ matrix.compilers }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success == 'false' }}
+        run: |
+          echo "Build and testing for Intel x86 failed"
+          echo "${{ steps.bat.outputs.msg }}"
+          exit 1
+
+  generate-for-arm:
+    runs-on: ubuntu-latest
+    needs: setup-generation
+    name: Job to generate TSL for ARM
+    strategy:
+      matrix:
+        target_flags:
+          - "neon"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: TSL Generate
+        id: generate
+        uses: ./.github/actions/tsl-generate
+        with:
+          image: ${{ vars.GENERATION_TAG }}
+          targets: ${{ matrix.target_flags }}
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generate_tsl_arm_${{ steps.generate.outputs.name }}
+          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.generate.outputs.success == 'false' }}
+        run: |
+          echo "Generation for ARM failed"
+          echo "${{ steps.generate.outputs.msg }}"
+          exit 1
+  package-for-arm:
+    runs-on: ubuntu-latest
+    name: Job to package TSL for ARM
+    needs: generate-for-arm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          pattern: generate_tsl_arm_*
+          path: ${{ github.workspace }}/tsl_arm
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        with:
+          name: TSL_ARM
+          path: ${{ github.workspace }}/tsl_arm
+          overwrite: true
+          retention-days: 1
+  build-and-test-for-arm:
+    runs-on: ubuntu-latest
+    needs: package-for-arm
+    name: Job to build and test TSL for ARM
+    strategy:
+      matrix:
+        compilers: ["g++"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          name: TSL_ARM.zip
+          path: ${{ github.workspace }}/tsl/arm
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: TSL Build and Test
+        id: bat
+        uses: ./.github/actions/tsl-test-arm
+        with:
+          image: ${{ vars.BUILD_TEST_ARM_TAG }}
+          compiler: ${{ matrix.compilers }}
+          tsl: tsl/arm
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_tsl_arm_${{ matrix.compilers }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success == 'false' }}
+        run: |
+          echo "Build and testing for ARM failed"
+          echo "${{ steps.bat.outputs.msg }}"
+          exit 1
