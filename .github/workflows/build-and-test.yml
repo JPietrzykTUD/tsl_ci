@@ -74,14 +74,21 @@ jobs:
         with:
           image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
-      - name: Upload Generated TSL
+
+      - name: Cache TSL
+        uses: actions/cache@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
-          overwrite: true
-          retention-days: 1
+          key: generation_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ steps.generate.outputs.name }}
+      # - name: Upload Generated TSL
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: generate_tsl_intel_${{ steps.generate.outputs.name }}
+      #     path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+      #     overwrite: true
+      #     retention-days: 1
       - if: ${{ steps.generate.outputs.success == 'false' }}
         run: |
           echo "Generation for Intel x86 failed"
@@ -117,46 +124,87 @@ jobs:
       matrix:
         compilers: ["clang++-17", "g++"]
         tsl_folders:
-          - "tsl_intel_sse"
-          - "tsl_intel_sse_sse2"
-          - "tsl_intel_sse_sse2_ssse3"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f"
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512er_avx512pf" #avx3.1
-          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512bw_avx512dq_avx512vl" #avx3.2
+          - "sse"
+          - "sse_sse2"
+          - "sse_sse2_ssse3"
+          - "sse_sse2_ssse3_sse4_1"
+          - "sse_sse2_ssse3_sse4_1_sse4_2"
+          - "sse_sse2_ssse3_sse4_1_sse4_2_avx"
+          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2"
+          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f"
+          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512er_avx512pf" #avx3.1
+          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512bw_avx512dq_avx512vl" #avx3.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Checkout PR and merge
         uses: check-spelling/checkout-merge@v0.0.4
-      - name: Download Generated TSL
-        uses: actions/download-artifact@v4
+
+      - name: Cache TSL
+        uses: actions/cache@v4
         with:
-          name: generate_${{ matrix.tsl_folders }}
           path: ${{ github.workspace }}/tsl/intel
+          key: generation_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ matrix.tsl_folders }}
+          fail-on-cache-miss: true
+
+      # - name: Download Generated TSL
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: generate_${{ matrix.tsl_folders }}
+      #     path: ${{ github.workspace }}/tsl/intel
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
           image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
-          tsl: tsl/intel/generate_${{ matrix.tsl_folders }}
-      - name: Upload Generated TSL
+          tsl: tsl/intel/${{ matrix.tsl_folders }}
+      - name: Cache TSL
+        uses: actions/cache@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
           path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
-          overwrite: true
-          retention-days: 1
+          key: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ matrix.compilers }}-${{ matrix.tsl_folders }}
+      # - name: Upload Generated TSL
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
+      #     path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+      #     overwrite: true
+      #     retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
           echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
           echo "${{ steps.bat.outputs.msg }}"
           exit 1
+  package-results-x86:
+    runs-on: ubuntu-latest
+    name: Package results of build & test of TSL for Intel x86
+    needs: build-and-test-for-x86
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Cache TSL
+        uses: actions/cache@v4
+        with:
+          key: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}
+          path: ${{ github.workspace }}/pipeline-summary-x86
+          restore-keys: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}
+      # - name: Download Generated TSL
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: build_*
+      #     path: ${{ github.workspace }}/tsl/intel
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-summary-x86
+          path: ${{ github.workspace }}/pipeline-summary-x86
+          overwrite: true
+          retention-days: 1
 
   generate-for-arm:
     runs-on: ubuntu-latest
