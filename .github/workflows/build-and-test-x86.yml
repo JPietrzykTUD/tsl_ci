@@ -14,10 +14,12 @@ jobs:
     name: Job to build and test TSL for Intel x86
     strategy:
       matrix:
-        compilers: ["clang", "g++"]
+        compilers: ["clang++-17", "g++"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v3
         with:
@@ -28,7 +30,7 @@ jobs:
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
-          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/intel
       - name: TSL Generate Output
