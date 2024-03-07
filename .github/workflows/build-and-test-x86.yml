@@ -33,15 +33,6 @@ jobs:
           # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/intel
-      - name: TSL Generate Output
-        if: always()
-        run: echo "TSL Generation ${{ steps.bat.outputs.msg }}"
-      - name: OUT TRUE
-        if: ${{ steps.bat.outputs.success == 'false' }}
-        run: "echo SUCCESS == false"
-      - name: OUT FALSE
-        if: ${{ steps.bat.outputs.success == 'true' }}
-        run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4

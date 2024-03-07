@@ -31,13 +31,6 @@ jobs:
         with:
           python-version: ${{ matrix.python_version }}
           image: ${{ vars.VALIDATION_TAG }}
-      - name: TSL Generate Output
-        if: always()
-        run: echo "TSL Validation output ${{ steps.validate.outputs.msg }}. Name is ${{ steps.validate.outputs.name }}"
-      - if: ${{ steps.validate.outputs.success == 'false' }}
-        run: "echo SUCCESS == false"
-      - if: ${{ steps.validate.outputs.success == 'true' }}
-        run: "echo SUCCESS == true"
       - name: Upload Logs
         if: always()
         uses: actions/upload-artifact@v4
