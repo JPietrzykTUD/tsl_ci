@@ -23,6 +23,7 @@ LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | s
 AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
 MAX_AVAIL_FLAGS=0
 CHOSEN_TSL_PATH=""
+UNKNOWN_PATH="unknown"
 while read -r line1 && read -r line2; do
   #remove prefix "flags: " from line1
   TSL_FLAGS_STR=${line1#flags: }
@@ -30,6 +31,11 @@ while read -r line1 && read -r line2; do
   TSL_FLAGS_ARR=(${TSL_FLAGS_STR//:/ })
   #remove prefix "path: " from line1
   TSL_PATH=${line2#path: }
+
+  #if TSL_FLAGS_STR equals "UNKNOWN" then set TSL_FLAGS_ARR to "UNKNOWN"
+  if [ "$TSL_FLAGS_STR" == "$UNKNOWN_PATH" ]; then
+    UNKNOWN_PATH=$TSL_PATH
+  fi
   COUNTER=0
   for i in "${!TSL_FLAGS_ARR[@]}"
   do
@@ -46,8 +52,8 @@ while read -r line1 && read -r line2; do
   fi
 done < %{tsl_hollistic_dir}/tsl/tsl.conf
 if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
-  echo "No TSL found for this CPU"
-  exit 1
+  echo "No suitable extension found on this CPU. Falling back to scalar."
+  CHOSEN_TSL_PATH=$UNKNOWN_PATH
 fi
 
 TMP=$(mktemp -ud %{_tmppath}/%{name}-XXXXXX)

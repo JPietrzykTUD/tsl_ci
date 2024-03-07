@@ -1,12 +1,10 @@
 #!/bin/sh
 TAR_PREFIX_TSL_DIR=tsl
 TAR_PREFIX_GENERATION=generate_tsl_
-TMP_DIR=/tmp/tsl
+TMP_DIR=$(mktemp -ud /tmp/libtsl-dev-XXXXXX)
 UNPACK_DIR=${TMP_DIR}/unpacked
-INST_DIR=${TMP_DIR}/install
 mkdir -p ${TMP_DIR}
 mkdir -p ${UNPACK_DIR}
-mkdir -p ${INST_DIR}
 WORK_DIR=$(pwd)
 
 
@@ -21,6 +19,7 @@ tar -xf ${TMP_DIR}/tsl.tar.gz -C ${TMP_DIR} ${TAR_PREFIX_TSL_DIR}/tsl.conf
 
 MAX_AVAIL_FLAGS=0
 CHOSEN_TSL_PATH=""
+UNKNOWN_PATH="unknown"
 while read -r line1 && read -r line2; do
   #remove prefix "flags: " from line1
   TSL_FLAGS_STR=${line1#flags: }
@@ -28,6 +27,11 @@ while read -r line1 && read -r line2; do
   TSL_FLAGS_ARR=(${TSL_FLAGS_STR//:/ })
   #remove prefix "path: " from line1
   TSL_PATH=${line2#path: }
+
+  #if TSL_FLAGS_STR equals "UNKNOWN" then set TSL_FLAGS_ARR to "UNKNOWN"
+  if [ "$TSL_FLAGS_STR" == "$UNKNOWN_PATH" ]; then
+    UNKNOWN_PATH=$TSL_PATH
+  fi
   COUNTER=0
   for i in "${!TSL_FLAGS_ARR[@]}"
   do
@@ -47,17 +51,16 @@ done < ${TMP_DIR}/tsl/tsl.conf
 echo "CHOSEN_TSL_PATH=${CHOSEN_TSL_PATH}"
 
 if [ "$MAX_AVAIL_FLAGS" -eq "0" ]; then
-  echo "No TSL found for this CPU"
-  exit 1
+  echo "No suitable extension found on this CPU. Falling back to scalar."
+  CHOSEN_TSL_PATH=$UNKNOWN_PATH
 fi
 
-tar -xf ${TMP_DIR}/tsl.tar.gz -C ${UNPACK_DIR} ${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}
-mv ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/* ${INST_DIR}
-rm -rf ${INST_DIR}/src
-rm ${INST_DIR}/tsl.conf
-rm -rf ${INST_DIR}/CMakeLists.txt
-rm -rf ${INST_DIR}/generation.log
 
-cp -r ${INST_DIR}/* ${WORK_DIR}
-echo "TSL installed in ${WORK_DIR}"
-rm -rf ${TMP_DIR}
+tar -xf ${{ INSTALL_BASE }}/${{ TSL_TARBALL }} -C ${TMP} ${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}
+cp -a ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/include/* ${{ POSTINSTALL_BASE }}
+cp -r ${TMP}/${{ TSL_TARBALL_PREFIX }}${CHOSEN_TSL_PATH}/supplementary ${{ POSTINSTALL_BASE }}
+
+
+tar -xf ${TMP_DIR}/tsl.tar.gz -C ${UNPACK_DIR} ${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}
+cp -a ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/include/* ${WORK_DIR}
+cp -r ${UNPACK_DIR}/${TAR_PREFIX_TSL_DIR}/${TAR_PREFIX_GENERATION}${CHOSEN_TSL_PATH}/supplementary ${WORK_DIR}
