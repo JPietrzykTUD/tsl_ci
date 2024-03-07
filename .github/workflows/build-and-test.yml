@@ -127,7 +127,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
-          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          path: ${{ github.workspace }}
+          #path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
           overwrite: true
           retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
