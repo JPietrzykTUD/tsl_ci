@@ -34,11 +34,11 @@ if [ $? -ne 0 ]; then
   exit
 fi
 
+mv ${OUT}/noarch/libtsl-dev-${VERSION}-1.noarch.rpm ${OUT}/libtsl-dev.rpm
 # try to install and remove
-dnf install ${OUT}/noarch/*.rpm -y
+dnf install ${OUT}/libtsl-dev.rpm -y
 dnf remove libtsl-dev -y
 
-mv ${OUT}/noarch/*.rpm ${OUT}/libtsl-dev.rpm
 
 ls -l ${OUT} >> ${OUT}/ls.txt
 

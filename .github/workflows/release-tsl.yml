@@ -101,7 +101,7 @@ jobs:
           tag: ${{ inputs.tag-name }}
           tsl: tsl.tar.gz
           prefix: tsl/generate_tsl_
-      - name: Create RPM Package
+      - name: Create DEB Package
         id: deb
         uses: ./.github/actions/tsl-deb-build
         with:
