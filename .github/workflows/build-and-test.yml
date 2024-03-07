@@ -114,21 +114,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generate_tsl_intel_${{ matrix.tsl_folders }}
-          path: ${{ github.workspace }}/generate_${{ matrix.tsl_folders }}
+          path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
           # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
-          tsl: generate_${{ matrix.tsl_folders }}
+          tsl: generate/${{ matrix.tsl_folders }}
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
-          path: ${{ github.workspace }}
-          #path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
           overwrite: true
           retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
