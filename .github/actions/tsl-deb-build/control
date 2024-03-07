@@ -1,4 +1,4 @@
-Package:      TSL
+Package:      libtsl-dev
 Version:      ${{ VERSION_TAG }}
 Architecture: all
 Multi-Arch:   foreign

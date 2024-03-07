@@ -101,12 +101,27 @@ jobs:
           tag: ${{ inputs.tag-name }}
           tsl: tsl.tar.gz
           prefix: tsl/generate_tsl_
+      - name: Create RPM Package
+        id: deb
+        uses: ./.github/actions/tsl-deb-build
+        with:
+          tag: ${{ inputs.tag-name }}
+          tsl: tsl.tar.gz
+          prefix: tsl/generate_tsl_
       - name: Upload Packaged TSL
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: rpm
           path: ${{ github.workspace }}/${{ steps.rpm.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - name: Upload Packaged TSL
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deb
+          path: ${{ github.workspace }}/${{ steps.deb.outputs.out }}
           overwrite: true
           retention-days: 1
       - name: RPM Output

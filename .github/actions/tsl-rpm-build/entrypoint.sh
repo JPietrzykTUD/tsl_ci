@@ -17,7 +17,7 @@ sed -i "s|\${{ TSL_TARBALL_PREFIX }}|${TSL_TAR_PREFIX}|g" ${SPEC_FILE}
 
 REPO_ROOT=/github/workspace
 TSL_ROOT=${REPO_ROOT}/${TSL_TAR_GZ_NAME}
-OUT_BASE=packages
+OUT_BASE=packages/rpm
 OUT=${REPO_ROOT}/${OUT_BASE}
 mkdir -p ${OUT}
 echo "out=${OUT_BASE}" >> $GITHUB_OUTPUT
@@ -34,8 +34,11 @@ if [ $? -ne 0 ]; then
   exit
 fi
 
-# find TSL*.rpmm in ${RPM_BASE}/RPMS/ recursive and copy to /github/workspace
-# find ${RPM_BASE}/RPeMS/ -name "TSL*.rpm" -exec cp {} ${OUT}/tsl.rpm \;
+# try to install and remove
+dnf install ${OUT}/noarch/*.rpm -y
+dnf remove libtsl-dev -y
+
+mv ${OUT}/noarch/*.rpm ${OUT}/libtsl-dev.rpm
 
 ls -l ${OUT} >> ${OUT}/ls.txt
 

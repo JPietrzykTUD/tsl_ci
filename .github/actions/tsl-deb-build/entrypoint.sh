@@ -30,7 +30,7 @@ chmod +x ${POSTINST_FILE}
 
 REPO_ROOT=/github/workspace
 TSL_ROOT=${REPO_ROOT}/${TSL_TAR_GZ_NAME}
-OUT_BASE=packages
+OUT_BASE=packages/deb
 OUT=${REPO_ROOT}/${OUT_BASE}
 mkdir -p ${OUT}
 echo "out=${OUT_BASE}" >> $GITHUB_OUTPUT
