@@ -17,5 +17,5 @@ COPY postrm /root/debbuild/tsl/DEBIAN/postrm
 #COPY entrypoint.sh /entrypoint.sh
 #COPY tsl.spec /root/rpmbuild/SPECS/tsl.spec
 
-ENTRYPOINT [ "/bin/bash" ]
-#ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT ["/entrypoint.sh"]
