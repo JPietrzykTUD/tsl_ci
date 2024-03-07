@@ -48,10 +48,11 @@ jobs:
 
   generate-for-x86:
     runs-on: ubuntu-latest
-    needs: setup-generation
+    needs: [setup-generation, setup-x86]
     name: Generate TSL for Intel x86
     strategy:
       matrix:
+        compilers: ["clang++-17", "g++"]
         target_flags:
           - "sse"
           - "sse,sse2"
@@ -74,77 +75,89 @@ jobs:
         with:
           image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
-      - name: Upload Generated TSL
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
-          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
-          overwrite: true
-          retention-days: 1
+      # - name: Upload Generated TSL
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: generate_tsl_intel_${{ steps.generate.outputs.name }}
+      #     path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+      #     overwrite: true
+      #     retention-days: 1
       - if: ${{ steps.generate.outputs.success == 'false' }}
         run: |
           echo "Generation for Intel x86 failed"
           echo "${{ steps.generate.outputs.msg }}"
           exit 1
-  package-for-x86:
-    runs-on: ubuntu-latest
-    name: Package TSL for Intel x86
-    needs: generate-for-x86
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Checkout PR and merge
-        uses: check-spelling/checkout-merge@v0.0.4
-      - name: Download Generated TSL
-        uses: actions/download-artifact@v4
-        with:
-          pattern: generate_tsl_intel_*
-          path: ${{ github.workspace }}/tsl_intel
-      - name: Upload Packaged TSL
-        uses: actions/upload-artifact@v4
-        with:
-          name: TSL_INTEL
-          path: ${{ github.workspace }}/tsl_intel
-          overwrite: true
-          retention-days: 1
-  build-and-test-for-x86:
-    runs-on: ubuntu-latest
-    needs: [package-for-x86, setup-x86]
-    name: Build and test TSL for Intel x86
-    strategy:
-      matrix:
-        compilers: ["clang++-17", "g++"]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Checkout PR and merge
-        uses: check-spelling/checkout-merge@v0.0.4
-      - name: Download Generated TSL
-        uses: actions/download-artifact@v4
-        with:
-          name: TSL_INTEL
-          path: ${{ github.workspace }}/tsl/intel
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
-          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
-          tsl: tsl/intel
-      - name: Upload Generated TSL
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build_tsl_intel_${{ matrix.compilers }}
-          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
-          overwrite: true
-          retention-days: 1
+          tsl: generate_tsl_intel_${{ steps.generate.outputs.name }}
       - if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
           echo "Build and testing for Intel x86 failed"
           echo "${{ steps.bat.outputs.msg }}"
           exit 1
+  # package-for-x86:
+  #   runs-on: ubuntu-latest
+  #   name: Package TSL for Intel x86
+  #   needs: generate-for-x86
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Checkout PR and merge
+  #       uses: check-spelling/checkout-merge@v0.0.4
+  #     - name: Download Generated TSL
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         pattern: generate_tsl_intel_*
+  #         path: ${{ github.workspace }}/tsl_intel
+  #     - name: Upload Packaged TSL
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: TSL_INTEL
+  #         path: ${{ github.workspace }}/tsl_intel
+  #         overwrite: true
+  #         retention-days: 1
+  # build-and-test-for-x86:
+  #   runs-on: ubuntu-latest
+  #   needs: [package-for-x86, setup-x86]
+  #   name: Build and test TSL for Intel x86
+  #   strategy:
+  #     matrix:
+  #       compilers: ["clang++-17", "g++"]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Checkout PR and merge
+  #       uses: check-spelling/checkout-merge@v0.0.4
+  #     - name: Download Generated TSL
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: TSL_INTEL
+  #         path: ${{ github.workspace }}/tsl/intel
+  #     - name: TSL Build and Test
+  #       id: bat
+  #       uses: ./.github/actions/tsl-test-x86
+  #       with:
+  #         image: ${{ vars.BUILD_TEST_X86_TAG }}
+  #         compiler: ${{ matrix.compilers }}
+  #         tsl: tsl/intel
+  #     - name: Upload Generated TSL
+  #       if: always()
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: build_tsl_intel_${{ matrix.compilers }}
+  #         path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+  #         overwrite: true
+  #         retention-days: 1
+  #     - if: ${{ steps.bat.outputs.success == 'false' }}
+  #       run: |
+  #         echo "Build and testing for Intel x86 failed"
+  #         echo "${{ steps.bat.outputs.msg }}"
+  #         exit 1
 
   generate-for-arm:
     runs-on: ubuntu-latest
