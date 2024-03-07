@@ -18,6 +18,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Cancel on Merge fail
+        if: env.MERGE_FAILED == '1'
+        run:
+          echo "Merge failed, cancelling the job"
+          exit 1
       - name: TSL Validate
         id: validate
         uses: ./.github/actions/tsl-validate
