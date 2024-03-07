@@ -120,7 +120,7 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: TSL_INTEL.zip
+          name: TSL_INTEL
           path: ${{ github.workspace }}/tsl/intel
       - name: TSL Build and Test
         id: bat
@@ -211,7 +211,7 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: TSL_ARM.zip
+          name: TSL_ARM
           path: ${{ github.workspace }}/tsl/arm
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
