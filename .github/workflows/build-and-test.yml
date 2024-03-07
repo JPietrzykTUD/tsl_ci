@@ -111,7 +111,7 @@ jobs:
   build-and-test-for-x86:
     runs-on: ubuntu-latest
     # needs: [package-for-x86, setup-x86]
-    needs: setup-x86
+    needs: [setup-x86, generate-for-x86]
     name: Build and test TSL for Intel x86
     strategy:
       matrix:
