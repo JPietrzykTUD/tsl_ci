@@ -383,9 +383,9 @@ definitions:
       auto tmp128_lo = to_mask<sse_type, Idof>::apply(mask);
       auto tmp128_hi = to_mask<sse_type, Idof>::apply(mask >> sse_type::vector_element_count());
       {% if ctype == "float" %}
-      return _mm256_castsi256_ps(_mm256_set_m128(tmp128_hi, tmp128_lo));
+      return _mm256_set_m128(tmp128_hi, tmp128_lo);
       {% else %}
-      return _mm256_castsi256_pd(_mm256_set_m128d(tmp128_hi, tmp128_lo));
+      return _mm256_set_m128d(tmp128_hi, tmp128_lo);
       {% endif %}
   - target_extension: "avx2"
     ctype: ["int16_t", "uint16_t"]

@@ -24,9 +24,10 @@ echo "Compiler version: ${COMPILER_VERSION}" >> ${LOG_PATH}/tsl.log 2>&1
 
 # iterate over all directories in tsl/intel
 for d in ${TSL_ROOT}/*; do
-  if [ -d "$d" ]; then
+  if [ -d "$d" ]; then    
     CURRENT_PATH=${d}
     STRIPPED_PATH=${CURRENT_PATH#${TSL_ROOT}/}
+    echo "Processing ${STRIPPED_PATH} (built with ${COMPILER})"
     echo "Building ${CURRENT_PATH}" >> ${LOG_PATH}/tsl.log 2>&1
     CURRENT_LOG_PATH=${LOG_PATH}/${STRIPPED_PATH}
     mkdir -p ${CURRENT_LOG_PATH}
