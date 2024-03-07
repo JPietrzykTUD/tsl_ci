@@ -107,7 +107,7 @@ jobs:
           retention-days: 1
   build-and-test-for-x86:
     runs-on: ubuntu-latest
-    needs: package-for-x86
+    needs: [package-for-x86, setup-x86]
     name: Job to build and test TSL for Intel x86
     strategy:
       matrix:
@@ -198,7 +198,7 @@ jobs:
           retention-days: 1
   build-and-test-for-arm:
     runs-on: ubuntu-latest
-    needs: package-for-arm
+    needs: [package-for-arm, setup-arm]
     name: Job to build and test TSL for ARM
     strategy:
       matrix:
