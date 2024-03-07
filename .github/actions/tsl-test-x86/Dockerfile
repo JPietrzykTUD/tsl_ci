@@ -4,7 +4,7 @@ RUN apt update
 RUN apt-get -y install \
   build-essential lsb-release wget software-properties-common gnupg \
   g++ \
-  make cmake zip
+  make cmake zip file
 
 RUN wget https://apt.llvm.org/llvm.sh && \
   chmod +x llvm.sh && \

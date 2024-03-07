@@ -1,7 +1,6 @@
 name: create-validation-image
 run-name: Create a docker image for TSL validation
 
-# on: [push]
 on: 
   pull_request:
     branches:

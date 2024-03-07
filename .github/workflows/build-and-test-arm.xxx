@@ -37,14 +37,6 @@ jobs:
           image: ${{ vars.BUILD_TEST_ARM_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/arm
-      - name: TSL Generate Output
-        if: always()
-        run: |
-          echo "TSL Generation ${{ steps.bat.outputs.msg }}"
-      - if: ${{ steps.bat.outputs.success == 'false' }}
-        run: "echo SUCCESS == false"
-      - if: ${{ steps.bat.outputs.success == 'true' }}
-        run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4

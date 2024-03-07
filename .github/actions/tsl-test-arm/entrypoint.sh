@@ -27,6 +27,7 @@ for d in ${TSL_ROOT}/*; do
   if [ -d "$d" ]; then
     CURRENT_PATH=${d}
     STRIPPED_PATH=${CURRENT_PATH#${TSL_ROOT}/}
+    echo "Building ${STRIPPED_PATH} (with ${COMPILER})"
     echo "Building ${CURRENT_PATH}" >> ${LOG_PATH}/tsl.log 2>&1
     CURRENT_LOG_PATH=${LOG_PATH}/${STRIPPED_PATH}
     mkdir -p ${CURRENT_LOG_PATH}
@@ -42,6 +43,10 @@ for d in ${TSL_ROOT}/*; do
       echo "success=false" >> $GITHUB_OUTPUT
       exit
     fi
+    echo "Done"
+    echo "Testing (${CURRENT_PATH}/build/src/test/tsl_test)"
+    ls -halt ${CURRENT_PATH}/build/src/test/tsl_test
+    file ${CURRENT_PATH}/build/src/test/tsl_test
     echo "Executing ${CURRENT_PATH}/build/src/test/tsl_test" >> ${CURRENT_LOG_PATH}/test.log 2>&1
     EXECUTABLE=${CURRENT_PATH}/build/src/test/tsl_test
     echo "file $(file ${EXECUTABLE})" >> ${CURRENT_LOG_PATH}/test.log 2>&1
@@ -51,6 +56,7 @@ for d in ${TSL_ROOT}/*; do
       echo "success=false" >> $GITHUB_OUTPUT
       exit
     fi
+    echo "Done"
   fi
 done
 

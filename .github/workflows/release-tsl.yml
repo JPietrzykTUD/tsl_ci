@@ -54,13 +54,6 @@ jobs:
         with:
           image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
-      - name: TSL Generate Output
-        if: always()
-        run: echo "TSL Generation ${{ steps.generate.outputs.msg }}."
-      - if: ${{ steps.generate.outputs.success == 'false' }}
-        run: "echo SUCCESS == false"
-      - if: ${{ steps.generate.outputs.success == 'true' }}
-        run: "echo SUCCESS == true"
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
@@ -110,9 +103,6 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.rpm.outputs.out }}/${{ steps.rpm.outputs.name}}
           overwrite: true
           retention-days: 1
-      - name: RPM Output
-        if: always()
-        run: echo "${{ steps.rpm.outputs.msg }}"
       - name: RPM failed
         if: ${{ steps.rpm.outputs.success == 'false' }}
         run: |
@@ -134,9 +124,6 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.deb.outputs.out }}/${{ steps.deb.outputs.name}}
           overwrite: true
           retention-days: 1
-      - name: DEB Output
-        if: always()
-        run: echo "${{ steps.deb.outputs.msg }}"
       - name: DEB failed
         if: ${{ steps.deb.outputs.success == 'false' }}
         run: |
