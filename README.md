@@ -8,8 +8,7 @@ curl -L -s "https://github.com/JPietrzykTUD/tsl_ci/releases/latest/download/inst
 ```
 
 ```console
-
-TSL_DEB_FNAME=$(mktemp -ud --tmpdir libtsl-dev-XXXXX.deb); curl -L -s "https://github.com/JPietrzykTUD/tsl_ci/releases/latest/download/libtsl-dev.deb" -o ${TSL_DEB_FNAME} | sudo apt install ${TSL_DEB_FNAME}
+TSL_DEB_FNAME=$(mktemp -ud --tmpdir libtsl-dev-XXXXX.deb); curl -L -s "https://github.com/JPietrzykTUD/tsl_ci/releases/latest/download/libtsl-dev.deb" -o ${TSL_DEB_FNAME} && sudo apt install ${TSL_DEB_FNAME}
 ```
 
 ```console
