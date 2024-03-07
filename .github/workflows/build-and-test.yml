@@ -48,11 +48,10 @@ jobs:
 
   generate-for-x86:
     runs-on: ubuntu-latest
-    needs: [setup-generation, setup-x86]
+    needs: setup-generation
     name: Generate TSL for Intel x86
     strategy:
       matrix:
-        compilers: ["clang++-17", "g++"]
         target_flags:
           - "sse"
           - "sse,sse2"
@@ -75,30 +74,18 @@ jobs:
         with:
           image: ${{ vars.GENERATION_TAG }}
           targets: ${{ matrix.target_flags }}
-      # - name: Upload Generated TSL
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: generate_tsl_intel_${{ steps.generate.outputs.name }}
-      #     path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
-      #     overwrite: true
-      #     retention-days: 1
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
+          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+          overwrite: true
+          retention-days: 1
       - if: ${{ steps.generate.outputs.success == 'false' }}
         run: |
           echo "Generation for Intel x86 failed"
           echo "${{ steps.generate.outputs.msg }}"
-          exit 1
-      - name: TSL Build and Test
-        id: bat
-        uses: ./.github/actions/tsl-test-x86
-        with:
-          # image: ${{ vars.BUILD_TEST_X86_TAG }}
-          compiler: ${{ matrix.compilers }}
-          tsl: generate_tsl_intel_${{ steps.generate.outputs.name }}
-      - if: ${{ steps.bat.outputs.success == 'false' }}
-        run: |
-          echo "Build and testing for Intel x86 failed"
-          echo "${{ steps.bat.outputs.msg }}"
           exit 1
   # package-for-x86:
   #   runs-on: ubuntu-latest
@@ -121,43 +108,55 @@ jobs:
   #         path: ${{ github.workspace }}/tsl_intel
   #         overwrite: true
   #         retention-days: 1
-  # build-and-test-for-x86:
-  #   runs-on: ubuntu-latest
-  #   needs: [package-for-x86, setup-x86]
-  #   name: Build and test TSL for Intel x86
-  #   strategy:
-  #     matrix:
-  #       compilers: ["clang++-17", "g++"]
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Checkout PR and merge
-  #       uses: check-spelling/checkout-merge@v0.0.4
-  #     - name: Download Generated TSL
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: TSL_INTEL
-  #         path: ${{ github.workspace }}/tsl/intel
-  #     - name: TSL Build and Test
-  #       id: bat
-  #       uses: ./.github/actions/tsl-test-x86
-  #       with:
-  #         image: ${{ vars.BUILD_TEST_X86_TAG }}
-  #         compiler: ${{ matrix.compilers }}
-  #         tsl: tsl/intel
-  #     - name: Upload Generated TSL
-  #       if: always()
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: build_tsl_intel_${{ matrix.compilers }}
-  #         path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
-  #         overwrite: true
-  #         retention-days: 1
-  #     - if: ${{ steps.bat.outputs.success == 'false' }}
-  #       run: |
-  #         echo "Build and testing for Intel x86 failed"
-  #         echo "${{ steps.bat.outputs.msg }}"
-  #         exit 1
+  build-and-test-for-x86:
+    runs-on: ubuntu-latest
+    # needs: [package-for-x86, setup-x86]
+    needs: setup-x86
+    name: Build and test TSL for Intel x86
+    strategy:
+      matrix:
+        compilers: ["clang++-17", "g++"]
+        tsl_folders:
+          - "tsl_intel_sse"
+          - "tsl_intel_sse_sse2"
+          - "tsl_intel_sse_sse2_ssse3"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f"
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512er_avx512pf" #avx3.1
+          - "tsl_intel_sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512bw_avx512dq_avx512vl" #avx3.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout PR and merge
+        uses: check-spelling/checkout-merge@v0.0.4
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          name: generate_${{ matrix.tsl_folders }}
+          path: ${{ github.workspace }}/tsl/intel
+      - name: TSL Build and Test
+        id: bat
+        uses: ./.github/actions/tsl-test-x86
+        with:
+          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          compiler: ${{ matrix.compilers }}
+          tsl: tsl/intel/generate_${{ matrix.tsl_folders }}
+      - name: Upload Generated TSL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
+          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          overwrite: true
+          retention-days: 1
+      - if: ${{ steps.bat.outputs.success == 'false' }}
+        run: |
+          echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
+          echo "${{ steps.bat.outputs.msg }}"
+          exit 1
 
   generate-for-arm:
     runs-on: ubuntu-latest
