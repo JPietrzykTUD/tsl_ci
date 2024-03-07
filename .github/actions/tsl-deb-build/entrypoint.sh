@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 VERSION_ORIG=$1 #v0.0.1
 #remove prefix "v" from VERSION_ORIG

@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get -y bash install build-essential binutils lintian debhelper dh-make devscripts
+RUN apt-get -y install bash build-essential binutils lintian debhelper dh-make devscripts
 
 RUN mkdir -p /root/debbuild/tsl/DEBIAN
 RUN mkdir -p /root/debbuild/tsl/usr/include/tsl/__hollistic
