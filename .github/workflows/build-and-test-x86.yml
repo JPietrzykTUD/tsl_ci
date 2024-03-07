@@ -30,7 +30,7 @@ jobs:
         id: bat
         uses: ./.github/actions/tsl-test-x86
         with:
-          image: ${{ vars.BUILD_TEST_X86_TAG }}
+          # image: ${{ vars.BUILD_TEST_X86_TAG }}
           compiler: ${{ matrix.compilers }}
           tsl: tsl/intel
       - name: TSL Generate Output

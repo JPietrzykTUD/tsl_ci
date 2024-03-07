@@ -9,7 +9,7 @@ on:
 jobs:
   auto-tag:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.event_name == 'push' && github.ref == 'refs/heads/main'
     name: Auto-Tag current Head
     permissions: write-all
     outputs:
@@ -20,13 +20,6 @@ jobs:
       - name: Auto-Tag
         id: push-tag
         run: |
-          set -x
-          # HAS_LATEST=$((git ls-remote --exit-code origin refs/tags/latest >>/dev/null 2>&1) && echo 0 || echo 1)
-          # if [ ${HAS_LATEST} -eq 0 ]; then
-          #   git push origin --delete refs/tags/latest
-          # else
-          #   echo "No tag to delete!"
-          # fi
           git fetch --tags
           LATEST_TAG=$(git tag -l --sort=-v:refname "v*" | head -n 1)
           if [ -z "${LATEST_TAG}" ]; then
@@ -52,14 +45,38 @@ jobs:
           git config --global user.email "johannes.pietrzyk@tu-dresden.de"
           git config --global user.name "GitHub Action (Maintainer: Johannes Pietrzyk)"
           git tag -a $VERSION -m "${VERSION} (Auto-tagged by GitHub Actions)"
-          # git tag -a latest -m "Auto-tagged by GitHub Actions"
           git push origin --tags
-  release:
+  release-on-push:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: auto-tag
     permissions: write-all
     uses: ./.github/workflows/release-tsl.yml    
     with:
       tag-name: ${{ needs.auto-tag.outputs.tag }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+  
+  get-tag:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    name: Get Tag
+    outputs:
+      tag: ${{ steps.get-tag.outputs.tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get Tag
+        id: get-tag
+        run: |
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+  release-on-tag:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: get-tag
+    permissions: write-all
+    uses: ./.github/workflows/release-tsl.yml    
+    with:
+      tag-name: ${{ needs.get-tag.outputs.tag }}
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
