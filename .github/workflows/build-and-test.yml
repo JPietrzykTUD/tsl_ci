@@ -76,10 +76,11 @@ jobs:
           targets: ${{ matrix.target_flags }}
 
       - name: Cache TSL
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         if: always()
         with:
-          path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
+          path: 
+            ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           key: generation_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ steps.generate.outputs.name }}
       # - name: Upload Generated TSL
       #   if: always()
@@ -141,9 +142,10 @@ jobs:
         uses: check-spelling/checkout-merge@v0.0.4
 
       - name: Cache TSL
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          path: ${{ github.workspace }}/tsl/intel
+          path: 
+            ${{ github.workspace }}/tsl/intel
           key: generation_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ matrix.tsl_folders }}
           fail-on-cache-miss: true
 
@@ -160,10 +162,11 @@ jobs:
           compiler: ${{ matrix.compilers }}
           tsl: tsl/intel/${{ matrix.tsl_folders }}
       - name: Cache TSL
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         if: always()
         with:
-          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          path: 
+            ${{ github.workspace }}/${{ steps.bat.outputs.out }}
           key: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}-${{ matrix.compilers }}-${{ matrix.tsl_folders }}
       # - name: Upload Generated TSL
       #   if: always()
@@ -188,11 +191,13 @@ jobs:
       - name: Checkout PR and merge
         uses: check-spelling/checkout-merge@v0.0.4
       - name: Cache TSL
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           key: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}
-          path: ${{ github.workspace }}/pipeline-summary-x86
-          restore-keys: build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}
+          path: 
+            ${{ github.workspace }}/pipeline-summary-x86
+          restore-keys: 
+            build_${{ runner.os }}-tsl-x86-${{ github.head_ref }}.${{ github.sha }}
       # - name: Download Generated TSL
       #   uses: actions/download-artifact@v4
       #   with:
