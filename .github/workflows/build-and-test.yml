@@ -136,7 +136,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generate_${{ matrix.tsl_folders }}
-          path: ${{ github.workspace }}/tsl/intel
+          path: ${{ github.workspace }}/tsl/intel/generate_${{ matrix.tsl_folders }}
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-x86
