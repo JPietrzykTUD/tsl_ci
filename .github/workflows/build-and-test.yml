@@ -1,11 +1,6 @@
 name: Generation for Intel / ARM
 run-name: Generate the Template SIMD Library
 
-# on:
-#   workflow_run:
-#     workflows: [create-build-and-test-images]
-#     types:
-#       - completed
 on: 
   pull_request:
     branches:
@@ -78,7 +73,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generate_tsl_intel_${{ steps.generate.outputs.name }}
+          name: generate_tsl_x86_${{ steps.generate.outputs.name }}
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
@@ -113,7 +108,7 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: generate_tsl_intel_${{ matrix.tsl_folders }}
+          name: generate_tsl_x86_${{ matrix.tsl_folders }}
           path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
       - name: TSL Build and Test
         id: bat
@@ -126,7 +121,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build_${{ matrix.tsl_folders }}_${{ matrix.compilers }}
+          name: build_tsl_x86_${{ matrix.compilers }}_${{ matrix.tsl_folders }}
           path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
           overwrite: true
           retention-days: 1
@@ -168,34 +163,15 @@ jobs:
           echo "Generation for ARM failed"
           echo "${{ steps.generate.outputs.msg }}"
           exit 1
-  package-for-arm:
+  build-and-test-for-arm:
     runs-on: ubuntu-latest
     name: Package TSL for ARM
     needs: generate-for-arm
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Checkout PR and merge
-        uses: check-spelling/checkout-merge@v0.0.4
-      - name: Download Generated TSL
-        uses: actions/download-artifact@v4
-        with:
-          pattern: generate_tsl_arm_*
-          path: ${{ github.workspace }}/tsl_arm
-      - name: Upload Packaged TSL
-        uses: actions/upload-artifact@v4
-        with:
-          name: TSL_ARM
-          path: ${{ github.workspace }}/tsl_arm
-          overwrite: true
-          retention-days: 1
-  build-and-test-for-arm:
-    runs-on: ubuntu-latest
-    needs: [package-for-arm, setup-arm]
-    name: Build and test TSL for ARM
     strategy:
       matrix:
         compilers: ["g++"]
+        tsl_folders:
+          - "neon"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -204,29 +180,45 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: TSL_ARM
-          path: ${{ github.workspace }}/tsl/arm
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+          name: generate_tsl_arm_${{ matrix.tsl_folders }}
+          path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
       - name: TSL Build and Test
         id: bat
         uses: ./.github/actions/tsl-test-arm
         with:
-          # image: ${{ vars.BUILD_TEST_ARM_TAG }}
           compiler: ${{ matrix.compilers }}
-          tsl: tsl/arm
+          tsl: generate/${{ matrix.tsl_folders }}
       - name: Upload Generated TSL
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build_tsl_arm_${{ matrix.compilers }}
-          path: ${{ github.workspace }}/${{ steps.bat.outputs.out }}
+          name: build_tsl_arm_${{ matrix.compilers }}_${{ matrix.tsl_folders }}
+          path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
           overwrite: true
           retention-days: 1
       - if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
-          echo "Build and testing for ARM failed"
+          echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
           echo "${{ steps.bat.outputs.msg }}"
           exit 1
+  package-results:
+    runs-on: ubuntu-latest
+    needs: [build-and-test-for-x86, build-and-test-for-arm]
+    name: Package Results
+    steps:
+      - name: Download Generated TSL
+        uses: actions/download-artifact@v4
+        with:
+          name: generate_tsl*
+          path: ${{ github.workspace }}/build_and_test_pipe/generated
+      - name: Download Built TSL
+        uses: actions/download-artifact@v4
+        with:
+          name: build_tsl*
+          path: ${{ github.workspace }}/build_and_test_pipe/build
+      - name: Upload 
+        uses: actions/upload-artifact@v4
+        with:
+          name: Results
+          path: ${{ github.workspace }}/build_and_test_pipe/
+          overwrite: true
