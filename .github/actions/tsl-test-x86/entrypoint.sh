@@ -73,6 +73,7 @@ for flag in "${TSL_SUPPORTED_FLAGS[@]}"; do
     echo "success=skipped" >> $GITHUB_OUTPUT
     exit
   fi
+done
 ${EXECUTABLE} >> ${LOG_FILE} 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Tests failed for $TSL_ROOT" >> $GITHUB_OUTPUT
