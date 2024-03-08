@@ -1,0 +1,10 @@
+TSL_ROOT: /github/workspace/tsl
+total 48K
+drwxr-xr-x 4 1000 1000 4.0K Mar  8 10:45 .
+drwx------ 4 1000 1000 4.0K Mar  8 10:45 include
+drwx------ 3 1000 1000 4.0K Mar  8 10:45 src
+drwxr-xr-x 4 1000 1000 4.0K Mar  8 10:45 ..
+-rw-r--r-- 1 1000 1000 2.9K Mar  8 08:55 CMakeLists.txt
+-rw-r--r-- 1 1000 1000  21K Mar  8 08:55 generation.log
+-rw-r--r-- 1 1000 1000   23 Mar  8 08:55 tsl.conf
+Building /github/workspace/tsl/include

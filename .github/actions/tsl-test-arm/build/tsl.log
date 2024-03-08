@@ -1,0 +1,10 @@
+TSL_ROOT: /github/workspace/
+total 28K
+drwxr-xr-x 2 root root 4.0K Mar  8 10:43 build
+drwxr-xr-x 3 1000 1000 4.0K Mar  8 10:43 .
+drwxr-xr-x 3 root root 4.0K Mar  8 10:43 ..
+-rw-r--r-- 1 1000 1000  621 Mar  8 09:54 Dockerfile
+-rwxr-xr-x 1 1000 1000 2.6K Mar  8 09:22 entrypoint.sh
+-rw-r--r-- 1 1000 1000  815 Mar  7 13:51 README.md
+-rw-r--r-- 1 1000 1000  665 Mar  1 12:42 action.yml
+Building /github/workspace//build

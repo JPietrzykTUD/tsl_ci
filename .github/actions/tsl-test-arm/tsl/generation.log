@@ -1,0 +1,230 @@
+total 1.3M
+drwxr-xr-x 11 1001  127 4.0K Mar  8 09:55 .
+drwxr-xr-x  3 root root 4.0K Mar  8 09:55 ci
+drwxr-xr-x  6 root root 4.0K Mar  8 09:55 ..
+drwxr-xr-x  8 1001  127 4.0K Mar  8 09:55 .git
+-rw-r--r--  1 1001  127 693K Mar  8 09:55 tslgen.log
+-rw-r--r--  1 1001  127  103 Mar  8 09:55 xx.req.txt
+-rwxr-xr-x  1 1001  127  202 Mar  8 09:55 neon.sh
+-rw-r--r--  1 1001  127 9.9K Mar  8 09:55 parseForPrimitiveTable.py
+drwxr-xr-x  4 1001  127 4.0K Mar  8 09:55 primitive_data
+-rw-r--r--  1 1001  127   91 Mar  8 09:55 requirements.txt
+drwxr-xr-x  4 1001  127 4.0K Mar  8 09:55 supplementary
+-rwxr-xr-x  1 1001  127  720 Mar  8 09:55 test_definitions_intel.sh
+-rw-r--r--  1 1001  127 7.4K Mar  8 09:55 tsl.cmake
+drwxr-xr-x  8 1001  127 4.0K Mar  8 09:55 generator
+-rw-r--r--  1 1001  127 339K Mar  8 09:55 index.html
+-rwxr-xr-x  1 1001  127 2.4K Mar  8 09:55 main.py
+drwxr-xr-x  4 1001  127 4.0K Mar  8 09:55 examples
+drwxr-xr-x  4 1001  127 4.0K Mar  8 09:55 .github
+-rw-r--r--  1 1001  127 1.1K Mar  8 09:55 1
+-rw-r--r--  1 1001  127 1.5K Mar  8 09:55 CMakeLists.txt
+-rw-r--r--  1 1001  127  858 Mar  8 09:55 Dockerfile
+-rw-r--r--  1 1001  127  35K Mar  8 09:55 LICENSE
+-rw-r--r--  1 1001  127  830 Mar  8 09:55 README.md
+-rw-r--r--  1 1001  127  70K Mar  8 09:55 XXX
+drwxr-xr-x  2 1001  127 4.0K Mar  8 09:55 __pycache__
+-rw-r--r--  1 1001  127 8.8K Mar  8 09:55 build.log
+-rwxr-xr-x  1 1001  127  127 Mar  8 09:55 build.sh
+drwxr-xr-x  5 1001  127 4.0K Mar  8 09:55 doc
+Generating for ['neon']
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Sorting includes according to the following order: memory, misc, ls, io, binary, convert, mask, calc, compare
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+TSL - Summary:
+  - # Primitive Classes:  9
+  - # Primitives:         88
+  - # Tests:              91
+  - Primitives w/ Tests:  55
+  - Primitives w/o Tests: 
+                          allocate
+                          allocate_aligned
+                          deallocate
+                          memory_cp
+                          mask_gather
+                          scatter
+                          mask_scatter
+                          to_ostream
+                          shift_right_imask
+                          lzc_vector
+                          lzc_imask
+                          tzc_imask
+                          equal_masks
+                          equal_as_imask
+                          nequal_masks
+                          mul_constant
+                          mod
+                          reinterpret
+                          to_mask
+                          imask_binary_not
+                          mask_binary_and
+                          imask_binary_and
+                          mask_binary_or
+                          imask_binary_or
+                          mask_binary_xor
+                          imask_binary_xor
+                          integral_all_true
+                          integral_all_false
+                          load_mask
+                          load_imask
+                          test_imask
+                          insert_imask
+                          extract_imask
+                          =======================================================================================================================================
+                          33
+  - Unsafe Tests:          
+                          mod_constant::<with_modulo_one> -> mod::<MISSING>
+                          mod_constant::<with_check_barrett_reduction_constraint> -> mod::<MISSING>
+                          mod_constant::<with_modulo_rand> -> mod::<MISSING>
+                          mod_safe::<check_float_limits> -> mod::<MISSING>
+                          blend::<default> -> to_mask::<MISSING>
+                          mask_add::<zero_mask> -> to_mask::<MISSING>
+                          mask_add::<all_one_mask> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> equal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> equal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> equal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> equal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> equal::<none_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> equal::<none_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> equal::<none_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> equal::<none_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          less_than::<default> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          less_than::<equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          greater_than::<default> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          greater_than::<equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> less_than_or_equal::<default> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> less_than_or_equal::<equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          greater_than_or_equal::<default> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          greater_than_or_equal::<equal> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          between_inclusive::<complete_range> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          between_inclusive::<check_boundaries> -> to_integral::<mask_match_zero_to_vec_count> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> equal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> equal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> equal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> equal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> equal::<none_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> equal::<none_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> equal::<none_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> equal::<none_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          mask_equal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          mask_equal::<all_unequal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          nequal::<all_unequal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          less_than::<default> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          less_than::<equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          greater_than::<default> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          greater_than::<equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> less_than_or_equal::<default> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> less_than_or_equal::<equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          greater_than_or_equal::<default> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          greater_than_or_equal::<equal> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          between_inclusive::<complete_range> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          between_inclusive::<not_in_range> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          between_inclusive::<check_boundaries> -> to_integral::<mask_match_alternate> -> to_mask::<MISSING>
+                          to_vector::<full_mask> -> to_mask::<MISSING>
+                          to_vector::<no_mask> -> to_mask::<MISSING>
+                          imask_conflict_free::<default> -> integral_all_true::<MISSING>
+                          mask_add::<all_one_mask> -> integral_all_true::<MISSING>
+                          to_vector::<full_mask> -> integral_all_true::<MISSING>
+                          mask_add::<zero_mask> -> integral_all_false::<MISSING>
+                          to_vector::<no_mask> -> integral_all_false::<MISSING>
+                          =======================================================================================================================================
+                          23 (60 specific missing dependencies)
+  - Test Coverage:        62.50%
+  - Avg. Tests/Primitive: 1.03
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+Error while trying to get git data: Command '['git', 'config', '--get', 'remote.origin.url']' returned non-zero exit status 1.
+To use TSL, apply the following changes:
+   CMakeLists.txt (top-level):                 add_subdirectory(neon)
+                                               target_link_libraries(<target> tsl)
+   C++ Source/Header file which uses TSL:      #include <tslintrin.hpp>
+General usage:
+   Using namespace declaration:                /*...*/ 
+   (we generally discourage this               using namespace tsl;
+    kind of usage)                             auto result = add<simd<uint64_t, sse>>(a, b);
+                                               /*...*/
+   Explicit usage:                             /*...*/ 
+                                               auto result = tsl::add<tsl::simd<uint64_t, tsl::sse>>(a, b);
+                                               /*...*/ 
+Generation needed 4.26 seconds.

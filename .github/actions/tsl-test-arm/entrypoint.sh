@@ -3,15 +3,23 @@
 COMPILER=$1
 TSL_PATH=$2
 
+echo "TSL_PATH: ${TSL_PATH}"
+
 REPO_ROOT=/github/workspace
 TSL_ROOT=${REPO_ROOT}/${TSL_PATH}
 
+echo "TSL_ROOT: ${TSL_ROOT}"
+
 TSL_STRIPPED=${TSL_PATH#generate/}
+echo "TSL_STRIPPED: ${TSL_STRIPPED}"
 #transform TSL_STRIPPED to array by strings by splitting it with '-'
 TSL_SUPPORTED_FLAGS=(${TSL_STRIPPED//-/ })
+echo "TSL_SUPPORTED_FLAGS: ${TSL_SUPPORTED_FLAGS[@]}"
 
 LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | sed -E 's/\s/:/g')
+echo "LSCPU_FLAGS_STRING: ${LSCPU_FLAGS_STRING}"
 AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
+
 declare -A AVAIL_MAP
 for item in "${AVAIL_FLAGS[@]}"; do
   AVAIL_MAP[$item]=1
