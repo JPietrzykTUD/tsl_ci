@@ -5,10 +5,6 @@
 
 
 
-[![Generates for x86](https://github.com/JPietrzykTUD/tsl_ci/actions/workflows/generation-success.yml/badge.svg?branch=main)](https://github.com/JPietrzykTUD/tsl_ci/actions/workflows/generation-success.yml)
-
-
-
 ```console
 curl -L -s "https://github.com/JPietrzykTUD/tsl_ci/releases/latest/download/install_tsl.sh" | /bin/bash
 ```

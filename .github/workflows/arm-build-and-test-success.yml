@@ -1,5 +1,5 @@
-name: Generates for ARM
-run-name: Generates TSL for ARM
+name: Builds on ARM
+run-name: Builds on ARM
 
 on:
   workflow_run:
