@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 COMPILER=$1
 TSL_PATH=$2
