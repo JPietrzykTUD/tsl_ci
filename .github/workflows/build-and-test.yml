@@ -166,7 +166,7 @@ jobs:
   build-and-test-for-arm:
     runs-on: ubuntu-latest
     name: Package TSL for ARM
-    needs: generate-for-arm
+    needs: [setup-arm, generate-for-arm]
     strategy:
       matrix:
         compilers: ["g++"]
