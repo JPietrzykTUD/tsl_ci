@@ -48,8 +48,19 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.validate.outputs.out }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.validate.outputs.success == 'false' }}
+      - name: Output on Error 
+        if: ${{ steps.validate.outputs.success == 'false' }}
         run: |
-          echo "Validation failed"
+          echo "Generation (with ${{ matrix.python_version }} failed"
           echo "${{ steps.validate.outputs.msg }}"
-          exit 1
+          touch ${{ github.workspace }}/python_generation_failed
+      - name: Upload on Error
+        if: ${{ steps.validate.outputs.success == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: python_generation_failed
+          path: ${{ github.workspace }}
+          retention-days: 1
+      - name: Fail on Error
+        if: ${{ steps.validate.outputs.success == 'false' }}
+        run: exit 1
