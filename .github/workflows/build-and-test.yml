@@ -96,15 +96,15 @@ jobs:
         compilers: ["clang++-17", "g++"]
         tsl_folders:
           - "sse"
-          - "sse_sse2"
-          - "sse_sse2_ssse3"
-          - "sse_sse2_ssse3_sse4_1"
-          - "sse_sse2_ssse3_sse4_1_sse4_2"
-          - "sse_sse2_ssse3_sse4_1_sse4_2_avx"
-          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2"
-          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f"
-          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512er_avx512pf" #avx3.1
-          - "sse_sse2_ssse3_sse4_1_sse4_2_avx_avx2_avx512f_avx512cd_avx512bw_avx512dq_avx512vl" #avx3.2
+          - "sse-sse2"
+          - "sse-sse2-ssse3"
+          - "sse-sse2-ssse3-sse4_1"
+          - "sse-sse2-ssse3-sse4_1-sse4_2"
+          - "sse-sse2-ssse3-sse4_1-sse4_2-avx"
+          - "sse-sse2-ssse3-sse4_1-sse4_2-avx-avx2"
+          - "sse-sse2-ssse3-sse4_1-sse4_2-avx-avx2-avx512f"
+          - "sse-sse2-ssse3-sse4_1-sse4_2-avx-avx2-avx512f-avx512cd-avx512er-avx512pf" #avx3.1
+          - "sse-sse2-ssse3-sse4_1-sse4_2-avx-avx2-avx512f-avx512cd-avx512bw-avx512dq-avx512vl" #avx3.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4

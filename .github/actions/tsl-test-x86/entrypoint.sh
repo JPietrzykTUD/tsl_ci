@@ -7,9 +7,15 @@ REPO_ROOT=/github/workspace
 TSL_ROOT=${REPO_ROOT}/${TSL_PATH}
 
 TSL_STRIPPED=${TSL_PATH#generate/}
-#transform TSL_STRIPPED to array by strings by splitting it with '_'
-AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//_/ })
+#transform TSL_STRIPPED to array by strings by splitting it with '-'
+TSL_SUPPORTED_FLAGS=(${TSL_STRIPPED//-/ })
+
 LSCPU_FLAGS_STRING=$(LANG=en;lscpu | grep 'Flags:' | sed -E 's/Flags:\s*//g' | sed -E 's/\s/:/g')
+AVAIL_FLAGS=(${LSCPU_FLAGS_STRING//:/ })
+declare -A AVAIL_MAP
+for item in "${AVAIL_FLAGS[@]}"; do
+  AVAIL_MAP[$item]=1
+done
 
 BUILD_AND_TEST_BASE=${TSL_PATH}/build_and_test/${COMPILER}
 BUILD_AND_TEST_PATH=${TSL_ROOT}/${BUILD_AND_TEST_BASE}
@@ -61,14 +67,12 @@ echo "Executing ${EXECUTABLE}" >> ${LOG_FILE} 2>&1
 file ${EXECUTABLE}
 echo "file $(file ${EXECUTABLE})" >> ${LOG_FILE} 2>&1
 
-for i in "${!AVAIL_FLAGS[@]}"
-do
-  if [[ ! $LSCPU_FLAGS_STRING == *"${AVAIL_FLAGS[i]}"* ]]; then
-    echo "msg=CPU does not support all required flags for TSL_STRIPPED=${TSL_STRIPPED}" >> $GITHUB_OUTPUT
+for flag in "${TSL_SUPPORTED_FLAGS[@]}"; do
+  if [[ -z "${AVAIL_MAP[$flag]}" ]]; then
+    echo "msg=CPU does not support required flag for TSL_STRIPPED=${TSL_STRIPPED}" >> $GITHUB_OUTPUT
     echo "success=skipped" >> $GITHUB_OUTPUT
     exit
   fi
-done
 ${EXECUTABLE} >> ${LOG_FILE} 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Tests failed for $TSL_ROOT" >> $GITHUB_OUTPUT
