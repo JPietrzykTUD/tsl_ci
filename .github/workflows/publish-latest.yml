@@ -1,5 +1,5 @@
 name: Publish latest version of TSL
-
+run-name: Publish latest version of TSL
 # on:
 #   workflow_run:
 #     workflows: [create-package-images]

@@ -75,13 +75,14 @@ echo "Executing ${EXECUTABLE}" >> ${LOG_FILE} 2>&1
 file ${EXECUTABLE}
 echo "file $(file ${EXECUTABLE})" >> ${LOG_FILE} 2>&1
 
-for flag in "${TSL_SUPPORTED_FLAGS[@]}"; do
-  if [[ -z "${AVAIL_MAP[$flag]}" ]]; then
-    echo "msg=CPU does not support required flag for TSL_STRIPPED=${TSL_STRIPPED}" >> $GITHUB_OUTPUT
-    echo "success=skipped" >> $GITHUB_OUTPUT
-    exit
-  fi
-done
+# for flag in "${TSL_SUPPORTED_FLAGS[@]}"; do
+#   if [[ -z "${AVAIL_MAP[$flag]}" ]]; then
+#     echo "msg=CPU does not support required flag for TSL_STRIPPED=${TSL_STRIPPED}" >> $GITHUB_OUTPUT
+#     echo "success=skipped" >> $GITHUB_OUTPUT
+#     exit
+#   fi
+# done
+# we don't have to check for flags, because we are running on x86_64 but simulating arm64 hardware
 ${EXECUTABLE} >> ${LOG_FILE} 2>&1
 if [ $? -ne 0 ]; then
   echo "msg=Tests failed for $TSL_ROOT" >> $GITHUB_OUTPUT

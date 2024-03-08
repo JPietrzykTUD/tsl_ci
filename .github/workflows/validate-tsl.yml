@@ -1,11 +1,6 @@
 name: Generating with py3.8-3.12
 run-name: Validate the TSL Generator
 
-# on:
-#   workflow_run:
-#     workflows: [create-validation-image]
-#     types:
-#       - completed
 on: 
   pull_request:
     branches:
@@ -58,4 +53,3 @@ jobs:
           echo "Validation failed"
           echo "${{ steps.validate.outputs.msg }}"
           exit 1
-
