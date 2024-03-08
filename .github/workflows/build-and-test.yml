@@ -224,12 +224,12 @@ jobs:
       - name: Download Generated TSL
         uses: actions/download-artifact@v4
         with:
-          name: generate_tsl*
+          pattern: generate_tsl*
           path: ${{ github.workspace }}/build_and_test_pipe/generated
       - name: Download Built TSL
         uses: actions/download-artifact@v4
         with:
-          name: build_tsl*
+          pattern: build_tsl*
           path: ${{ github.workspace }}/build_and_test_pipe/build
       - name: Upload 
         uses: actions/upload-artifact@v4
