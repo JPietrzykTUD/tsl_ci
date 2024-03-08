@@ -63,6 +63,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Checkout PR and merge
         uses: check-spelling/checkout-merge@v0.0.4
+      - name: Cancel on Merge fail
+        if: env.MERGE_FAILED == '1'
+        run:
+          echo "Merge failed, c
       - name: TSL Generate
         id: generate
         uses: ./.github/actions/tsl-generate
@@ -82,12 +86,12 @@ jobs:
         run: |
           echo "Generation for Intel x86 failed"
           echo "${{ steps.generate.outputs.msg }}"
-          touch ${{ github.workspace }}/generation_failed
+          touch ${{ github.workspace }}/intel_generation_failed
       - name: Upload on Error
         if: ${{ steps.generate.outputs.success == 'false' }}
         uses: actions/upload-artifact@v4
         with:
-          name: generation_failed
+          name: intel_generation_failed
           path: ${{ github.workspace }}
           retention-days: 1
       - name: Fail on Error
@@ -136,11 +140,22 @@ jobs:
           path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.bat.outputs.success == 'false' }}
+      - name: Output on Error 
+        if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
           echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
           echo "${{ steps.bat.outputs.msg }}"
-          exit 1
+          touch ${{ github.workspace }}/intel_bat_failed
+      - name: Upload on Error
+        if: ${{ steps.bat.outputs.success == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: intel_bat_failed
+          path: ${{ github.workspace }}
+          retention-days: 1
+      - name: Fail on Error
+        if: ${{ steps.bat.outputs.success == 'false' }}
+        run: exit 1
 
   generate-for-arm:
     runs-on: ubuntu-latest
@@ -169,11 +184,22 @@ jobs:
           path: ${{ github.workspace }}/${{ steps.generate.outputs.out }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.generate.outputs.success == 'false' }}
+      - name: Output on Error 
+        if: ${{ steps.generate.outputs.success == 'false' }}
         run: |
           echo "Generation for ARM failed"
           echo "${{ steps.generate.outputs.msg }}"
-          exit 1
+          touch ${{ github.workspace }}/arm_generation_failed
+      - name: Upload on Error
+        if: ${{ steps.generate.outputs.success == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: arm_generation_failed
+          path: ${{ github.workspace }}
+          retention-days: 1
+      - name: Fail on Error
+        if: ${{ steps.generate.outputs.success == 'false' }}
+        run: exit 1
   build-and-test-for-arm:
     runs-on: ubuntu-latest
     name: Package TSL for ARM
@@ -211,11 +237,22 @@ jobs:
           path: ${{ github.workspace }}/generate/${{ matrix.tsl_folders }}
           overwrite: true
           retention-days: 1
-      - if: ${{ steps.bat.outputs.success == 'false' }}
+      - name: Output on Error 
+        if: ${{ steps.bat.outputs.success == 'false' }}
         run: |
-          echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for Intel x86 failed"
+          echo "Build (with ${{ matrix.compilers }}, ${{ matrix.tsl_folders }}) and testing for ARM failed"
           echo "${{ steps.bat.outputs.msg }}"
-          exit 1
+          touch ${{ github.workspace }}/arm_bat_failed
+      - name: Upload on Error
+        if: ${{ steps.bat.outputs.success == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: arm_bat_failed
+          path: ${{ github.workspace }}
+          retention-days: 1
+      - name: Fail on Error
+        if: ${{ steps.bat.outputs.success == 'false' }}
+        run: exit 1
   package-results:
     runs-on: ubuntu-latest
     needs: [build-and-test-for-x86, build-and-test-for-arm]
