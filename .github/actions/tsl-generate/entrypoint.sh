@@ -3,7 +3,7 @@
 PARAM_TARGETS=$1
 
 TARGETS=$(echo $PARAM_TARGETS | sed 's/\[//g' | sed 's/\]//g' | sed 's/ //g' | sed 's/,/ /g')
-TARGETS_NAME=$(echo $TARGETS | sed 's/ /_/g' | sed 's/;/_/g' | sed 's/,/_/g')
+TARGETS_NAME=$(echo $TARGETS | sed 's/ /-/g' | sed 's/;/-/g' | sed 's/,/-/g')
 TARGETS_ARRAY_NOTATION=$(echo $PARAM_TARGETS | sed 's/\[//g' | sed 's/\]//g' | sed 's/ //g' | sed 's/,/:/g')
 echo "name=${TARGETS_NAME}" >> $GITHUB_OUTPUT
 
