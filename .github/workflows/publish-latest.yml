@@ -1,4 +1,4 @@
-name: Publish latest version of TSL
+name: Packaging
 run-name: Publish latest version of TSL
 # on:
 #   workflow_run:

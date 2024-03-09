@@ -1,4 +1,4 @@
-name: Generates for x86
+name: Generating for x86
 run-name: Generates TSL for x86
 
 on:

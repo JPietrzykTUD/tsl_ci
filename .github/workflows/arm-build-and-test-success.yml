@@ -1,4 +1,4 @@
-name: Builds on ARM
+name: Build & run on ARM
 run-name: Builds on ARM
 
 on:

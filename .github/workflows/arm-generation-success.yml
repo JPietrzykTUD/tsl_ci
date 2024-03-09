@@ -1,4 +1,4 @@
-name: Generates for ARM
+name: Generating for ARM
 run-name: Generates TSL for ARM
 
 on:

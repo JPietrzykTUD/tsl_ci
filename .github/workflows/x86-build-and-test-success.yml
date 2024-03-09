@@ -1,4 +1,4 @@
-name: Builds on x86
+name: Builds & run on x86
 run-name: Builds on x86
 
 on:
